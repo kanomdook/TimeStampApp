@@ -1,0 +1,84 @@
+<!--
+  Generated template for the History page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>History</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <!--<ion-card>
+        <ion-card-header>
+            Doughnut Chart
+        </ion-card-header>
+        <ion-card-content>-->
+    <div class="chart-container" maintainAspectRatio="true">
+        <canvas #doughnutCanvas></canvas>
+        <!--<canvas #doughnutCanvas width="50%" height="50%" text-center></canvas>-->
+    </div>
+    <!--</ion-card-content>
+    </ion-card>-->
+    <ion-item-divider color="light"></ion-item-divider>
+    <div>
+        <ion-segment [(ngModel)]="Work">
+            <ion-segment-button value="Worked">
+                Worked
+            </ion-segment-button>
+            <ion-segment-button value="Leaved">
+                Leaved
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="Work">
+        <ion-list *ngSwitchCase="'Worked'">
+            <ion-item *ngFor="let worklis of workList">
+                <ion-row rowHeight>
+                    <ion-col col-2>
+                        <ion-icon name="calendar" iconCalender></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <ion-row rowHeightspace>
+                            <h2 headList>{{worklis.dateTimeIn | date: "dd MMM yyyy"}}</h2>
+                        </ion-row>
+                        <ion-row rowHeightspace>
+                            <ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{worklis.dateTimeIn | date: "shortTime"}}
+                            <ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{worklis.dateTimeOut | date: "shortTime"}}
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Leaved'">
+            <ion-item *ngFor="let leaveLis of leaveList" (click)="openLeaveDetailPage(leaveLis)">
+                <ion-row rowHeight>
+                    <ion-col col-2>
+                        <ion-icon name="calendar" iconCalender></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <ion-row rowHeightspace>
+                            <h2 headList>{{leaveLis.leaveType}} : {{leaveLis.leaveStartDateTime | date: "dd MMM yyyy"}}</h2>
+                        </ion-row>
+                        <ion-row rowHeightspace>
+                            <ion-col col-10 text-left>
+                                <p class="thaifont">{{leaveLis.remark}}</p>
+                            </ion-col>
+                            <ion-col col-2 text-right>
+                                <ion-icon name="md-checkmark-circle" [hidden]="leaveLis.approveStatus != 'Approve'" iconApprove></ion-icon>
+                                <ion-icon name="md-time" [hidden]="leaveLis.approveStatus != 'Waitting'" iconWait></ion-icon>
+                                <ion-icon name="md-close-circle" [hidden]="leaveLis.approveStatus != 'Reject'" iconReject></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

@@ -1,0 +1,72 @@
+page-history {
+    .scroll-content {
+        background-color: map-get($colors, light);
+    }
+    ion-card-header {
+        font-weight: bold;
+    }
+    .ion-md-calendar {
+        color: darkorange;
+        font-size: 45px;
+    }
+    [iconinList1] {
+        color: green;
+        padding-right: 5px;
+        padding-left: 5px;
+        align-items: flex-end;
+    }
+    [iconinList2] {
+        color: red;
+        padding-right: 5px;
+        padding-left: 5px;
+        align-items: flex-end;
+    }
+    [rowHeight] {
+        height: 70px;
+    }
+    [rowHeightspace] {
+        height: 30px;
+    }
+    [headList] {
+        font-weight: bold;
+    }
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 55vh;
+        width: 65vw;
+        max-height: 260px;
+    }
+
+    .ion-md-calendar {
+        color: darkorange;
+        font-size: 45px;
+    }
+    [iconWait] {
+        color: orange;
+    }
+    [iconApprove] {
+        color: green;
+    }
+    [iconReject] {
+        color: red;
+    }
+    [headList] {
+        font-weight: bold;
+    }
+    [rowHeightspace] {
+        height: 30px;
+    }
+    [iconinList1] {
+        color: green;
+        padding-right: 5px;
+        padding-left: 5px;
+        align-items: flex-end;
+    }
+    [iconinList2] {
+        color: red;
+        padding-right: 5px;
+        padding-left: 5px;
+        align-items: flex-end;
+    }
+}

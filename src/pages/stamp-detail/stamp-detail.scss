@@ -1,0 +1,26 @@
+page-stamp-detail {
+    .fl{
+        font-size: 24px;
+    }
+    .mt-img{
+        margin-top: 74px;
+    }
+    .mtd{
+        margin-top: -20px;
+    }
+    .mt{
+        margin-top: 34px;
+    }
+    [iconinList1] {
+        color: green;
+        padding-right: 5px;
+        padding-left: 5px;
+        align-items: flex-end;
+    }
+    [iconinList2] {
+        color: red;
+        padding-right: 5px;
+        padding-left: 5px;
+        align-items: flex-end;
+    }
+}

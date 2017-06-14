@@ -1,0 +1,85 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Request</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div>
+        <ion-segment [(ngModel)]="Req">
+            <ion-segment-button value="Leave">
+                Leave
+            </ion-segment-button>
+            <ion-segment-button value="Adjust">
+                Adjust
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="Req">
+        <ion-list *ngSwitchCase="'Leave'">
+            <ion-item *ngFor="let leaveLis of leaveList">
+                <ion-row rowHeight>
+                    <ion-col col-2>
+                        <ion-icon name="calendar" iconCalender></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <ion-row rowHeightspace>
+                            <h2 headList>{{leaveLis.leaveType}} : {{leaveLis.leaveStartDateTime | date: "dd MMM yyyy"}}</h2>
+                        </ion-row>
+                        <ion-row rowHeightspace>
+                            <ion-col col-10 text-left>
+                                <p class="thaifont">{{leaveLis.remark}}</p>
+                            </ion-col>
+                            <ion-col col-2 text-right>
+                                <ion-icon name="md-checkmark-circle" [hidden]="leaveLis.approveStatus != 'Approve'" iconApprove></ion-icon>
+                                <ion-icon name="md-time" [hidden]="leaveLis.approveStatus != 'Waitting'" iconWait></ion-icon>
+                                <ion-icon name="md-close-circle" [hidden]="leaveLis.approveStatus != 'Reject'" iconReject></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Adjust'">
+            <ion-item>
+                <ion-row rowHeight>
+                    <ion-col col-2>
+                        <ion-icon name="calendar" iconCalender></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <ion-row rowHeightspace>
+                            <h2 headList>01 Mar 2017</h2>
+                        </ion-row>
+                        <ion-row rowHeightspace>
+                            <ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>09.05 AM
+                            <ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>05.40 PM
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row rowHeight>
+                    <ion-col col-2>
+                        <ion-icon name="calendar" iconCalender></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <ion-row rowHeightspace>
+                            <h2 headList>28 Nov 2017</h2>
+                        </ion-row>
+                        <ion-row rowHeightspace>
+                            <ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>11.05 AM
+                            <ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>06.40 PM
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

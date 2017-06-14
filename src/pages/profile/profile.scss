@@ -1,0 +1,38 @@
+    @font-face {
+        font-family: MyFont;
+        src: url("../assets/fonts/Athiti-SemiBold.ttf");
+    }
+    
+    [thaifont] {
+        font-family: 'MyFont' !important;
+    }
+    
+    page-profile {
+        .item-md ion-avatar ion-img,
+        .item-md ion-avatar img {
+            height: 80px;
+            width: 80px;
+        }
+        [Headerfont] {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        [iconset] {
+            height: 36px;
+            width: 36px;
+        }
+        .ion-app.md [padding-left] {
+            padding-left: 16px;
+            align-items: center;
+        }
+        .row {
+            align-items: center;
+        }
+        [contentIcon] {
+            padding-left: 10px;
+            font-weight: bold;
+        }
+        [contentRow] {
+            height: 22px;
+        }
+    }

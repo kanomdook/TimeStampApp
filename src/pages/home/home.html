@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Time Stamp</ion-title>
+        <ion-buttons start (click)="showMenu()">
+            <button ion-button icon-only color="royal">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row text-center>
+            <ion-col ion-text color="danger" tsize>
+                {{dateTimeNow | date: "shortTime"}}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <ion-note>{{dateTimeNow | date: "dd MMM yyyy"}}</ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <img (press)="openPage_stampDetail()" src="img/fingerprint.png" fgprintImg>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+
+            <button ion-item (click)="openPage_leave()">
+                <ion-icon name="ios-alarm" padding-right menuIcon></ion-icon>
+          Leave
+        </button>
+            <button ion-item (click)="openPage_profile()">
+                <ion-icon name="md-person" padding-right menuIcon></ion-icon>
+          Profile
+        </button>
+            <button ion-item (click)="logout()">
+                <ion-icon name="md-log-out" padding-right menuIcon></ion-icon>
+          Log Out
+        </button>
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

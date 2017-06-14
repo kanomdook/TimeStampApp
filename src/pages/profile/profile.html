@@ -1,0 +1,53 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Profile</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-list>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="{{empDetail.image}}" SetAvatar>
+                    </ion-avatar>
+                    <h2 thaifont Headerfont text-wrap text-center>{{empDetail.firstname}} {{empDetail.lastname}}</h2>
+                    <p thaifont text-center>{{empDetail.jobTitle}}</p>
+                </ion-item>
+            </ion-list>
+        </ion-row>
+        <ion-row>
+            <ion-col width-100 text-wrap>
+                <p thaifont>{{empDetail.office.name}}</p>
+                <p thaifont>{{empDetail.office.address.address}} {{empDetail.office.address.district}} {{empDetail.office.address.subdistrict}} {{empDetail.office.address.province}} {{empDetail.office.address.country}} {{empDetail.office.address.postcode}}</p>
+            </ion-col>            
+        </ion-row>
+    </ion-grid>
+    <ion-grid>   
+        <ion-row padding-left>
+            <img src="img/call.png" iconset>
+            <p contentIcon thaifont>{{empDetail.Tel}}</p>
+        </ion-row>
+        <ion-row padding-left>
+            <img src="img/facebook.png" iconset>
+            <p contentIcon thaifont>{{empDetail.Facebook}}</p>
+        </ion-row>
+        <ion-row padding-left>
+            <img src="img/line.png" iconset>
+            <p contentIcon thaifont>{{empDetail.Line}}</p>
+        </ion-row>
+        <ion-row padding-left>
+            <img src="img/email.png" iconset>
+            <p contentIcon thaifont>{{empDetail.email}}</p>
+        </ion-row>
+    </ion-grid>
+</ion-content>
