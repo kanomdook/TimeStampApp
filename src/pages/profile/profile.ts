@@ -16,12 +16,13 @@ import { AuthenService } from '../../service/AuthenService';
   templateUrl: 'profile.html',
 })
 export class Profile {
-  empDetail = {
-    user: {},
-    office: {
-      address: {}
-    }
-  };
+  public empDetail: any;
+  // public empDetail = {
+  //   user: {},
+  //   office: {
+  //     address: {}
+  //   }
+  // };
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage, public athService: AuthenService) {
     setTimeout(() => {
       this.ionViewDidLoad();
@@ -40,7 +41,7 @@ export class Profile {
 
   getEmployeeData(email) {
     this.athService.getEmpDataApi(email).then((emp) => {
-      // alert(JSON.stringify(emp.employees[0]));
+      alert(JSON.stringify(emp.employees[0]));
       this.empDetail = emp.employees[0];
     }, (err) => {
       alert(JSON.stringify(err));
