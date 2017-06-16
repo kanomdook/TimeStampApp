@@ -16,7 +16,7 @@ export class Leave {
   public leaveData: any = {};
   public leaveDraftArr: any = [];
 
-  constructor(private app:App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
+  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
@@ -25,7 +25,7 @@ export class Leave {
       error => alert(error)
     );
 
-    if(this.navParams.get('leaveData')){
+    if (this.navParams.get('leaveData')) {
       this.leaveData = this.navParams.get('leaveData');
       this.localStartDate = this.leaveData.leaveStartDateTime;
       this.localEndDate = this.leaveData.leaveEndDateTime;
@@ -83,12 +83,15 @@ export class Leave {
     var theDate1 = Date.parse(strDate1) / 1000;
     var theDate2 = Date.parse(strDate2) / 1000;
     var diff = (theDate2 - theDate1) / (60 * 60 * 24);
-    return diff + 1;
+    return Math.floor(diff) + 1;
   }
 
   logEvent() {
     if (this.leaveData.leaveHalf == false) {
       this.leaveData.leaveTime = "";
+    } else if (this.leaveData.leaveHalf == true) {
+      this.leaveData.leaveEndDateTime = this.leaveData.leaveStartDateTime;
+      this.localEndDate = this.leaveData.leaveEndDateTime;
     }
   }
 }

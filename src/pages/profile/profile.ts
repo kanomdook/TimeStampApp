@@ -39,14 +39,12 @@ export class Profile {
   }
 
   getEmployeeData(email) {
-
     this.athService.getEmpDataApi(email).then((emp) => {
       // alert(JSON.stringify(emp.employees[0]));
       this.empDetail = emp.employees[0];
     }, (err) => {
       alert(JSON.stringify(err));
-    })
-
+    });
   }
 
 }

@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Register } from '../pages/register/register';
-import { LeaveDetailPage } from '../pages/leave-detail/leave-detail';
+// import { LeaveDetailPage } from '../pages/leave-detail/leave-detail';
 
 import { NativeStorage } from '@ionic-native/native-storage';
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LeaveDetailPage } from '../leave-detail/leave-detail';
 
 import { StampService } from '../../service/StampService';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -19,7 +20,7 @@ export class Request {
   leaveData: any = [];
   leaveList: any = [];
   user: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
+  constructor(private app: App,public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
     this.nativeStorage.getItem("TimeStampUser").then((data) => {
       // alert(" User Data : " + JSON.stringify(data));
       this.user = data;
@@ -36,7 +37,9 @@ export class Request {
     });
 
   }
-
+  viewLeaveDetail(item) {
+    this.app.getRootNav().push(LeaveDetailPage, { leaveDetail: item });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Request');
   }
