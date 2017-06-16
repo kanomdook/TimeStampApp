@@ -12,7 +12,7 @@ import { AuthenService } from '../../service/AuthenService';
 })
 export class LeaveDetailPage {
 
-  public leaveDetail: any;
+  public leaveDetail: any = [];
   public userDetail: any = [];
 
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController, public navParams: NavParams, private stampService: StampService, public athService: AuthenService) {
@@ -20,7 +20,7 @@ export class LeaveDetailPage {
     this.nativeStorage.getItem('TimeStampUser')
       .then(
       data => { this.getEmployeeData(data.email); },
-      error => { alert(error); }
+      error => alert(error)
       );
     this.ionViewDidLoad();
     // this.nativeStorage.getItem('TimeStampUser').then(
@@ -32,7 +32,7 @@ export class LeaveDetailPage {
 
     // this.leaveDetail.leaveStartDateTime = this.stampService.convertDateTimeThaiFormat(this.leaveDetail.leaveStartDateTime);
     // this.leaveDetail.leaveEndDateTime = this.stampService.convertDateTimeThaiFormat(this.leaveDetail.leaveEndDateTime);
-    alert("LEAVEDETAIL : "+ JSON.stringify(this.leaveDetail));
+    alert("LEAVEDETAIL : " + JSON.stringify(this.leaveDetail));
   }
 
   ionViewDidLoad() {
@@ -60,4 +60,18 @@ export class LeaveDetailPage {
       alert(JSON.stringify(err));
     });
   }
+
+  // convertDateTimeThaiFormat(date) {
+  //   let dateTime = date;
+  //   let d = dateTime.getDay();
+  //   let day = dateTime.getDate();
+  //   let m = dateTime.getMonth();
+  //   let y = dateTime.getFullYear();
+  //   let thaiDay = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+  //   let thaiMonth = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฏษคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+  //   let thaiYear = y + 543;
+  //   let ThaiFormat = `วัน${thaiDay[d]} ที่ ${day} ${thaiMonth[m]} ${thaiYear}`;
+  //   return ThaiFormat;
+  // }
+
 }

@@ -27,18 +27,26 @@ export class History {
   YM = this.year.toString() + this.month.toString();
   public workList: any = [];
   public leaveList: any = [];
+  public workDays: any = {};
+  public leaveDays: any = {};
+
 
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
     this.nativeStorage.getItem("TimeStampUser").then((data) => {
       this.user = data;
       this.stmp.getworkStampList(this.YM, this.user).then((resp) => {
         this.workList = resp;
+        this.workDays = resp.length;
+        // alert("Stamp : " + JSON.stringify(resp));
+        // this.ionViewDidLoad();
       }).catch(() => {
         alert("Error when getting History data List");
       });
 
       this.stmp.getLeaveList(this.user).then((resp) => {
-        this.leaveList = resp;
+        this.leaveList = resp.filter(this.filterLeaveApprove);
+        this.leaveDays = resp.filter(this.filterLeaveApprove).length;
+        this.showChart();
       }).catch(() => {
         alert("Error when getting Leave List");
       });
@@ -47,22 +55,48 @@ export class History {
     });
   }
 
-  ionViewDidLoad() {
+  // ionViewDidLoad() {
+
+
+  doRefresh(refresher) {
+    this.stmp.getworkStampList(this.YM, this.user).then((resp) => {
+      this.workList = resp;
+      this.workDays = resp.length;
+    }).catch(() => {
+      alert("Error when getting History data List");
+    });
+    this.stmp.getLeaveList(this.user).then((resp) => {
+      this.leaveList = resp.filter(this.filterLeaveApprove);
+      this.leaveDays = resp.filter(this.filterLeaveApprove).length;
+      this.showChart();
+      refresher.complete();
+    }).catch(() => {
+      alert("Error when getting Leave List");
+    });
+    // setTimeout(() => {
+    // console.log('Async operation has ended')
+  }
+
+  showChart() {
+    // มาตรวจสอบฟังก์ชั่นด้วย
+    // alert("Workday : " + JSON.stringify(this.workDays) + " , " + "LeaveDay : " + JSON.stringify(this.leaveDays));
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
 
       type: 'doughnut',
       data: {
-        labels: ["จำนวนวันทำงานทั้งหมด", "จำนวนวันที่ทำงาน", "จำนวนวันที่ลา"],
+        labels: ["จำนวนวันที่ทำงาน", "จำนวนวันที่ลา"],
+        //  labels: ["จำนวนวันทำงานทั้งหมด", "จำนวนวันที่ทำงาน", "จำนวนวันที่ลา"],
         datasets: [{
           label: '# of Votes',
-          data: [12, 19, 3],
+          data: [JSON.stringify(this.workDays), JSON.stringify(this.leaveDays)],
+          // data: [25, this.workDays, this.leaveDays],
           backgroundColor: [
-            'rgba(173, 173, 173, 1)',
+            // 'rgba(173, 173, 173, 1)',
             'rgba(57, 237, 2, 1)',
             'rgba(255, 195, 30, 1)'
           ],
           hoverBackgroundColor: [
-            'rgba(173, 173, 173, 0.5)',
+            // 'rgba(173, 173, 173, 0.5)',
             'rgba(57, 237, 2, 0.5)',
             'rgba(255, 195, 30,0.5)'
           ]
@@ -74,5 +108,8 @@ export class History {
 
   openLeaveDetailPage(item) {
     this.app.getRootNav().push(LeaveDetailPage, { leaveDetail: item });
+  }
+  filterLeaveApprove(list) {
+    return list.approveStatus == 'Approve';
   }
 }

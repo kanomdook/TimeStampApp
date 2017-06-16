@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, ModalController, IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { Leavelist } from '../leavelist/leavelist';
 import { StampService } from '../../service/StampService';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -16,7 +16,7 @@ export class Leave {
   public leaveData: any = {};
   public leaveDraftArr: any = [];
 
-  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
+  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage,private loadingCtrl: LoadingController) {
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
@@ -49,9 +49,19 @@ export class Leave {
     this.localEndDate = $event;
     this.leaveData.leaveEndDateTime = $event;
   }
+  presentLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "กรุณารอสักครู่..."
+    });
+    loader.present();
+  }
   sendLeave(intype) {
-    this.leaveData.leaveDay = this.dateDif(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
+     let loader = this.loadingCtrl.create({
+      content: "กรุณารอสักครู่..."
+    });
+    loader.present();
 
+    this.leaveData.leaveDay = this.dateDif(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
     if (!this.leaveData.leaveType) {
       alert("Please select Leave Type!");
     } else if (!this.leaveData.leaveStartDateTime && !this.leaveData.leaveEndDateTime) {
@@ -60,17 +70,19 @@ export class Leave {
       alert("Please select Start Date or End Date");
     } else if (this.leaveData.leaveType && this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime) {
       if (!this.leaveData._id) {
-        this.leaveData.approveStatus = "Waitting";
+        this.leaveData.approveStatus = "Waiting";
         this.leaveData.leaveStatus = intype;
         this.stmp.createLeave(this.leaveData).then((resp) => {
+          loader.dismiss();
           this.app.getRootNav().push(Leavelist);
         }).catch((err) => {
           alert("Error on Create Leave service");
         })
       } else if (this.leaveData._id) {
         this.leaveData.leaveStatus = intype;
-        this.leaveData.approveStatus = "Waitting";
+        this.leaveData.approveStatus = "Waiting";
         this.stmp.editLeave(this.leaveData).then((resp) => {
+          loader.dismiss();
           this.navCtrl.pop();
         }).catch((err) => {
           alert("Error on Edit Leave service");

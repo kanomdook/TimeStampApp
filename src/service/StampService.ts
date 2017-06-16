@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class StampService {
-    apiUrl: string = 'http://timestampsv.herokuapp.com/';
+    apiUrl: string = 'https://time-attendance.herokuapp.com/';
     headers = new Headers({
         'Content-Type': 'application/json'
     });
@@ -97,17 +97,4 @@ export class StampService {
             });
         })
     };
-
-    convertDateTimeThaiFormat(date) {
-    let dateTime = date;
-    let d = dateTime.getDay();
-    let day = dateTime.getDate();
-    let m = dateTime.getMonth();
-    let y = dateTime.getFullYear();
-    let thaiDay = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
-    let thaiMonth = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฏษคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
-    let thaiYear = y + 543;
-    let ThaiFormat = `วัน${thaiDay[d]} ที่ ${day} ${thaiMonth[m]} ${thaiYear}`;
-    return ThaiFormat;
-  };
 }

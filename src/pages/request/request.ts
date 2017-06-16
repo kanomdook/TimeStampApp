@@ -41,7 +41,18 @@ export class Request {
     this.app.getRootNav().push(LeaveDetailPage, { leaveDetail: item });
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Request');
+    // console.log('ionViewDidLoad Request');
   }
-
+ doRefresh(refresher) {
+     this.stmp.getLeaveList(this.user).then((resp) => {
+        // alert("response is : " + JSON.stringify(resp));
+        this.leaveList = resp;
+        refresher.complete();
+      }).catch(() => {
+        alert("Error when getting Leave List");
+      });
+    // setTimeout(() => {
+      // console.log('Async operation has ended');
+    // }, 2000);
+  }
 }

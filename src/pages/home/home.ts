@@ -29,6 +29,10 @@ export class HomePage {
       data => this.userdetail = data,
       error => alert(error)
     );
+    this.nativeStorage.getItem('StampToday').then(
+      data => this.dataToday = data,
+      error => alert(error)
+    );
   }
 
   showMenu() {

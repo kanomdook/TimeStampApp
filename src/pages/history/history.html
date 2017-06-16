@@ -13,17 +13,13 @@
 </ion-header>
 
 <ion-content>
-    <!--<ion-card>
-        <ion-card-header>
-            Doughnut Chart
-        </ion-card-header>
-        <ion-card-content>-->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <div class="chart-container" maintainAspectRatio="true">
         <canvas #doughnutCanvas></canvas>
         <!--<canvas #doughnutCanvas width="50%" height="50%" text-center></canvas>-->
     </div>
-    <!--</ion-card-content>
-    </ion-card>-->
     <ion-item-divider color="light"></ion-item-divider>
     <div>
         <ion-segment [(ngModel)]="Work">
