@@ -21,7 +21,7 @@ export class HomePage {
   userdetail: any = {
     employeeprofile: {}
   };
-  dataToday: any = {};
+  dataToday: any;
   public dateTimeNow = Date();
   constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration, private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService) {
     menu.enable(true);

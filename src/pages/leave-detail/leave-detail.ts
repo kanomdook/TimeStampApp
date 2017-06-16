@@ -32,23 +32,23 @@ export class LeaveDetailPage {
 
     // this.leaveDetail.leaveStartDateTime = this.stampService.convertDateTimeThaiFormat(this.leaveDetail.leaveStartDateTime);
     // this.leaveDetail.leaveEndDateTime = this.stampService.convertDateTimeThaiFormat(this.leaveDetail.leaveEndDateTime);
-    alert("LEAVEDETAIL : " + JSON.stringify(this.leaveDetail));
+    // alert("LEAVEDETAIL : " + JSON.stringify(this.leaveDetail));
   }
 
   ionViewDidLoad() {
-    if (this.leaveDetail.leaveType == "Personal Leave") {
-      this.leaveDetail.leaveType = "ลากิจ";
-    } else if (this.leaveDetail.leaveType == "Sick Leave") {
-      this.leaveDetail.leaveType = "ลาป่วย";
-    } else if (this.leaveDetail.leaveType == "Vacation") {
-      this.leaveDetail.leaveType = "ลาพักร้อน";
-    } else if (this.leaveDetail.leaveType == "Militiary Service Leave") {
-      this.leaveDetail.leaveType = "ลาเกณฑ์ทหาร";
-    } else if (this.leaveDetail.leaveType == "Maternity Leave") {
-      this.leaveDetail.leaveType = "ลาคลอดบุตร";
-    } else if (this.leaveDetail.leaveType == "Ordination Leave") {
-      this.leaveDetail.leaveType = "ลาบวช";
-    }
+    // if (this.leaveDetail.leaveType == "Personal Leave") {
+    //   this.leaveDetail.leaveType = "ลากิจ";
+    // } else if (this.leaveDetail.leaveType == "Sick Leave") {
+    //   this.leaveDetail.leaveType = "ลาป่วย";
+    // } else if (this.leaveDetail.leaveType == "Vacation") {
+    //   this.leaveDetail.leaveType = "ลาพักร้อน";
+    // } else if (this.leaveDetail.leaveType == "Militiary Service Leave") {
+    //   this.leaveDetail.leaveType = "ลาเกณฑ์ทหาร";
+    // } else if (this.leaveDetail.leaveType == "Maternity Leave") {
+    //   this.leaveDetail.leaveType = "ลาคลอดบุตร";
+    // } else if (this.leaveDetail.leaveType == "Ordination Leave") {
+    //   this.leaveDetail.leaveType = "ลาบวช";
+    // }
   }
 
   getEmployeeData(email) {

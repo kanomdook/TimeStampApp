@@ -26,10 +26,10 @@
                 <img (press)="openPage_stampDetail()" src="img/fingerprint.png" fgprintImg>
             </ion-col>
         </ion-row>
-        <ion-row>
-            <ion-col col-12 text-center>
-                <ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}
-                <ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}
+        <ion-row padding-top>
+            <ion-col col-12 text-center [hidden]="dataToday.dateTimeIn">
+                <span><ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}</span>
+                <span><ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>
             </ion-col>
         </ion-row>
     </ion-grid>

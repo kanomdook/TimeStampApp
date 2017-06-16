@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 import { AuthenService } from '../../service/AuthenService';
@@ -23,10 +23,8 @@ export class Profile {
   //     address: {}
   //   }
   // };
-  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage, public athService: AuthenService) {
-    setTimeout(() => {
-      this.ionViewDidLoad();
-    }, 1000);
+  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage, public athService: AuthenService, private loadingCtrl: LoadingController) {
+    this.ionViewDidLoad();
   }
 
   ionViewDidLoad() {
@@ -40,9 +38,14 @@ export class Profile {
   }
 
   getEmployeeData(email) {
+    let loader = this.loadingCtrl.create({
+      content: "กรุณารอสักครู่..."
+    });
+    loader.present();
     this.athService.getEmpDataApi(email).then((emp) => {
       alert(JSON.stringify(emp.employees[0]));
       this.empDetail = emp.employees[0];
+      loader.dismiss();
     }, (err) => {
       alert(JSON.stringify(err));
     });

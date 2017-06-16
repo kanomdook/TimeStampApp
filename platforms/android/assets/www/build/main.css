@@ -27079,6 +27079,24 @@ page-home .bar-buttons-md {
   order: 1;
 }
 
+page-home [iconinList1] {
+  color: green;
+  padding-right: 5px;
+  padding-left: 5px;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+page-home [iconinList2] {
+  color: red;
+  padding-right: 5px;
+  padding-left: 5px;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
 @font-face {
   font-family: MyFont;
   src: url("../assets/fonts/Athiti-SemiBold.ttf");
@@ -27148,6 +27166,65 @@ page-leave [cancelBtnColor] {
 
 page-leave [saveBtnColor] {
   background-color: green;
+}
+
+@font-face {
+  font-family: MyFont;
+  src: url("../assets/fonts/Athiti-SemiBold.ttf");
+}
+
+.thaifont {
+  font-family: 'MyFont' !important;
+}
+
+page-leave-detail .board {
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  width: 100%;
+}
+
+page-leave-detail .fontbold {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+page-leave-detail .fontnor {
+  font: 14px;
+}
+
+page-leave-detail .ion-md-calendar {
+  color: darkorange;
+  font-size: 35px;
+}
+
+page-leave-detail [leaveContent] {
+  margin-right: 0px;
+  margin-top: 5px;
+}
+
+page-leave-detail .button-md {
+  width: 80px;
+}
+
+page-leave-detail [iconCalender] {
+  padding: 6px 0;
+}
+
+page-leave-detail [textArea] {
+  padding-top: 3px;
+  width: 95%;
+}
+
+page-leave-detail [topRow] {
+  padding-top: 3px;
+  width: 100%;
+}
+
+page-leave-detail .bar-buttons-md {
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
 }
 
 @font-face {

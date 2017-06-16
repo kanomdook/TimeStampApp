@@ -1,3 +1,50 @@
-page-leave-detail {
+@font-face {
+    font-family: MyFont;
+    src: url("../assets/fonts/Athiti-SemiBold.ttf");
+}
 
+.thaifont {
+    font-family: 'MyFont' !important;
+}
+
+page-leave-detail {
+    .board {
+        border-style: solid;
+        border-color: gray;
+        border-width: 1px;
+        width: 100%;
+    }
+    .fontbold {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .fontnor {
+        font: 14px;
+    }
+    .ion-md-calendar {
+        color: darkorange;
+        font-size: 35px;
+    }
+    [leaveContent] {
+        margin-right: 0px;
+        margin-top: 5px;
+    }
+    .button-md {
+        width: 80px;
+    }
+    [iconCalender] {
+        padding: 6px 0;
+    }
+    [textArea] {
+        padding-top: 3px;
+        width: 95%;
+    }
+    [topRow] {
+        padding-top: 3px;
+        width: 100%;
+        // border-bottom: solid grey 0.2px;
+    }
+    .bar-buttons-md {
+        order: 1;
+    }
 }

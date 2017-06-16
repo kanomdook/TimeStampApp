@@ -15,4 +15,16 @@
         .bar-buttons-md {
             order: 1;
         }
+        [iconinList1] {
+            color: green;
+            padding-right: 5px;
+            padding-left: 5px;
+            align-items: flex-end;
+        }
+        [iconinList2] {
+            color: red;
+            padding-right: 5px;
+            padding-left: 5px;
+            align-items: flex-end;
+        }
     }
