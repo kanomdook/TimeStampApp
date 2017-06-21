@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { LeaveDetailPage } from '../leave-detail/leave-detail';
 
 import { StampService } from '../../service/StampService';
@@ -20,7 +20,11 @@ export class Request {
   leaveData: any = [];
   leaveList: any = [];
   user: any;
-  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
+    let loader = this.loadingCtrl.create({
+      content: "กรุณารอสักครู่..."
+    });
+    loader.present();
     this.nativeStorage.getItem("TimeStampUser").then(
       data => {
         // alert(" User Data : " + JSON.stringify(data));
@@ -28,6 +32,7 @@ export class Request {
         // Call Get Leave List
         this.stmp.getLeaveList(this.user).then((resp) => {
           // alert("response is : " + JSON.stringify(resp));
+          loader.dismiss();
           this.leaveList = resp;
         }).catch((error) => {
           alert("Error when getting Leave List : " + JSON.stringify(error));

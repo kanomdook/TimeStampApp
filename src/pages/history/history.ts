@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
 import { StampService } from '../../service/StampService';
@@ -33,26 +33,34 @@ export class History {
   // public leaveDays: any = {};
 
 
-  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
+    let loader = this.loadingCtrl.create({
+      content: "กรุณารอสักครู่..."
+    });
+    loader.present();
     this.nativeStorage.getItem("TimeStampUser").then(
       data => {
         this.user = data;
 
         this.stmp.getworkStampList(this.YM, this.user).then((resp) => {
+          loader.dismiss();
           this.workList = resp;
           this.workDays = resp.length;
           // alert("Stamp : " + JSON.stringify(resp));
           // this.ionViewDidLoad();
         }).catch((err) => {
-          alert("Error when getting History data List : "+ JSON.stringify(err));
+          loader.dismiss();
+          alert("Error when getting History data List : " + JSON.stringify(err));
         });
 
         this.stmp.getLeaveList(this.user).then((resp) => {
           this.leaveList = resp.filter(this.filterLeaveApprove);
           this.leaveDays = resp.filter(this.filterLeaveApprove).length;
+          loader.dismiss();
           this.showChart();
         }).catch((err) => {
-          alert("Error when getting Leave List"+JSON.stringify(err));
+          loader.dismiss();
+          alert("Error when getting Leave List" + JSON.stringify(err));
         });
 
       }, err => alert("Error to get User Data : " + JSON.stringify(err)));
