@@ -15,15 +15,17 @@
 <ion-content>
     <ion-grid>
         <ion-row>
-            <ion-list>
-                <ion-item>
-                    <ion-avatar item-left>
-                        <img src="{{empDetail.image}}" SetAvatar>
-                    </ion-avatar>
-                    <h2 thaifont Headerfont text-wrap text-center>{{empDetail.firstname}} {{empDetail.lastname}}</h2>
-                    <p thaifont text-center>{{empDetail.jobTitle}}</p>
-                </ion-item>
-            </ion-list>
+            <ion-col col-12 text-center>
+                <ion-list>
+                    <ion-item>
+                        <ion-avatar item-left>
+                            <img src="{{empDetail.image}}" SetAvatar>
+                        </ion-avatar>
+                        <h2 thaifont Headerfont text-wrap text-center>{{empDetail.firstname}} {{empDetail.lastname}}</h2>
+                        <p thaifont text-center>{{empDetail.jobTitle}}</p>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
         </ion-row>
         <ion-row>
             <ion-col width-100 text-wrap>
