@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, NavController, MenuController } from 'ionic-angular';
+import { App, NavController, MenuController, LoadingController } from 'ionic-angular';
 import { Login } from '../login/login';
 import { StampDetail } from '../stamp-detail/stamp-detail';
 import { Register } from '../register/register';
@@ -18,20 +18,18 @@ import { StampService } from '../../service/StampService';
 
 
 export class HomePage {
-  userdetail: any = {
-    employeeprofile: {}
-  };
-  dataToday: any;
+  userdetail: any = {};
+  dataToday: any = {};
   public dateTimeNow = Date();
-  constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration, private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService) {
+  constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration, private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService, private loadingCtrl: LoadingController) {
     menu.enable(true);
     this.nativeStorage.getItem('TimeStampUser').then(
       data => this.userdetail = data,
-      error => alert(error)
+      error => alert("Get User Data error : " + JSON.stringify(error))
     );
     this.nativeStorage.getItem('StampToday').then(
       data => this.dataToday = data,
-      error => alert(error)
+      error => { }
     );
   }
 
@@ -40,6 +38,10 @@ export class HomePage {
   }
 
   openPage_stampDetail() {
+    let loader = this.loadingCtrl.create({
+      content: "กรุณารอสักครู่..."
+    });
+    loader.present();
     // this.navCtrl.push(StampDetail);
     this.vibration.vibrate(200);
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -61,10 +63,15 @@ export class HomePage {
           };
 
           this.stmp.stampIn(stampdata).then((data) => {
+            loader.dismiss();
             this.nativeStorage.setItem('StampToday', data).then(
-              (respstamp) => { this.navCtrl.push(StampDetail); }
-            ).catch((error) => { alert('Error cant setitem stamptoday : ' + JSON.stringify(error)); });
-          }).catch((err) => { alert('Check in Error in stmp : ' + JSON.stringify(err)); });
+              () => {
+                // alert('Stamptoday Data : ' + JSON.stringify(data)); 
+                this.navCtrl.push(StampDetail);
+              },
+              error => alert('Error cant setitem stamptoday : ' + JSON.stringify(error)));
+
+          }).catch((err) => { loader.dismiss(); alert('Check in Error in stmp : ' + JSON.stringify(err)); });
 
         } else if (res.status === 'checkin only') {
           res.data.dateTimeOut = new Date();
@@ -72,27 +79,27 @@ export class HomePage {
           res.data.locationOut.lng = resp.coords.longitude;
 
           this.stmp.stampOut(res.data).then((data) => {
+            loader.dismiss();
             this.nativeStorage.setItem('StampToday', data).then(
-              (respd) => { this.navCtrl.push(StampDetail); },
-              // (error) => { alert('Error StampToday'); }
-              (errset) => {
-                alert("Error SetItem when stampOut :" + JSON.stringify(errset));
-              });
+              () => { this.navCtrl.push(StampDetail); },
+              error => alert("Error SetItem when stampOut :" + JSON.stringify(error)));
+
           }).catch((err) => {
+            loader.dismiss();
             alert('Check Out call service Error in stmp : ' + JSON.stringify(err));
           });
-        
         } else {
+          loader.dismiss();
           this.nativeStorage.setItem('StampToday', res.data).then(
-            (resp) => { this.navCtrl.push(StampDetail); },
-            (error) => { alert('Error StampToday'); }
-          );
-
+            () => this.navCtrl.push(StampDetail),
+            error => alert('Error StampToday'));
         }
       }).catch((err) => {
+        loader.dismiss();
         alert("ERROR check Stamp : " + JSON.stringify(err));
       });
     }).catch((error) => {
+      loader.dismiss();
       alert('Error getting location');
     });
   }

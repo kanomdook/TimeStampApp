@@ -36,10 +36,12 @@ export class Register {
             employeeprofile: data.employees[0]
           }
           this.athService.signUp(register).then((data) => {
-            this.nativeStorage.setItem('TimeStampUser', data);
+            this.nativeStorage.setItem('TimeStampUser', data).then(
+              () => { },
+              error => alert("Cannot storing User data"));
             this.navCtrl.setRoot(TabsPage);
           }, (err) => {
-            alert(JSON.stringify(err));
+            alert("Sign up Error : " + JSON.stringify(err));
           });
         } else {
           alert("This Email is not Employee!!");

@@ -19,23 +19,22 @@ export class Request {
   Req: string = "Leave";
   leaveData: any = [];
   leaveList: any = [];
-  user: any = {};
-  constructor(private app: App,public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
-    this.nativeStorage.getItem("TimeStampUser").then((data) => {
-      // alert(" User Data : " + JSON.stringify(data));
-      this.user = data;
-      // Call Get Leave List
-      this.stmp.getLeaveList(this.user).then((resp) => {
-        // alert("response is : " + JSON.stringify(resp));
-        this.leaveList = resp;
-      }).catch(() => {
-        alert("Error when getting Leave List");
-      });
-      // Cal; get Leave List
-    }).catch((err) => {
-      alert("Error to get User Data : " + JSON.stringify(err));
-    });
-
+  user: any;
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
+    this.nativeStorage.getItem("TimeStampUser").then(
+      data => {
+        // alert(" User Data : " + JSON.stringify(data));
+        this.user = data;
+        // Call Get Leave List
+        this.stmp.getLeaveList(this.user).then((resp) => {
+          // alert("response is : " + JSON.stringify(resp));
+          this.leaveList = resp;
+        }).catch((error) => {
+          alert("Error when getting Leave List : " + JSON.stringify(error));
+        });
+        // Cal; get Leave List
+      }, error => alert("Error to get User Data : " + JSON.stringify(error))
+    );
   }
   viewLeaveDetail(item) {
     this.app.getRootNav().push(LeaveDetailPage, { leaveDetail: item });
@@ -43,16 +42,16 @@ export class Request {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad Request');
   }
- doRefresh(refresher) {
-     this.stmp.getLeaveList(this.user).then((resp) => {
-        // alert("response is : " + JSON.stringify(resp));
-        this.leaveList = resp;
-        refresher.complete();
-      }).catch(() => {
-        alert("Error when getting Leave List");
-      });
+  doRefresh(refresher) {
+    this.stmp.getLeaveList(this.user).then((resp) => {
+      // alert("response is : " + JSON.stringify(resp));
+      this.leaveList = resp;
+      refresher.complete();
+    }).catch(() => {
+      alert("Error when getting Leave List");
+    });
     // setTimeout(() => {
-      // console.log('Async operation has ended');
+    // console.log('Async operation has ended');
     // }, 2000);
   }
 }

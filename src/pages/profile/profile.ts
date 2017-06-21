@@ -16,7 +16,10 @@ import { AuthenService } from '../../service/AuthenService';
   templateUrl: 'profile.html',
 })
 export class Profile {
-  public empDetail: any;
+  public empDetail: any = {};
+  public comp: any = {};
+  public compAddress: any = {};
+  email: any;
   // public empDetail = {
   //   user: {},
   //   office: {
@@ -24,16 +27,10 @@ export class Profile {
   //   }
   // };
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage, public athService: AuthenService, private loadingCtrl: LoadingController) {
-    this.ionViewDidLoad();
-  }
-
-  ionViewDidLoad() {
-
-    this.nativeStorage.getItem('TimeStampUser')
-      .then(
+    this.nativeStorage.getItem('TimeStampUser').then(
       data => this.getEmployeeData(data.email),
       error => alert(error)
-      );
+    );
 
   }
 
@@ -43,11 +40,17 @@ export class Profile {
     });
     loader.present();
     this.athService.getEmpDataApi(email).then((emp) => {
-      alert(JSON.stringify(emp.employees[0]));
+      // alert(JSON.stringify(emp.employees[0]));
       this.empDetail = emp.employees[0];
+      this.comp = emp.employees[0].company;
+      this.compAddress = emp.employees[0].company.address;
+      // this.empDetail = emp.employees;
+      // this.comp = emp.employees.company;
+      // this.compAddress = emp.employees.company.address;
       loader.dismiss();
-    }, (err) => {
-      alert(JSON.stringify(err));
+    }).catch((err) => {
+      loader.dismiss();
+      alert("Error on get employee data : " + JSON.stringify(err));
     });
   }
 

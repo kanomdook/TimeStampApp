@@ -12,16 +12,14 @@ import { AuthenService } from '../../service/AuthenService';
 })
 export class LeaveDetailPage {
 
-  public leaveDetail: any = [];
-  public userDetail: any = [];
+  public leaveDetail: any;
+  public userDetail: any;
 
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController, public navParams: NavParams, private stampService: StampService, public athService: AuthenService) {
     this.leaveDetail = this.navParams.get('leaveDetail');
-    this.nativeStorage.getItem('TimeStampUser')
-      .then(
-      data => { this.getEmployeeData(data.email); },
-      error => alert(error)
-      );
+    this.nativeStorage.getItem('TimeStampUser').then(
+      data => this.getEmployeeData(data.email),
+      error => alert(error));
     this.ionViewDidLoad();
     // this.nativeStorage.getItem('TimeStampUser').then(
     //   data => {

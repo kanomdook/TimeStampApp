@@ -20,39 +20,42 @@ export class History {
   @ViewChild('doughnutCanvas') doughnutCanvas;
   doughnutChart: any;
   Work: string = "Worked";
-  user: any = {};
+  user: any;
   date = new Date();
   year = this.date.getFullYear();
   month = this.date.getMonth() + 1;
   YM = this.year.toString() + this.month.toString();
   public workList: any = [];
   public leaveList: any = [];
-  public workDays: any = {};
-  public leaveDays: any = {};
+  public workDays: any;
+  public leaveDays: any;
+  // public workDays: any = {};
+  // public leaveDays: any = {};
 
 
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage) {
-    this.nativeStorage.getItem("TimeStampUser").then((data) => {
-      this.user = data;
-      this.stmp.getworkStampList(this.YM, this.user).then((resp) => {
-        this.workList = resp;
-        this.workDays = resp.length;
-        // alert("Stamp : " + JSON.stringify(resp));
-        // this.ionViewDidLoad();
-      }).catch(() => {
-        alert("Error when getting History data List");
-      });
+    this.nativeStorage.getItem("TimeStampUser").then(
+      data => {
+        this.user = data;
 
-      this.stmp.getLeaveList(this.user).then((resp) => {
-        this.leaveList = resp.filter(this.filterLeaveApprove);
-        this.leaveDays = resp.filter(this.filterLeaveApprove).length;
-        this.showChart();
-      }).catch(() => {
-        alert("Error when getting Leave List");
-      });
-    }).catch((err) => {
-      alert("Error to get User Data : " + JSON.stringify(err));
-    });
+        this.stmp.getworkStampList(this.YM, this.user).then((resp) => {
+          this.workList = resp;
+          this.workDays = resp.length;
+          // alert("Stamp : " + JSON.stringify(resp));
+          // this.ionViewDidLoad();
+        }).catch((err) => {
+          alert("Error when getting History data List : "+ JSON.stringify(err));
+        });
+
+        this.stmp.getLeaveList(this.user).then((resp) => {
+          this.leaveList = resp.filter(this.filterLeaveApprove);
+          this.leaveDays = resp.filter(this.filterLeaveApprove).length;
+          this.showChart();
+        }).catch((err) => {
+          alert("Error when getting Leave List"+JSON.stringify(err));
+        });
+
+      }, err => alert("Error to get User Data : " + JSON.stringify(err)));
   }
 
   // ionViewDidLoad() {
@@ -62,16 +65,16 @@ export class History {
     this.stmp.getworkStampList(this.YM, this.user).then((resp) => {
       this.workList = resp;
       this.workDays = resp.length;
-    }).catch(() => {
-      alert("Error when getting History data List");
+    }).catch((err) => {
+      alert("Error when getting History data List : " + JSON.stringify(err));
     });
     this.stmp.getLeaveList(this.user).then((resp) => {
       this.leaveList = resp.filter(this.filterLeaveApprove);
       this.leaveDays = resp.filter(this.filterLeaveApprove).length;
       this.showChart();
       refresher.complete();
-    }).catch(() => {
-      alert("Error when getting Leave List");
+    }).catch((err) => {
+      alert("Error when getting Leave List : " + JSON.stringify(err));
     });
     // setTimeout(() => {
     // console.log('Async operation has ended')

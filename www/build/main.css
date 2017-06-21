@@ -27190,7 +27190,8 @@ page-leave-detail .fontbold {
 }
 
 page-leave-detail .fontnor {
-  font: 14px;
+  font-size: 14px !important;
+  font-weight: normal !important;
 }
 
 page-leave-detail .ion-md-calendar {

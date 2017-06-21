@@ -9,33 +9,29 @@ import { NativeStorage } from '@ionic-native/native-storage';
   templateUrl: 'stamp-detail.html',
 })
 export class StampDetail {
-  userdetail = {
-    employeeprofile: {}
-  };
-  dataToday = {
-    locationOut: {},
-    locationIn: {},
-    user: {},
-  };
+  public userdetail:any = {};
+  public dataToday:any = {};
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage) {
-    this.ionViewDidLoad();
-  }
 
-  ionViewDidLoad() {
-
-    this.nativeStorage.getItem('TimeStampUser')
-      .then(
-      data => this.userdetail = data,
-      error => alert(error)
+      this.nativeStorage.getItem('TimeStampUser').then(
+        data => {
+          // this.userdetail = JSON.stringify(data);    
+           this.userdetail = data.employeeprofile;  
+        }
+        ,
+        error => alert("Get TimeStampUser Error : " + JSON.stringify(error))
       );
 
-    this.nativeStorage.getItem('StampToday')
-      .then(
-      data => this.dataToday = data,
-      error => alert(error)
-      );
-
+      this.nativeStorage.getItem('StampToday')
+        .then(
+        data => {
+          this.dataToday = data;
+        },
+        error => alert("Get Datatoday Error : " + JSON.stringify(error))
+        );
   }
+
   openPageProfile() {
     this.navCtrl.push(Profile);
   }

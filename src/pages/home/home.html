@@ -1,12 +1,22 @@
 <ion-header>
     <ion-toolbar>
+        <ion-buttons start>
+            <button ion-button icon-only color="royal" (click)="showMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+        </ion-buttons>
+        <ion-title>Time Attendance</ion-title>
+
+    </ion-toolbar>
+    <!--
+    <ion-toolbar>
         <ion-title>Time Stamp</ion-title>
         <ion-buttons start (click)="showMenu()">
             <button ion-button icon-only color="royal">
           <ion-icon name="menu"></ion-icon>
         </button>
         </ion-buttons>
-    </ion-toolbar>
+    </ion-toolbar>-->
 </ion-header>
 
 <ion-content>
@@ -27,9 +37,9 @@
             </ion-col>
         </ion-row>
         <ion-row padding-top>
-            <ion-col col-12 text-center [hidden]="dataToday.dateTimeIn">
-                <span><ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}</span>
-                <span><ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>
+            <ion-col col-12 text-center [hidden]="!dataToday.dateTimeIn">
+                <span ng-if="dataToday.dateTimeIn"><ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}</span>
+                <span ng-if="dataToday.dateTimeOut"><ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -61,4 +71,5 @@
         </ion-list>
     </ion-content>
 </ion-menu>
-<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+<!--<ion-nav id="nav" #content [root]="rootPage"></ion-nav>-->
+<ion-nav id="nav" #content></ion-nav>

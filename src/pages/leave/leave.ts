@@ -14,7 +14,6 @@ export class Leave {
   public localEndDate: any;
   public userdetail: any;
   public leaveData: any = {};
-  public leaveDraftArr: any = [];
 
   constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage,private loadingCtrl: LoadingController) {
     this.nativeStorage.getItem('TimeStampUser').then(
@@ -49,12 +48,12 @@ export class Leave {
     this.localEndDate = $event;
     this.leaveData.leaveEndDateTime = $event;
   }
-  presentLoading() {
-    let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
-    });
-    loader.present();
-  }
+  // presentLoading() {
+  //   let loader = this.loadingCtrl.create({
+  //     content: "กรุณารอสักครู่..."
+  //   });
+  //   loader.present();
+  // }
   sendLeave(intype) {
      let loader = this.loadingCtrl.create({
       content: "กรุณารอสักครู่..."
@@ -86,7 +85,7 @@ export class Leave {
           this.navCtrl.pop();
         }).catch((err) => {
           alert("Error on Edit Leave service");
-        })
+        });
       }
     }
   }

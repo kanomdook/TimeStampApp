@@ -4,7 +4,7 @@
         <ion-title>Profile</ion-title>
         <ion-buttons end>
             <button ion-button icon-only>
-        <ion-icon name="md-share"></ion-icon>
+        <!--<ion-icon name="md-share"></ion-icon>-->
       </button>
         </ion-buttons>
     </ion-navbar>
@@ -27,8 +27,10 @@
         </ion-row>
         <ion-row>
             <ion-col width-100 text-wrap>
-                <p thaifont>{{empDetail.company.name}}</p>
-                <p thaifont>{{empDetail.company.address.address}} {{empDetail.company.address.district}} {{empDetail.company.address.subdistrict}} {{empDetail.company.address.province}} {{empDetail.company.address.country.th}} {{empDetail.company.address.postcode}}</p>
+                <p thaifont>{{comp.name}}</p>
+                <p thaifont>{{compAddress.address}} {{compAddress.district}} {{compAddress.subdistrict}} {{compAddress.province}} {{compAddress.postcode}}
+                    <!--<p thaifont>{{empDetail.company.name}}</p>-->
+                    <!--<p thaifont>{{empDetail.company.address.address}} {{empDetail.company.address.district}} {{empDetail.company.address.subdistrict}} {{empDetail.company.address.province}} {{empDetail.company.address.country.th}} {{empDetail.company.address.postcode}}</p>-->
             </ion-col>
         </ion-row>
     </ion-grid>

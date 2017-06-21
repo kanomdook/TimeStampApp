@@ -12,14 +12,11 @@ import { NativeStorage } from '@ionic-native/native-storage';
   templateUrl: 'login.html',
 })
 export class Login {
-  public did: any;
+  private did: any;
+  public inemail: any;
 
   constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, private device: Device, public auth: AuthenService, private nativeStorage: NativeStorage) {
-
-  }
-
-  ionViewDidLoad() {
-    this.did = this.device.uuid;
+this.did = this.device.uuid;
   }
 
   openPage_home() {
@@ -34,12 +31,11 @@ export class Login {
 
       this.auth.signIn(signin).then((data) => {
         this.nativeStorage.setItem('TimeStampUser', data).then(
-          (res) => { null },
-          error => alert('Error storing item')
-        );
+          (data) => {},
+          error => alert("Cannot storing User data"));
         this.navCtrl.setRoot(TabsPage);
       }, (err) => {
-        alert(JSON.stringify(err));
+        alert("Sign in error! : " + JSON.stringify(err));
       })
     }
   }

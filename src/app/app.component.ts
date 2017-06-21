@@ -19,13 +19,9 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       this.nativeStorage.getItem('TimeStampUser').then(
-        (res) => {
-          this.rootPage = TabsPage;
-        },
-        (error) => {
-          this.rootPage = Register;
-          // this.rootPage = LeaveDetailPage;
-        }
+        res => this.rootPage = TabsPage,
+        error => this.rootPage = Register
+        // this.rootPage = LeaveDetailPage;
       );
     });
 

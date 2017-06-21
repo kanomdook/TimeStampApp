@@ -24,7 +24,7 @@ export class Leavelist {
           alert('error getLeaveList');
         })
       },
-      error => { alert(error); }
+      error => alert(error)
     );
   }
 
