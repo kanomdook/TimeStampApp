@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, ModalController, IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { App, ModalController, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Leavelist } from '../leavelist/leavelist';
 import { StampService } from '../../service/StampService';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -15,7 +15,7 @@ export class Leave {
   public userdetail: any;
   public leaveData: any = {};
 
-  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage,private loadingCtrl: LoadingController) {
+  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
@@ -55,7 +55,7 @@ export class Leave {
   //   loader.present();
   // }
   sendLeave(intype) {
-     let loader = this.loadingCtrl.create({
+    let loader = this.loadingCtrl.create({
       content: "กรุณารอสักครู่..."
     });
     loader.present();
@@ -72,8 +72,13 @@ export class Leave {
         this.leaveData.approveStatus = "Waiting";
         this.leaveData.leaveStatus = intype;
         this.stmp.createLeave(this.leaveData).then((resp) => {
-          loader.dismiss();
-          this.app.getRootNav().push(Leavelist);
+          if (intype == 'Draft') {
+            loader.dismiss();
+            this.app.getRootNav().push(Leavelist);
+          } else if(intype == 'Request') {
+            loader.dismiss();
+            this.navCtrl.pop();
+          }
         }).catch((err) => {
           alert("Error on Create Leave service");
         })
@@ -81,8 +86,13 @@ export class Leave {
         this.leaveData.leaveStatus = intype;
         this.leaveData.approveStatus = "Waiting";
         this.stmp.editLeave(this.leaveData).then((resp) => {
-          loader.dismiss();
-          this.navCtrl.pop();
+          if (intype == 'Draft') {
+            loader.dismiss();
+            this.app.getRootNav().push(Leavelist);
+          } else if(intype == 'Request') {
+            loader.dismiss();
+            this.navCtrl.pop();
+          }
         }).catch((err) => {
           alert("Error on Edit Leave service");
         });
