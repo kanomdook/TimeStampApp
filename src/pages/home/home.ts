@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, NavController, MenuController, LoadingController } from 'ionic-angular';
+import { App, NavController, MenuController, LoadingController, ToastController } from 'ionic-angular';
 import { Login } from '../login/login';
 import { StampDetail } from '../stamp-detail/stamp-detail';
 import { Register } from '../register/register';
@@ -9,6 +9,7 @@ import { Profile } from '../profile/profile';
 import { Vibration } from '@ionic-native/vibration';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { Network } from '@ionic-native/network';
 
 import { StampService } from '../../service/StampService';
 @Component({
@@ -18,10 +19,11 @@ import { StampService } from '../../service/StampService';
 
 
 export class HomePage {
+  toast: any;
   userdetail: any = {};
   dataToday: any = {};
   public dateTimeNow = Date();
-  constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration, private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService, private loadingCtrl: LoadingController) {
+  constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration, private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService, private loadingCtrl: LoadingController, private network: Network, public toastCtrl: ToastController) {
     menu.enable(true);
     this.nativeStorage.getItem('TimeStampUser').then(
       data => this.userdetail = data,
@@ -31,7 +33,26 @@ export class HomePage {
       data => this.dataToday = data,
       error => { }
     );
+    this.network.onDisconnect().subscribe(() => {
+      this.toast = this.toastCtrl.create({
+        message: 'ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้',
+        // duration: 3000,
+        position: 'top'
+      });
+      this.toast.present();
+    });
+    this.network.onConnect().subscribe(() => {
+      //     setTimeout(() => {
+      //   if (this.network.type === 'wifi') {
+      //     alert('we got a wifi connection, woohoo!');
+      //   }
+      // }, 3000);
+      // alert("เน็ตใช้ได้แว้ววว");
+      this.toast.dismiss();
+    });
   }
+
+
   ionViewDidEnter() {
     setInterval(() => {
       this.dateTimeNow = Date();
@@ -63,7 +84,7 @@ export class HomePage {
   }
   openPage_stampDetail() {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
     loader.present();
     this.vibration.vibrate(200);
@@ -145,4 +166,13 @@ export class HomePage {
       this.app.getRootNav().push(Login);
     }, 100);
   }
+  toastErrorHandle(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      // duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+
+  };
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { ToastController } from "ionic-angular";
+
 
 @Injectable()
 export class StampService {
@@ -14,7 +14,7 @@ export class StampService {
     optionsURL = new RequestOptions({
         headers: this.headers
     });
-    constructor(public http: Http, public toastCtrl: ToastController) {
+    constructor(public http: Http) {
     }
     stampIn(stampdata): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -23,7 +23,6 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
-                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -36,7 +35,6 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
-                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -49,7 +47,6 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
-                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -61,7 +58,6 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
-                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -74,7 +70,6 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
-                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -87,7 +82,6 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
-                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -100,18 +94,9 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
-                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
     };
 
-    toastErrorHandle(message: string) {
-        let toast = this.toastCtrl.create({
-            message: message,
-            duration: 3000,
-            position: 'bottom'
-        });
-        toast.present();
-    };
 }

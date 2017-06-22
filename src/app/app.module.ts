@@ -26,6 +26,7 @@ import { Device } from '@ionic-native/device';
 import { HTTP } from '@ionic-native/http';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Network } from '@ionic-native/network';
 
 import { AuthenService } from '../service/AuthenService';
 import { StampService } from '../service/StampService';
@@ -82,6 +83,7 @@ const cloudSettings: CloudSettings = {
     StampService,
     NativeStorage,
     Geolocation,
+    Network, 
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
