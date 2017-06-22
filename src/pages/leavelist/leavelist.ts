@@ -32,7 +32,24 @@ export class Leavelist {
       error => alert(error)
     );
   }
-
+  ionViewDidEnter() {
+    let loader = this.loadingCtrl.create({
+      content: "กรุณารอสักครู่..."
+    });
+    loader.present();
+    this.nativeStorage.getItem('TimeStampUser').then(
+      data => {
+        this.user = data;
+        this.stampService.getLeaveList(this.user).then((res) => {
+          loader.dismiss();
+          this.leavelist = res.filter(this.filterLeaveList);
+        }).catch(() => {
+          alert('error getLeaveList');
+        })
+      },
+      error => alert(error)
+    );
+  }
   ionViewDidLoad() {
 
   }

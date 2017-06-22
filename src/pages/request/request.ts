@@ -21,6 +21,12 @@ export class Request {
   leaveList: any = [];
   user: any;
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
+   
+  }
+  viewLeaveDetail(item) {
+    this.app.getRootNav().push(LeaveDetailPage, { leaveDetail: item });
+  }
+  ionViewDidEnter() {
     let loader = this.loadingCtrl.create({
       content: "กรุณารอสักครู่..."
     });
@@ -40,12 +46,6 @@ export class Request {
         // Cal; get Leave List
       }, error => alert("Error to get User Data : " + JSON.stringify(error))
     );
-  }
-  viewLeaveDetail(item) {
-    this.app.getRootNav().push(LeaveDetailPage, { leaveDetail: item });
-  }
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad Request');
   }
   doRefresh(refresher) {
     this.stmp.getLeaveList(this.user).then((resp) => {

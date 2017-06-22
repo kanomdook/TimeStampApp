@@ -17,7 +17,9 @@ export class MyApp {
   constructor(public app: App, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private nativeStorage: NativeStorage) {
     platform.ready().then(() => {
       statusBar.styleDefault();
+      setTimeout(() => {
       splashScreen.hide();
+    }, 100);
       this.nativeStorage.getItem('TimeStampUser').then(
         res => this.rootPage = TabsPage,
         error => this.rootPage = Register

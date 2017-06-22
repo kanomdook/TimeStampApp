@@ -14,6 +14,7 @@ export class LeaveDetailPage {
 
   public leaveDetail: any;
   public userDetail: any;
+  public hr: any;
 
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController, public navParams: NavParams, private stampService: StampService, public athService: AuthenService) {
     this.leaveDetail = this.navParams.get('leaveDetail');
@@ -53,6 +54,11 @@ export class LeaveDetailPage {
     this.athService.getEmpDataApi(email).then((emp) => {
       // alert(JSON.stringify(emp.employees[0]));
       this.userDetail = emp.employees[0];
+      if (this.leaveDetail.leaveTime < 2) {
+        this.hr = "Hour";
+      } else {
+        this.hr = "Hours"
+      }
       // alert("USERDETAIL : " +JSON.stringify(this.userDetail));
     }, (err) => {
       alert(JSON.stringify(err));

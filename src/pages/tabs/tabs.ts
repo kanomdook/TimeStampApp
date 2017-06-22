@@ -14,6 +14,5 @@ export class TabsPage {
   tab3Root = Request;
 
   constructor() {
-
   }
 }

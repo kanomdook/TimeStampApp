@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import { ToastController } from "ionic-angular";
 
 @Injectable()
 export class StampService {
@@ -13,7 +14,7 @@ export class StampService {
     optionsURL = new RequestOptions({
         headers: this.headers
     });
-    constructor(public http: Http) {
+    constructor(public http: Http, public toastCtrl: ToastController) {
     }
     stampIn(stampdata): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -22,6 +23,7 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
+                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -34,6 +36,7 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
+                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -46,6 +49,7 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
+                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -57,11 +61,12 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
+                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
     };
-    
+
     editLeave(leaveEditData): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.put(this.apiUrl + 'api/leaves/' + leaveEditData._id, leaveEditData, this.optionsURL).map(res => {
@@ -69,6 +74,7 @@ export class StampService {
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
+                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
@@ -76,25 +82,36 @@ export class StampService {
 
     getLeaveList(user): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(this.apiUrl + 'api/leaves/userid/'+ user._id , this.optionsURL).map(res => {
+            this.http.get(this.apiUrl + 'api/leaves/userid/' + user._id, this.optionsURL).map(res => {
                 return res.json();
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
+                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
     };
 
-    getworkStampList(yearmth,user): Promise<any>{
-        return new Promise((resolve, reject) => { 
-            this.http.get(this.apiUrl + 'api/checkins/yearmonth&userid/' + yearmth + '/' + user._id,this.optionsURL).map(res => {
+    getworkStampList(yearmth, user): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiUrl + 'api/checkins/yearmonth&userid/' + yearmth + '/' + user._id, this.optionsURL).map(res => {
                 return res.json();
             }).subscribe(data => {
                 resolve(data);
             }, (error) => {
+                this.toastErrorHandle('ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้');
                 reject(error);
             });
         })
+    };
+
+    toastErrorHandle(message: string) {
+        let toast = this.toastCtrl.create({
+            message: message,
+            duration: 3000,
+            position: 'bottom'
+        });
+        toast.present();
     };
 }

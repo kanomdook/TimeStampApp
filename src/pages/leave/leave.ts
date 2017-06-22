@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, ModalController, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { App, ModalController, IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
 import { Leavelist } from '../leavelist/leavelist';
 import { StampService } from '../../service/StampService';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -15,7 +15,7 @@ export class Leave {
   public userdetail: any;
   public leaveData: any = {};
 
-  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
+  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController,public menu: MenuController) {
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
@@ -77,6 +77,7 @@ export class Leave {
             this.app.getRootNav().push(Leavelist);
           } else if(intype == 'Request') {
             loader.dismiss();
+            this.menu.close();
             this.navCtrl.pop();
           }
         }).catch((err) => {
@@ -91,6 +92,7 @@ export class Leave {
             this.app.getRootNav().push(Leavelist);
           } else if(intype == 'Request') {
             loader.dismiss();
+            this.menu.close();
             this.navCtrl.pop();
           }
         }).catch((err) => {

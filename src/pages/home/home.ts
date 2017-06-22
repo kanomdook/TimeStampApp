@@ -32,17 +32,40 @@ export class HomePage {
       error => { }
     );
   }
+  ionViewDidEnter() {
+    setInterval(() => {
+      this.dateTimeNow = Date();
+    }, 1000);
+    this.nativeStorage.getItem('TimeStampUser').then(
+      data => this.userdetail = data,
+      error => alert("Get User Data error : " + JSON.stringify(error))
+    );
+    this.nativeStorage.getItem('StampToday').then(
+      data => {
+        let Today = new Date();
+        let Day = Today.getDate();
+        let Old = this.dataToday.dateTimeIn;
+        let Olds = new Date(Old);
+        let OldDay = Olds.getDate();
+        if (Day != OldDay) {
+          this.nativeStorage.remove('StampToday');
+          this.dataToday = {};
+        } else {
+          this.dataToday = data;
+        }
 
+      },
+      error => { }
+    );
+  }
   showMenu() {
     this.menu.open();
   }
-
   openPage_stampDetail() {
     let loader = this.loadingCtrl.create({
       content: "กรุณารอสักครู่..."
     });
     loader.present();
-    // this.navCtrl.push(StampDetail);
     this.vibration.vibrate(200);
     this.geolocation.getCurrentPosition().then((resp) => {
       this.stmp.chkstamp(this.userdetail._id).then((res) => {
