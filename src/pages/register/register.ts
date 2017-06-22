@@ -41,7 +41,8 @@ export class Register {
               error => alert("Cannot storing User data"));
             this.navCtrl.setRoot(TabsPage);
           }, (err) => {
-            alert("Sign up Error : " + JSON.stringify(err));
+            let testErr = JSON.parse(err._body);
+            alert(testErr.message);
           });
         } else {
           alert("This Email is not Employee!!");
