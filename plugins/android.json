@@ -22,6 +22,9 @@
         "cordova-plugin-nativestorage": {
             "PACKAGE_NAME": "com.ionicframework.timestamp178181"
         },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.timestamp178181"
+        },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.ionicframework.timestamp178181"
         },
@@ -35,9 +38,6 @@
             "PACKAGE_NAME": "com.ionicframework.timestamp178181"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.timestamp178181"
-        },
-        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.timestamp178181"
         }
     },

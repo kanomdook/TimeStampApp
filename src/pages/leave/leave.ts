@@ -36,17 +36,35 @@ export class Leave {
     this.navCtrl.push(Leavelist);
   }
   openHomepage() {
+    this.menu.close();
     this.navCtrl.pop();
   }
 
   setStartDate($event) {
     this.localStartDate = $event;
     this.leaveData.leaveStartDateTime = $event;
+    if(this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime){
+      this.checkDate(this.leaveData.leaveStartDateTime,this.leaveData.leaveEndDateTime);
+    }
   }
 
   setEndDate($event) {
     this.localEndDate = $event;
     this.leaveData.leaveEndDateTime = $event;
+    if(this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime){
+      this.checkDate(this.leaveData.leaveStartDateTime,this.leaveData.leaveEndDateTime);
+    }
+  }
+  checkDate(date1,date2){
+    var Date1 = Date.parse(date1);
+    var Date2 = Date.parse(date2);
+    if(Date1 > Date2){
+      alert("From date must be less than To date");
+      this.localStartDate = '';
+      this.localEndDate = '';
+      this.leaveData.leaveStartDateTime = '';
+      this.leaveData.leaveEndDateTime = '';
+    }
   }
   // presentLoading() {
   //   let loader = this.loadingCtrl.create({
