@@ -27097,6 +27097,10 @@ page-home [iconinList2] {
   align-items: flex-end;
 }
 
+page-home [toastTextCenter] {
+  text-align: center;
+}
+
 @font-face {
   font-family: MyFont;
   src: url("../assets/fonts/Athiti-SemiBold.ttf");

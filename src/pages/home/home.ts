@@ -35,9 +35,10 @@ export class HomePage {
     );
     this.network.onDisconnect().subscribe(() => {
       this.toast = this.toastCtrl.create({
-        message: 'ไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้',
+        message: 'No Internet Connection!',
         // duration: 3000,
-        position: 'top'
+        position: 'top',
+        cssClass:'toastTextCenter'
       });
       this.toast.present();
     });

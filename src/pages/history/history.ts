@@ -50,7 +50,9 @@ export class History {
           // this.ionViewDidLoad();
         }).catch((err) => {
           loader.dismiss();
-          alert("Error when getting History data List : " + JSON.stringify(err));
+          let testErr = JSON.parse(err._body);
+          alert(testErr.message);
+          // alert("Error when getting History data List : " + JSON.stringify(err));
         });
 
         this.stmp.getLeaveList(this.user).then((resp) => {
@@ -60,7 +62,8 @@ export class History {
           this.showChart();
         }).catch((err) => {
           loader.dismiss();
-          alert("Error when getting Leave List" + JSON.stringify(err));
+          let testErr = JSON.parse(err._body);
+          alert(testErr.message);
         });
 
       }, err => alert("Error to get User Data : " + JSON.stringify(err)));
@@ -89,8 +92,6 @@ export class History {
   }
 
   showChart() {
-    // มาตรวจสอบฟังก์ชั่นด้วย
-    // alert("Workday : " + JSON.stringify(this.workDays) + " , " + "LeaveDay : " + JSON.stringify(this.leaveDays));
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
 
       type: 'doughnut',

@@ -15,7 +15,7 @@ export class Leave {
   public userdetail: any;
   public leaveData: any = {};
 
-  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController,public menu: MenuController) {
+  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController, public menu: MenuController) {
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
@@ -43,22 +43,22 @@ export class Leave {
   setStartDate($event) {
     this.localStartDate = $event;
     this.leaveData.leaveStartDateTime = $event;
-    if(this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime){
-      this.checkDate(this.leaveData.leaveStartDateTime,this.leaveData.leaveEndDateTime);
+    if (this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime) {
+      this.checkDate(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
     }
   }
 
   setEndDate($event) {
     this.localEndDate = $event;
     this.leaveData.leaveEndDateTime = $event;
-    if(this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime){
-      this.checkDate(this.leaveData.leaveStartDateTime,this.leaveData.leaveEndDateTime);
+    if (this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime) {
+      this.checkDate(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
     }
   }
-  checkDate(date1,date2){
+  checkDate(date1, date2) {
     var Date1 = Date.parse(date1);
     var Date2 = Date.parse(date2);
-    if(Date1 > Date2){
+    if (Date1 > Date2) {
       alert("From date must be less than To date");
       this.localStartDate = '';
       this.localEndDate = '';
@@ -93,7 +93,7 @@ export class Leave {
           if (intype == 'Draft') {
             loader.dismiss();
             this.app.getRootNav().push(Leavelist);
-          } else if(intype == 'Request') {
+          } else if (intype == 'Request') {
             loader.dismiss();
             this.menu.close();
             this.navCtrl.pop();
@@ -108,7 +108,7 @@ export class Leave {
           if (intype == 'Draft') {
             loader.dismiss();
             this.app.getRootNav().push(Leavelist);
-          } else if(intype == 'Request') {
+          } else if (intype == 'Request') {
             loader.dismiss();
             this.menu.close();
             this.navCtrl.pop();
@@ -134,5 +134,23 @@ export class Leave {
       this.leaveData.leaveEndDateTime = this.leaveData.leaveStartDateTime;
       this.localEndDate = this.leaveData.leaveEndDateTime;
     }
+  }
+  checkReg() {
+    const regex = /\D/g;
+    let m;
+
+    while ((m = regex.exec(this.leaveData.leaveTime)) !== null) {
+      // This is necessary to avoid infinite loops with zero-width matches
+      if (m.index === regex.lastIndex) {
+        regex.lastIndex++;
+      }
+
+      // The result can be accessed through the `m`-variable.
+      m.forEach((match, groupIndex) => {
+        alert("Please input number only");
+        this.leaveData.leaveTime = '';
+      });
+    }
+
   }
 }
