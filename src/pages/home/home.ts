@@ -65,9 +65,10 @@ export class HomePage {
       data => {
         let Today = new Date();
         let Day = Today.getDate();
-        let Old = this.dataToday.dateTimeIn;
+        let Old = JSON.parse(this.dataToday.dateTimeIn);
         let Olds = new Date(Old);
         let OldDay = Olds.getDate();
+        alert("DAY : " + Day + "  OldDay : " + OldDay);
         if (Day != OldDay) {
           this.nativeStorage.remove('StampToday');
           this.dataToday = {};
