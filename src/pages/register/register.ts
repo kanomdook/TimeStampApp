@@ -48,7 +48,8 @@ export class Register {
           alert("This Email is not Employee!!");
         }
       }, (err) => {
-        alert(err);
+        let testErr = JSON.parse(err._body);
+        alert(testErr.message);
       });
     }
   }

@@ -61,7 +61,8 @@ export class LeaveDetailPage {
       }
       // alert("USERDETAIL : " +JSON.stringify(this.userDetail));
     }, (err) => {
-      alert(JSON.stringify(err));
+      let testErr = JSON.parse(err._body);
+      alert(testErr.message);
     });
   }
 

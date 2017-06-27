@@ -21,14 +21,14 @@ export class Request {
   leaveList: any = [];
   user: any;
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
-   
+
   }
   viewLeaveDetail(item) {
     this.app.getRootNav().push(LeaveDetailPage, { leaveDetail: item });
   }
   ionViewDidEnter() {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
     loader.present();
     this.nativeStorage.getItem("TimeStampUser").then(
@@ -41,7 +41,8 @@ export class Request {
           loader.dismiss();
           this.leaveList = resp;
         }).catch((error) => {
-          alert("Error when getting Leave List : " + JSON.stringify(error));
+          let testErr = JSON.parse(error._body);
+          alert("Error when getting Leave List : " + testErr.message);
         });
         // Cal; get Leave List
       }, error => alert("Error to get User Data : " + JSON.stringify(error))
@@ -52,8 +53,9 @@ export class Request {
       // alert("response is : " + JSON.stringify(resp));
       this.leaveList = resp;
       refresher.complete();
-    }).catch(() => {
-      alert("Error when getting Leave List");
+    }).catch((error) => {
+      let testErr = JSON.parse(error._body);
+      alert("Error when getting Leave List : " + testErr.message);
     });
     // setTimeout(() => {
     // console.log('Async operation has ended');

@@ -10,6 +10,7 @@ import { Vibration } from '@ionic-native/vibration';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Network } from '@ionic-native/network';
+import { Device } from '@ionic-native/device';
 
 import { StampService } from '../../service/StampService';
 @Component({
@@ -22,11 +23,14 @@ export class HomePage {
   toast: any;
   userdetail: any = {};
   dataToday: any = {};
+  devic: string = this.device.platform;
   public dateTimeNow = Date();
-  constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration, private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService, private loadingCtrl: LoadingController, private network: Network, public toastCtrl: ToastController) {
+  constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration, private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService, private loadingCtrl: LoadingController, private network: Network, public toastCtrl: ToastController, private device: Device) {
     menu.enable(true);
     this.nativeStorage.getItem('TimeStampUser').then(
-      data => this.userdetail = data,
+      data => {
+        this.userdetail = data;
+      },
       error => alert("Get User Data error : " + JSON.stringify(error))
     );
     this.nativeStorage.getItem('StampToday').then(
@@ -38,21 +42,14 @@ export class HomePage {
         message: 'No Internet Connection!',
         // duration: 3000,
         position: 'top',
-        cssClass:'toastTextCenter'
+        cssClass: 'toastTextCenter'
       });
       this.toast.present();
     });
     this.network.onConnect().subscribe(() => {
-      //     setTimeout(() => {
-      //   if (this.network.type === 'wifi') {
-      //     alert('we got a wifi connection, woohoo!');
-      //   }
-      // }, 3000);
-      // alert("เน็ตใช้ได้แว้ววว");
       this.toast.dismiss();
     });
   }
-
 
   ionViewDidEnter() {
     setInterval(() => {
@@ -62,25 +59,19 @@ export class HomePage {
       data => this.userdetail = data,
       error => alert("Get User Data error : " + JSON.stringify(error))
     );
-    this.nativeStorage.getItem('StampToday').then(
-      data => {
-        let Today = new Date();
-        let Day = Today.getDate();
-        let Old = JSON.parse(this.dataToday.dateTimeIn);
-        let Olds = new Date(Old);
-        let OldDay = Olds.getDate();
-        // alert("DAY : " + Day + "  OldDay : " + OldDay);
-        if (Day != OldDay) {
-          this.nativeStorage.remove('StampToday');
-          this.dataToday = {};
-        } else {
-          this.dataToday = data;
-        }
-
-      },
-      error => { }
-    );
+    this.stmp.chkstamp(this.userdetail._id).then((res) => {
+      let dd = new Date(res.data.dateTimeIn);
+      let dateLastStamp = dd.getDate();
+      let dd2 = new Date(this.dateTimeNow);
+      let Today = dd2.getDate();
+      if (dateLastStamp != Today) {
+        this.dataToday.dateTimeIn = '';
+        this.dataToday.dateTimeOut = '';
+      }
+      // alert('date from stmp : ' + dd1 + ', DateToday : ' + dd3);
+    });
   }
+
   showMenu() {
     this.menu.open();
   }
@@ -105,7 +96,8 @@ export class HomePage {
               'lng': ''
             },
             'email': this.userdetail.employeeprofile.email,
-            'dateTimeIn': new Date()
+            'dateTimeIn': new Date(),
+            'type': this.devic
           };
 
           this.stmp.stampIn(stampdata).then((data) => {
@@ -117,7 +109,11 @@ export class HomePage {
               },
               error => alert('Error cant setitem stamptoday : ' + JSON.stringify(error)));
 
-          }).catch((err) => { loader.dismiss(); alert('Check in Error in stmp : ' + JSON.stringify(err)); });
+          }).catch((err) => {
+            loader.dismiss();
+            let testErr = JSON.parse(err._body);
+            alert('Check in Error in stmp : ' + testErr.message);
+          });
 
         } else if (res.status === 'checkin only') {
           res.data.dateTimeOut = new Date();
@@ -132,7 +128,8 @@ export class HomePage {
 
           }).catch((err) => {
             loader.dismiss();
-            alert('Check Out call service Error in stmp : ' + JSON.stringify(err));
+            let testErr = JSON.parse(err._body);
+            alert('Check Out call service Error in stmp : ' + testErr.message);
           });
         } else {
           loader.dismiss();
@@ -142,11 +139,13 @@ export class HomePage {
         }
       }).catch((err) => {
         loader.dismiss();
-        alert("ERROR check Stamp : " + JSON.stringify(err));
+        let testErr = JSON.parse(err._body);
+        alert("ERROR check Stamp : " + testErr.message);
       });
     }).catch((error) => {
       loader.dismiss();
-      alert('Error getting location');
+      let testErr = JSON.parse(error._body);
+      alert('Error getting location : ' + testErr.message);
     });
   }
   openPage_login() {

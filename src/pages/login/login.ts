@@ -24,7 +24,7 @@ export class Login {
   }
   Login(inemail) {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
     loader.present();
     if (inemail) {

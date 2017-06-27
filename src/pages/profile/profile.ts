@@ -36,7 +36,7 @@ export class Profile {
 
   getEmployeeData(email) {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
     loader.present();
     this.athService.getEmpDataApi(email).then((emp) => {
@@ -49,8 +49,9 @@ export class Profile {
       // this.compAddress = emp.employees.company.address;
       loader.dismiss();
     }).catch((err) => {
+      let testErr = JSON.parse(err._body);
       loader.dismiss();
-      alert("Error on get employee data : " + JSON.stringify(err));
+      alert("Error on get employee data : " + testErr.message);
     });
   }
 

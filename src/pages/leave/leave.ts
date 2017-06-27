@@ -74,17 +74,19 @@ export class Leave {
   // }
   sendLeave(intype) {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
     loader.present();
 
     this.leaveData.leaveDay = this.dateDif(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
     if (!this.leaveData.leaveType) {
-      alert("Please select Leave Type!");
+      alert("Please select Leave Type.");
     } else if (!this.leaveData.leaveStartDateTime && !this.leaveData.leaveEndDateTime) {
-      alert("Please select Start Date and End Date");
+      alert("Please select Start Date and End Date.");
     } else if (!this.leaveData.leaveStartDateTime || !this.leaveData.leaveStartDateTime) {
-      alert("Please select Start Date or End Date");
+      alert("Please select Start Date or End Date.");
+    } else if (!this.leaveData.leaveDetail) {
+      alert("Please complete the leave details.");
     } else if (this.leaveData.leaveType && this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime) {
       if (!this.leaveData._id) {
         this.leaveData.approveStatus = "Waiting";
@@ -99,7 +101,8 @@ export class Leave {
             this.navCtrl.pop();
           }
         }).catch((err) => {
-          alert("Error on Create Leave service");
+          let testErr = JSON.parse(err._body);
+          alert("Error on Create Leave service : " + testErr.message);
         })
       } else if (this.leaveData._id) {
         this.leaveData.leaveStatus = intype;
@@ -114,7 +117,9 @@ export class Leave {
             this.navCtrl.pop();
           }
         }).catch((err) => {
-          alert("Error on Edit Leave service");
+          loader.dismiss();
+          let testErr = JSON.parse(err._body);
+          alert("Error on Edit Leave service : " + testErr.message);
         });
       }
     }

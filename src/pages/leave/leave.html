@@ -42,12 +42,12 @@
     <ion-grid no-padding>
         <ion-row>
             <ion-col col-12>
-                <p class="fontbold">Remark</p>
+                <p class="fontbold">Leave Detail</p>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col col-12 colcenter>
-                <textarea #myInput id="Remark" rows="3" maxLength="500" textArea [(ngModel)]="leaveData.remark"></textarea>
+                <textarea #myInput id="Remark" rows="3" maxLength="500" textArea [(ngModel)]="leaveData.leaveDetail"></textarea>
             </ion-col>
         </ion-row>
         <ion-row padding-top>
@@ -95,7 +95,7 @@
                     </ion-item>
                     <ion-row [hidden]="!leaveData.leaveHalf">
                         <ion-col col-5>
-                            <p class="thaifont" style="text-align:right">จำนวน</p>
+                            <p class="thaifont" style="text-align:right">Leave time</p>
                         </ion-col>
 
                         <ion-col col-2 text-center>
@@ -105,7 +105,7 @@
                         </ion-col>
 
                         <ion-col col-5>
-                            <p class="thaifont" text-left>ชั่วโมง </p>
+                            <p class="thaifont" text-left>Hour</p>
                         </ion-col>
                     </ion-row>
                 </ion-list>

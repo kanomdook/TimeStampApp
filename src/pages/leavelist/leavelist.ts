@@ -16,25 +16,26 @@ export class Leavelist {
 
   constructor(private app: App, private nativeStorage: NativeStorage, private stampService: StampService, public navCtrl: NavController, public navParams: NavParams, private loadingCtrl: LoadingController) {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
-    loader.present();
-    this.nativeStorage.getItem('TimeStampUser').then(
-      data => {
-        this.user = data;
-        this.stampService.getLeaveList(this.user).then((res) => {
-          loader.dismiss();
-          this.leavelist = res.filter(this.filterLeaveList);
-        }).catch(() => {
-          alert('error getLeaveList');
-        })
-      },
-      error => alert(error)
-    );
+    // loader.present();
+    // this.nativeStorage.getItem('TimeStampUser').then(
+    //   data => {
+    //     this.user = data;
+    //     this.stampService.getLeaveList(this.user).then((res) => {
+    //       loader.dismiss();
+    //       this.leavelist = res.filter(this.filterLeaveList);
+    //     }).catch((err) => {
+    //       loader.dismiss();
+    //       alert('error getLeaveList : ' + JSON.stringify(err));
+    //     })
+    //   },
+    //   error => alert(error)
+    // );
   }
   ionViewDidEnter() {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
     loader.present();
     this.nativeStorage.getItem('TimeStampUser').then(
@@ -43,8 +44,10 @@ export class Leavelist {
         this.stampService.getLeaveList(this.user).then((res) => {
           loader.dismiss();
           this.leavelist = res.filter(this.filterLeaveList);
-        }).catch(() => {
-          alert('error getLeaveList');
+        }).catch((err) => {
+          let testErr = JSON.parse(err._body);
+          loader.dismiss();
+          alert('error getLeaveList : ' + testErr.message);
         })
       },
       error => alert(error)

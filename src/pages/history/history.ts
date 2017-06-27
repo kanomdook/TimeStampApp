@@ -35,7 +35,7 @@ export class History {
 
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
     let loader = this.loadingCtrl.create({
-      content: "กรุณารอสักครู่..."
+      content: "Please wait..."
     });
     loader.present();
     this.nativeStorage.getItem("TimeStampUser").then(
@@ -77,7 +77,8 @@ export class History {
       this.workList = resp;
       this.workDays = resp.length;
     }).catch((err) => {
-      alert("Error when getting History data List : " + JSON.stringify(err));
+      let testErr = JSON.parse(err._body);
+      alert("Error when getting History data List : " + testErr.message);
     });
     this.stmp.getLeaveList(this.user).then((resp) => {
       this.leaveList = resp.filter(this.filterLeaveApprove);
@@ -85,7 +86,8 @@ export class History {
       this.showChart();
       refresher.complete();
     }).catch((err) => {
-      alert("Error when getting Leave List : " + JSON.stringify(err));
+      let testErr = JSON.parse(err._body);
+      alert("Error when getting Leave List : " + testErr.message);
     });
     // setTimeout(() => {
     // console.log('Async operation has ended')
@@ -96,7 +98,7 @@ export class History {
 
       type: 'doughnut',
       data: {
-        labels: ["จำนวนวันที่ทำงาน", "จำนวนวันที่ลา"],
+        labels: ["Working days", "Leave days"],
         //  labels: ["จำนวนวันทำงานทั้งหมด", "จำนวนวันที่ทำงาน", "จำนวนวันที่ลา"],
         datasets: [{
           label: '# of Votes',
