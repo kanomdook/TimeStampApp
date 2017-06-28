@@ -48,6 +48,7 @@ page-leave {
         order: 1;
     }
     [colcenter] {
+        padding-top: 2px;
         text-align: center;
     }
     [cancelBtnColor] {
@@ -55,5 +56,17 @@ page-leave {
     }
     [saveBtnColor] {
         background-color: green;
+    }
+    .ion-ios-calendar:before {
+        content: "\f3f4";
+        color: darkorange;
+        font-size: x-large;
+    }
+    .list-ios {
+        margin: 11px 0 32px 0;
+    }
+    .grid[no-padding]>.row>.col {
+        padding-top: 3px;
+        padding-left: 3px;
     }
 }

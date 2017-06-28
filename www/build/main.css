@@ -1,3 +1,13 @@
+.button-ios {
+  margin: 0.4rem 0.2rem;
+  padding: 0 1em;
+  height: 2.8em;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #488aff;
+}
+
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -27161,6 +27171,7 @@ page-leave .bar-buttons-md {
 }
 
 page-leave [colcenter] {
+  padding-top: 2px;
   text-align: center;
 }
 
@@ -27170,6 +27181,21 @@ page-leave [cancelBtnColor] {
 
 page-leave [saveBtnColor] {
   background-color: green;
+}
+
+page-leave .ion-ios-calendar:before {
+  content: "\f3f4";
+  color: darkorange;
+  font-size: x-large;
+}
+
+page-leave .list-ios {
+  margin: 11px 0 32px 0;
+}
+
+page-leave .grid[no-padding] > .row > .col {
+  padding-top: 3px;
+  padding-left: 3px;
 }
 
 @font-face {
@@ -27246,7 +27272,7 @@ page-leavelist .ion-md-calendar {
   font-size: 50px;
 }
 
-page-login {
+page-login .grid {
   margin-top: 30%;
 }
 

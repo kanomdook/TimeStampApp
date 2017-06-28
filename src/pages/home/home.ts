@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { App, NavController, MenuController, LoadingController, ToastController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { App, NavController, MenuController, LoadingController, ToastController, Content } from 'ionic-angular';
 import { Login } from '../login/login';
 import { StampDetail } from '../stamp-detail/stamp-detail';
 import { Register } from '../register/register';
@@ -20,6 +20,7 @@ import { StampService } from '../../service/StampService';
 
 
 export class HomePage {
+  @ViewChild(Content) content: Content;
   toast: any;
   userdetail: any = {};
   dataToday: any = {};
@@ -174,5 +175,8 @@ export class HomePage {
       position: 'top'
     });
     toast.present();
-  };
+  }
+  doClick() {
+    this.menu.open();
+  }
 }

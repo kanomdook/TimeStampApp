@@ -22,7 +22,9 @@ export class MyApp {
     }, 100);
       this.nativeStorage.getItem('TimeStampUser').then(
         res => this.rootPage = TabsPage,
-        error => this.rootPage = Register
+        error => 
+        // this.rootPage = Register
+         this.rootPage = TabsPage
         // this.rootPage = LeaveDetailPage;
       );
     });
