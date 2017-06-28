@@ -15,9 +15,9 @@ export class Leavelist {
   public leavelist: any;
 
   constructor(private app: App, private nativeStorage: NativeStorage, private stampService: StampService, public navCtrl: NavController, public navParams: NavParams, private loadingCtrl: LoadingController) {
-    let loader = this.loadingCtrl.create({
-      content: "Please wait..."
-    });
+    // let loader = this.loadingCtrl.create({
+    //   content: "Please wait..."
+    // });
     // loader.present();
     // this.nativeStorage.getItem('TimeStampUser').then(
     //   data => {
