@@ -16,8 +16,8 @@ export class Login {
   public inemail: any;
 
   constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, private device: Device, public auth: AuthenService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
-    // this.did = this.device.uuid;
-    this.did = '7ef823544ff64e4';
+    this.did = this.device.uuid;
+    // this.did = '7ef823544ff64e4';
   }
 
   openPage_home() {
@@ -31,8 +31,8 @@ export class Login {
     if (inemail) {
       let signin = {
         username: inemail.split('@')[0],
-        // password: this.device.uuid.substr(0, 10) + '#Pass'
-        password: '7ef823544f#Pass'
+        password: this.device.uuid.substr(0, 10) + '#Pass'
+        // password: '7ef823544f#Pass'
       };
 
       this.auth.signIn(signin).then((data) => {
