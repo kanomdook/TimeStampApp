@@ -10,7 +10,7 @@
 <ion-content padding>
     <ion-list>
         <ion-item *ngFor="let leave of leavelist" (click)="editLeave(leave)">
-            <ion-icon name="calendar" item-left></ion-icon>
+            <ion-icon name="calendar" item-left iconN></ion-icon>
             <b class="thaifont">{{ leave.leaveType }}</b>
             <ion-note>
                 <p class="thaifont">{{ leave.leaveStartDateTime | date: "dd MMM yyyy"}} - {{ leave.leaveEndDateTime | date: "dd MMM yyyy"}}</p>

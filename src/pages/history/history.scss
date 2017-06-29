@@ -5,10 +5,6 @@ page-history {
     ion-card-header {
         font-weight: bold;
     }
-    .ion-md-calendar {
-        color: darkorange;
-        font-size: 45px;
-    }
     [iconinList1] {
         color: green;
         padding-right: 5px;
@@ -37,7 +33,6 @@ page-history {
         width: 65vw;
         max-height: 260px;
     }
-
     .ion-md-calendar {
         color: darkorange;
         font-size: 45px;
@@ -68,5 +63,9 @@ page-history {
         padding-right: 5px;
         padding-left: 5px;
         align-items: flex-end;
+    }
+    [iconCalendar] {
+        color: darkorange;
+        font-size: 45px;
     }
 }

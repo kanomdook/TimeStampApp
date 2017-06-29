@@ -26981,11 +26981,6 @@ page-history ion-card-header {
   font-weight: bold;
 }
 
-page-history .ion-md-calendar {
-  color: darkorange;
-  font-size: 45px;
-}
-
 page-history [iconinList1] {
   color: green;
   padding-right: 5px;
@@ -27065,6 +27060,11 @@ page-history [iconinList2] {
   -webkit-align-items: flex-end;
   -ms-flex-align: end;
   align-items: flex-end;
+}
+
+page-history [iconCalendar] {
+  color: darkorange;
+  font-size: 45px;
 }
 
 page-home [tsize] {
@@ -27272,6 +27272,11 @@ page-leavelist .ion-md-calendar {
   font-size: 50px;
 }
 
+page-leavelist [iconN] {
+  color: darkorange;
+  font-size: 50px;
+}
+
 page-login .grid {
   margin-top: 30%;
 }
@@ -27372,6 +27377,11 @@ page-request [iconinList2] {
   -webkit-align-items: flex-end;
   -ms-flex-align: end;
   align-items: flex-end;
+}
+
+page-request [iconCalendar] {
+  color: darkorange;
+  font-size: 45px;
 }
 
 page-stamp-detail .fl {

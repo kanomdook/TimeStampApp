@@ -1,14 +1,19 @@
-
 @font-face {
-font-family: MyFont;
-src: url("../assets/fonts/Athiti-SemiBold.ttf");
+    font-family: MyFont;
+    src: url("../assets/fonts/Athiti-SemiBold.ttf");
 }
- .thaifont{
-font-family: 'MyFont' !important;
+
+.thaifont {
+    font-family: 'MyFont' !important;
 }
+
 page-leavelist {
-.ion-md-calendar{
-    color: darkorange;
-    font-size: 50px;
-}
+    .ion-md-calendar {
+        color: darkorange;
+        font-size: 50px;
+    }
+    [iconN] {
+        color: darkorange;
+        font-size: 50px;
+    }
 }
