@@ -39,7 +39,7 @@ export class Request {
         this.stmp.getLeaveList(this.user).then((resp) => {
           // alert("response is : " + JSON.stringify(resp));
           loader.dismiss();
-          this.leaveList = resp;
+          this.leaveList = resp.filter(this.filterLeaveRequest);
         }).catch((error) => {
           let testErr = JSON.parse(error._body);
           alert("Error when getting Leave List : " + testErr.message);
@@ -51,7 +51,7 @@ export class Request {
   doRefresh(refresher) {
     this.stmp.getLeaveList(this.user).then((resp) => {
       // alert("response is : " + JSON.stringify(resp));
-      this.leaveList = resp;
+      this.leaveList = resp.filter(this.filterLeaveRequest);
       refresher.complete();
     }).catch((error) => {
       let testErr = JSON.parse(error._body);
@@ -60,5 +60,9 @@ export class Request {
     // setTimeout(() => {
     // console.log('Async operation has ended');
     // }, 2000);
+  }
+
+  filterLeaveRequest(list) {
+    return list.leaveStatus == 'Request';
   }
 }

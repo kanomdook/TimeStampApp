@@ -21,6 +21,7 @@ import { StampService } from '../../service/StampService';
 
 export class HomePage {
   @ViewChild(Content) content: Content;
+  rootPage: any;
   toast: any;
   userdetail: any = {};
   dataToday: any = {};
@@ -32,7 +33,7 @@ export class HomePage {
       data => {
         this.userdetail = data;
       },
-      error => alert("Get User Data error : " + JSON.stringify(error))
+      error => this.rootPage = Register
     );
     this.nativeStorage.getItem('StampToday').then(
       data => this.dataToday = data,
@@ -56,18 +57,18 @@ export class HomePage {
     setInterval(() => {
       this.dateTimeNow = Date();
     }, 1000);
-    this.nativeStorage.getItem('TimeStampUser').then(
-      data => this.userdetail = data,
-      error => alert("Get User Data error : " + JSON.stringify(error))
-    );
+    // this.nativeStorage.getItem('TimeStampUser').then(
+    //   data => this.userdetail = data,
+    //   error => this.rootPage = TabsPage
+    // );
     this.stmp.chkstamp(this.userdetail._id).then((res) => {
       let dd = new Date(res.data.dateTimeIn);
       let dateLastStamp = dd.getDate();
       let dd2 = new Date(this.dateTimeNow);
       let Today = dd2.getDate();
       if (dateLastStamp != Today) {
-        this.dataToday.dateTimeIn = '';
-        this.dataToday.dateTimeOut = '';
+        this.dataToday.dateTimeIn = null;
+        this.dataToday.dateTimeOut = null;
       }
       // alert('date from stmp : ' + dd1 + ', DateToday : ' + dd3);
     });
