@@ -27,7 +27,7 @@
     <ion-grid no-padding>
         <ion-row topRow>
             <ion-item>
-                <ion-label class="fontbold" style="color:black;">Leave Type :</ion-label>
+                <ion-label class="fontbold" style="color:black;">Leave Type<span dokchan>*</span> :</ion-label>
                 <ion-select [(ngModel)]="leaveData.leaveType" interface="popover">
                     <ion-option value="Sick Leave">Sick Leave</ion-option>
                     <ion-option value="Personal Leave">Personal Leave</ion-option>
@@ -42,7 +42,7 @@
     <ion-grid no-padding>
         <ion-row>
             <ion-col col-12>
-                <p class="fontbold">Leave Detail</p>
+                <p class="fontbold">Leave Detail<span dokchan>*</span> :</p>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -51,8 +51,8 @@
             </ion-col>
         </ion-row>
         <ion-row padding-top>
-            <ion-col col-6 class="fontbold">From :</ion-col>
-            <ion-col col-6 class="fontbold">To :</ion-col>
+            <ion-col col-6 class="fontbold">From<span dokchan>*</span> :</ion-col>
+            <ion-col col-6 class="fontbold">To<span dokchan>*</span> :</ion-col>
         </ion-row>
         <ion-row>
             <ion-col col-5>

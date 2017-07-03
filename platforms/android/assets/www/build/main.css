@@ -27198,6 +27198,10 @@ page-leave .grid[no-padding] > .row > .col {
   padding-left: 3px;
 }
 
+page-leave [dokchan] {
+  color: red;
+}
+
 @font-face {
   font-family: MyFont;
   src: url("../assets/fonts/Athiti-SemiBold.ttf");

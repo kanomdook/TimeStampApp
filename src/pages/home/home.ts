@@ -66,12 +66,12 @@ export class HomePage {
       let dateLastStamp = dd.getDate();
       let dd2 = new Date(this.dateTimeNow);
       let Today = dd2.getDate();
-      if (dateLastStamp != Today) {
+      if(dateLastStamp != Today) {
         this.dataToday.dateTimeIn = null;
         this.dataToday.dateTimeOut = null;
       }
       // alert('date from stmp : ' + dd1 + ', DateToday : ' + dd3);
-    });
+    }).catch((err) => { });
   }
 
   showMenu() {

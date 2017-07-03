@@ -87,7 +87,7 @@ export class Leave {
       alert("Please select Start Date or End Date.");
     } else if (!this.leaveData.leaveDetail) {
       alert("Please complete the leave details.");
-    } else if (this.leaveData.leaveType && this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime) {
+    } else if (this.leaveData.leaveType && this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime && this.leaveData.leaveDetail) {
       if (!this.leaveData._id) {
         this.leaveData.approveStatus = "Waiting";
         this.leaveData.leaveStatus = intype;
