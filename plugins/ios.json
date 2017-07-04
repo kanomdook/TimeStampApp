@@ -13,9 +13,6 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.timestamp178181"
         },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.ionicframework.timestamp178181"
-        },
         "cordova-plugin-http": {
             "PACKAGE_NAME": "com.ionicframework.timestamp178181"
         },
@@ -39,6 +36,10 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.timestamp178181"
+        },
+        "cordova-plugin-geolocation": {
+            "GEOLOCATION_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.cyber.timeAttendance"
         }
     },
     "dependent_plugins": {

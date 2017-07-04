@@ -182,20 +182,6 @@ module.exports = [
         "runs": true
     },
     {
-        "id": "cordova-plugin-geolocation.geolocation",
-        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-        "pluginId": "cordova-plugin-geolocation",
-        "clobbers": [
-            "navigator.geolocation"
-        ]
-    },
-    {
-        "id": "cordova-plugin-geolocation.PositionError",
-        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-        "pluginId": "cordova-plugin-geolocation",
-        "runs": true
-    },
-    {
         "id": "cordova-plugin-http.CordovaHttpPlugin",
         "file": "plugins/cordova-plugin-http/www/cordovaHTTP.js",
         "pluginId": "cordova-plugin-http",
@@ -271,6 +257,20 @@ module.exports = [
             "cordova.plugins.Keyboard"
         ],
         "runs": true
+    },
+    {
+        "id": "cordova-plugin-geolocation.geolocation",
+        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+        "pluginId": "cordova-plugin-geolocation",
+        "clobbers": [
+            "navigator.geolocation"
+        ]
+    },
+    {
+        "id": "cordova-plugin-geolocation.PositionError",
+        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+        "pluginId": "cordova-plugin-geolocation",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -280,7 +280,6 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.5",
     "cordova-plugin-device": "1.1.4",
     "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-http": "1.2.0",
     "cordova-plugin-nativestorage": "2.2.2",
     "cordova-plugin-network-information": "1.3.3",
@@ -288,7 +287,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.2.1",
     "cordova-plugin-vibration": "2.1.5",
     "cordova-plugin-whitelist": "1.3.1",
-    "ionic-plugin-keyboard": "2.2.1"
+    "ionic-plugin-keyboard": "2.2.1",
+    "cordova-plugin-geolocation": "2.4.3"
 };
 // BOTTOM OF METADATA
 });

@@ -13,9 +13,6 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.cyber.timeAttendance"
         },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.cyber.timeAttendance"
-        },
         "cordova-plugin-http": {
             "PACKAGE_NAME": "com.cyber.timeAttendance"
         },
@@ -38,6 +35,9 @@
             "PACKAGE_NAME": "com.cyber.timeAttendance"
         },
         "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.cyber.timeAttendance"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.cyber.timeAttendance"
         }
     },

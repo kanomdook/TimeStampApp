@@ -28,7 +28,7 @@
         <ion-row padding-top>
             <ion-col col-12 text-center [hidden]="!dataToday.dateTimeIn">
                 <span ng-if="dataToday.dateTimeIn"><ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}</span>
-                <span ng-if="dataToday.dateTimeOut"><ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>
+                <span ng-if="dataToday.dateTimeOut"><ion-icon name="md-arrow-dropleft-circle" iconinList2 ng-if="dataToday.dateTimeOut"></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>
             </ion-col>
         </ion-row>
     </ion-grid>
