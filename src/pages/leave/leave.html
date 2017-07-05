@@ -19,104 +19,54 @@
       </button>
         </ion-buttons>
     </ion-toolbar>
-
 </ion-header>
 
 
 <ion-content leaveContent>
-    <ion-grid no-padding>
-        <ion-row topRow>
-            <ion-item>
-                <ion-label class="fontbold" style="color:black;">Leave Type<span dokchan>*</span> :</ion-label>
-                <ion-select [(ngModel)]="leaveData.leaveType" interface="popover">
-                    <ion-option value="Sick Leave">Sick Leave</ion-option>
-                    <ion-option value="Personal Leave">Personal Leave</ion-option>
-                    <ion-option value="Vacation">Vacation</ion-option>
-                    <ion-option value="Militiary Service Leave">Militiary Service Leave</ion-option>
-                    <ion-option value="Maternity Leave">Maternity Leave</ion-option>
-                    <ion-option value="Ordination Leave">Ordination Leave</ion-option>
-                </ion-select>
-            </ion-item>
-        </ion-row>
-    </ion-grid>
-    <ion-grid no-padding>
+    <ion-list>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">Leave Type<span dokchan>*</span> :</ion-label>
+            <ion-select [(ngModel)]="leaveData.leaveType" interface="popover">
+                <ion-option value="Sick Leave">Sick Leave</ion-option>
+                <ion-option value="Personal Leave">Personal Leave</ion-option>
+                <ion-option value="Vacation">Vacation</ion-option>
+                <ion-option value="Militiary Service Leave">Militiary Service Leave</ion-option>
+                <ion-option value="Maternity Leave">Maternity Leave</ion-option>
+                <ion-option value="Ordination Leave">Ordination Leave</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">Leave Detail<span dokchan>*</span> :</ion-label>
+            <ion-input #myInput id="Remark" type="text" placeholder="Fill your leave cause..." [(ngModel)]="leaveData.leaveDetail"></ion-input>
+            <!--<p class="fontbold">Leave Detail<span dokchan>*</span> :</p>-->
+        </ion-item>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">From<span dokchan>*</span> :</ion-label>
+            <ion-input style="color:black;" type="text" value="{{localStartDate | date}}" readonly="true" text-right padding-right></ion-input>
+            <button ion-button clear color="dark" type="button" item-right btnCalendar><span ion-datepicker (ionChanged)="setStartDate($event);" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
+        <span><ion-icon name="calendar" iconCalender></ion-icon></span></span></button>
+
+        </ion-item>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>
+            <ion-input style="color:black;" type="text" value="{{localEndDate | date}}" readonly="true" text-right padding-right></ion-input>
+            <button ion-button clear color="dark" type="button" item-right btnCalendar><span ion-datepicker (ionChanged)="setEndDate($event);" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
+        <span><ion-icon name="calendar" iconCalender></ion-icon></span></span></button>
+        </ion-item>
+    
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">Half-Day</ion-label>
+            <ion-toggle enable checked="false" color="dog" [(ngModel)]="leaveData.leaveHalf" (ionChange)="logEvent()"></ion-toggle>
+        </ion-item>
+        <ion-item [hidden]="!leaveData.leaveHalf">
+            <ion-label class="fontbold" style="color:black;">Leave time : </ion-label>
+            <ion-input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type="number" maxlength="2" text-center [(ngModel)]="leaveData.leaveTime"></ion-input>
+        </ion-item>
+        <ion-grid gridA>
         <ion-row>
-            <ion-col col-12>
-                <p class="fontbold">Leave Detail<span dokchan>*</span> :</p>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-12 colcenter>
-                <textarea #myInput id="Remark" rows="3" maxLength="500" textArea [(ngModel)]="leaveData.leaveDetail"></textarea>
-            </ion-col>
-        </ion-row>
-        <ion-row padding-top>
-            <ion-col col-6 class="fontbold">From<span dokchan>*</span> :</ion-col>
-            <ion-col col-6 class="fontbold">To<span dokchan>*</span> :</ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-5>
-
-                <ion-item style="padding:0%">
-                    <ion-input type="text" text-center value="{{localStartDate | date}}" disabled="true"></ion-input>
-                </ion-item>
-            </ion-col>
-            <ion-col col-1>
-                <span ion-datepicker (ionChanged)="setStartDate($event);" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
-        <span> <ion-icon name="calendar" iconCalender></ion-icon> </span>
-                </span>
-            </ion-col>
-
-            <ion-col col-5>
-                <ion-item style="padding:0%">
-                    <ion-input type="text" text-center value="{{localEndDate | date}}" disabled="true"></ion-input>
-                </ion-item>
-            </ion-col>
-            <ion-col col-1>
-                <span ion-datepicker (ionChanged)="setEndDate($event);" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
-        <span> <ion-icon name="calendar" iconCalender></ion-icon> </span>
-                </span>
-
-            </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col col-12 style="height: 5%">
-                <!--<hr blankRow/>-->
-            </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col col-12>
-                <ion-list no-line>
-                    <ion-item>
-                        <ion-label class="fontbold">Half-Day</ion-label>
-                        <ion-toggle enable checked="false" color="dog" [(ngModel)]="leaveData.leaveHalf" (ionChange)="logEvent()"></ion-toggle>
-                    </ion-item>
-                    <ion-row [hidden]="!leaveData.leaveHalf">
-                        <ion-col col-5>
-                            <p class="thaifont" style="text-align:right">Leave time</p>
-                        </ion-col>
-
-                        <ion-col col-2 text-center>
-                            <ion-item style="padding:0%">
-                                <ion-input type="number" maxlength="2" text-center [(ngModel)]="leaveData.leaveTime"></ion-input>
-                            </ion-item>
-                        </ion-col>
-
-                        <ion-col col-5>
-                            <p class="thaifont" text-left>Hour</p>
-                        </ion-col>
-                    </ion-row>
-                </ion-list>
-                <hr blankRow/>
-            </ion-col>
-        </ion-row>
-
-
-        <ion-row padding-top>
             <ion-col col-4 text-center>
-                <button ion-button saveBtnColor (click)="sendLeave('Draft')">Save</button>
+                <button ion-button saveBtnColor (click)="sendLeave('Draft')">Draft</button>
             </ion-col>
             <ion-col col-4 text-center>
                 <button ion-button color="royal" (click)="sendLeave('Request')">Send</button>
@@ -125,5 +75,7 @@
                 <button ion-button cancelBtnColor (click)="openHomepage()">Cancel</button>
             </ion-col>
         </ion-row>
-    </ion-grid>
+        </ion-grid>
+    </ion-list>
+   
 </ion-content>

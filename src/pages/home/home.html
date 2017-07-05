@@ -1,11 +1,13 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-navbar>
+        <!--<ion-toolbar>-->
         <ion-buttons start>
             <button ion-button icon-only color="royal" menuToggle><ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
         <ion-title>Time Attendance</ion-title>
-    </ion-toolbar>
+        <!--</ion-toolbar>-->
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
@@ -42,11 +44,11 @@
     </ion-header>
     <ion-content>
         <ion-list>
-
             <button ion-item (click)="openPage_leave()">
                 <ion-icon name="ios-alarm" padding-right menuIcon></ion-icon>
           Leave
         </button>
+
             <button ion-item (click)="openPage_profile()">
                 <ion-icon name="md-person" padding-right menuIcon></ion-icon>
           Profile
@@ -55,7 +57,6 @@
                 <ion-icon name="md-log-out" padding-right menuIcon></ion-icon>
           Log Out
         </button>
-
         </ion-list>
     </ion-content>
 </ion-menu>

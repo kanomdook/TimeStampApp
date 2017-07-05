@@ -14,12 +14,15 @@ page-leave {
         border-width: 1px;
         width: 100%;
     }
+    [fontbold] {
+        font-size: 14px;
+        font-weight: bold;
+        color: black;
+    }
     .fontbold {
         font-size: 14px;
         font-weight: bold;
-    }
-    .fontnor {
-        font: 14px;
+        color: black;
     }
     .ion-md-calendar {
         color: darkorange;
@@ -32,17 +35,15 @@ page-leave {
     .button-md {
         width: 80px;
     }
+    [btnCalendar]{
+         width: 50px !important;
+    }
     [iconCalender] {
         padding: 6px 0;
     }
-    [textArea] {
-        padding-top: 3px;
-        width: 95%;
-    }
     [topRow] {
         padding-top: 3px;
-        width: 100%;
-        // border-bottom: solid grey 0.2px;
+        width: 100%; // border-bottom: solid grey 0.2px;
     }
     .bar-buttons-md {
         order: 1;
@@ -52,10 +53,10 @@ page-leave {
         text-align: center;
     }
     [cancelBtnColor] {
-        background-color: gray;
+        background-color: red;
     }
     [saveBtnColor] {
-        background-color: green;
+        background-color: gray;
     }
     .ion-ios-calendar:before {
         content: "\f3f4";
@@ -69,7 +70,11 @@ page-leave {
         padding-top: 3px;
         padding-left: 3px;
     }
-    [dokchan]{
+    [dokchan] {
         color: red;
+    }
+    [gridA]{
+        padding-top: 30%;
+        position: fixed;
     }
 }

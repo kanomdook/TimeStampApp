@@ -80,12 +80,16 @@ export class Leave {
 
     this.leaveData.leaveDay = this.dateDif(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
     if (!this.leaveData.leaveType) {
+      loader.dismiss();
       alert("Please select Leave Type.");
     } else if (!this.leaveData.leaveStartDateTime && !this.leaveData.leaveEndDateTime) {
+      loader.dismiss();
       alert("Please select Start Date and End Date.");
     } else if (!this.leaveData.leaveStartDateTime || !this.leaveData.leaveStartDateTime) {
+      loader.dismiss();
       alert("Please select Start Date or End Date.");
     } else if (!this.leaveData.leaveDetail) {
+      loader.dismiss();
       alert("Please complete the leave details.");
     } else if (this.leaveData.leaveType && this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime && this.leaveData.leaveDetail) {
       if (!this.leaveData._id) {
@@ -122,7 +126,7 @@ export class Leave {
           alert("Error on Edit Leave service : " + testErr.message);
         });
       }
-    }
+    } else { loader.dismiss(); }
   }
 
   dateDif(strDate1, strDate2) {
@@ -139,23 +143,5 @@ export class Leave {
       this.leaveData.leaveEndDateTime = this.leaveData.leaveStartDateTime;
       this.localEndDate = this.leaveData.leaveEndDateTime;
     }
-  }
-  checkReg() {
-    const regex = /\D/g;
-    let m;
-
-    while ((m = regex.exec(this.leaveData.leaveTime)) !== null) {
-      // This is necessary to avoid infinite loops with zero-width matches
-      if (m.index === regex.lastIndex) {
-        regex.lastIndex++;
-      }
-
-      // The result can be accessed through the `m`-variable.
-      m.forEach((match, groupIndex) => {
-        alert("Please input number only");
-        this.leaveData.leaveTime = '';
-      });
-    }
-
   }
 }
