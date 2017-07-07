@@ -23,8 +23,8 @@ export class Register {
   constructor(private uniqueDeviceID: UniqueDeviceID, public http: Http, public app: App, public navCtrl: NavController, public navParams: NavParams, public athService: AuthenService, private device: Device, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
     if (this.device.platform == " iOS") {
       this.uniqueDeviceID.get()
-      .then((uuid: any) => this.deviceUUID = uuid)
-      .catch((error: any) => alert("Error getting device information on iOS!\nPlease contact support team."));
+        .then((uuid: any) => this.deviceUUID = uuid)
+        .catch((error: any) => alert("Error getting device information on iOS!\nPlease contact support team."));
     } else if (this.device.platform == "Android") {
       this.deviceUUID = this.device.uuid;
     }
@@ -51,7 +51,7 @@ export class Register {
             this.nativeStorage.setItem('TimeStampUser', data).then(
               () => { },
               error => alert("Cannot storing User data"));
-              this.loader.dismiss();
+            this.loader.dismiss();
             this.navCtrl.setRoot(TabsPage);
           }, (err) => {
             let testErr = JSON.parse(err._body);
@@ -67,8 +67,10 @@ export class Register {
         this.loader.dismiss();
         alert(testErr.message);
       });
-    }this.loader.dismiss();
-    alert('Please fill your email.');
+    } else {
+      this.loader.dismiss();
+      alert('Please fill your email.');
+    }
   }
 
 

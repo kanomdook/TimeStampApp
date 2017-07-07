@@ -44,16 +44,18 @@ export class Login {
       };
 
       this.auth.signIn(signin).then((data) => {
+
         this.nativeStorage.setItem('TimeStampUser', data).then(
           (data) => { },
           error => alert("Cannot storing User data"));
+
         loader.dismiss();
         this.navCtrl.setRoot(TabsPage);
-      }, (err) => {
+      }).catch((err) => {
         loader.dismiss();
         let testErr = JSON.parse(err._body);
         alert('Sign in error!.\n' + testErr.message);
-      })
+      });
     }
   }
   GotoReg() {
