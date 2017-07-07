@@ -63,5 +63,9 @@
     <array>
       <string>UIInterfaceOrientationPortrait</string>
     </array>
+    <key>CFBundleLocalizations</key>
+    <array/>
+    <key>NSCalendarsUsageDescription</key>
+    <string/>
   </dict>
 </plist>

@@ -305,6 +305,22 @@ module.exports = [
         "clobbers": [
             "navigator.geolocation"
         ]
+    },
+    {
+        "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
+        "file": "plugins/cordova-plugin-uniquedeviceid/www/uniqueid.js",
+        "pluginId": "cordova-plugin-uniquedeviceid",
+        "merges": [
+            "window.plugins.uniqueDeviceID"
+        ]
+    },
+    {
+        "id": "cordova-plugin-datepicker.DatePicker",
+        "file": "plugins/cordova-plugin-datepicker/www/ios/DatePicker.js",
+        "pluginId": "cordova-plugin-datepicker",
+        "clobbers": [
+            "datePicker"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -322,7 +338,9 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-geolocation": "2.4.3"
+    "cordova-plugin-geolocation": "2.4.3",
+    "cordova-plugin-uniquedeviceid": "1.3.2",
+    "cordova-plugin-datepicker": "0.9.3"
 };
 // BOTTOM OF METADATA
 });

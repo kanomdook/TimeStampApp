@@ -42,18 +42,26 @@
         </ion-item>
         <ion-item>
             <ion-label class="fontbold" style="color:black;">From<span dokchan>*</span> :</ion-label>
-            <ion-input style="color:black;" type="text" value="{{localStartDate | date}}" readonly="true" text-right padding-right></ion-input>
-            <button ion-button clear color="dark" type="button" item-right btnCalendar><span ion-datepicker (ionChanged)="setStartDate($event);" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
-        <span><ion-icon name="calendar" iconCalender></ion-icon></span></span></button>
+            <ion-input style="color:black;" type="text" value="{{localStartDate | date}}" readonly="true" text-right padding-right (click)="getDateFrom()"></ion-input>
+            <button ion-button clear color="dark" type="button" item-right btnCalendar>
+        <span><ion-icon name="calendar" iconCalender (click)="getDateFrom()"></ion-icon></span></button>
 
         </ion-item>
         <ion-item>
             <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>
-            <ion-input style="color:black;" type="text" value="{{localEndDate | date}}" readonly="true" text-right padding-right></ion-input>
-            <button ion-button clear color="dark" type="button" item-right btnCalendar><span ion-datepicker (ionChanged)="setEndDate($event);" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
-        <span><ion-icon name="calendar" iconCalender></ion-icon></span></span></button>
+            <ion-input style="color:black;" type="text" value="{{localEndDate | date}}" readonly="true" text-right padding-right (click)="getDateTo()"></ion-input>
+            <button ion-button clear color="dark" type="button" item-right btnCalendar>
+        <span><ion-icon name="calendar" iconCalender (click)="getDateTo()"></ion-icon></span></button>
         </ion-item>
-    
+        <!--<ion-item>
+           
+            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>
+            <ion-input style="color:black;" [(ngModel)]="localStartDate" (click)="getDateFrom()"></ion-input>
+
+        </ion-item>-->
+
+
+
         <ion-item>
             <ion-label class="fontbold" style="color:black;">Half-Day</ion-label>
             <ion-toggle enable checked="false" color="dog" [(ngModel)]="leaveData.leaveHalf" (ionChange)="logEvent()"></ion-toggle>
@@ -64,18 +72,18 @@
                 type="number" maxlength="2" text-center [(ngModel)]="leaveData.leaveTime"></ion-input>
         </ion-item>
         <ion-grid gridA>
-        <ion-row>
-            <ion-col col-4 text-center>
-                <button ion-button saveBtnColor (click)="sendLeave('Draft')">Draft</button>
-            </ion-col>
-            <ion-col col-4 text-center>
-                <button ion-button color="royal" (click)="sendLeave('Request')">Send</button>
-            </ion-col>
-            <ion-col col-4 text-center>
-                <button ion-button cancelBtnColor (click)="openHomepage()">Cancel</button>
-            </ion-col>
-        </ion-row>
+            <ion-row>
+                <ion-col col-4 text-center>
+                    <button ion-button saveBtnColor (click)="sendLeave('Draft')">Draft</button>
+                </ion-col>
+                <ion-col col-4 text-center>
+                    <button ion-button color="royal" (click)="sendLeave('Request')">Send</button>
+                </ion-col>
+                <ion-col col-4 text-center>
+                    <button ion-button cancelBtnColor (click)="openHomepage()">Cancel</button>
+                </ion-col>
+            </ion-row>
         </ion-grid>
     </ion-list>
-   
+
 </ion-content>

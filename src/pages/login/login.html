@@ -15,8 +15,9 @@
         </ion-row>
 
         <ion-row>
-            <ion-col ion-text color="danger" style="font-size:25px">
-                Login
+            <ion-col ion-text style="font-size:25px">
+                 <ion-icon name="md-key" iconSize></ion-icon>
+                <span style="font-size:25px" colorSet>Login</span>
             </ion-col>
         </ion-row>
 
@@ -24,6 +25,7 @@
             <ion-col>
                 <ion-list style="margin-top: 10px">
                     <ion-item>
+                        <ion-label> <ion-icon name="mail" emailIcon></ion-icon></ion-label>
                         <ion-input type="email" placeholder="E-mail" item-center [(ngModel)]="inemail"></ion-input>
                     </ion-item>
                 </ion-list>
@@ -32,10 +34,10 @@
 
         <ion-row>
             <ion-col text-center>
-                <button ion-button color="danger" (click)="Login(inemail)">Submit</button>
+                <button ion-button color="danger" (click)="Login(inemail)" buttonSize>Submit</button>
             </ion-col>
             <ion-col text-center>
-                <button ion-button color="danger" (click)="GotoReg()">Register</button>
+                <button ion-button color="danger" (click)="GotoReg()" buttonSize>Register</button>
             </ion-col>
         </ion-row>
     </ion-grid>

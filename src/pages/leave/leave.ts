@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { App, ModalController, IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
+// import { HomePage } from '../home/home';
 import { Leavelist } from '../leavelist/leavelist';
 import { StampService } from '../../service/StampService';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { DatePicker } from '@ionic-native/date-picker';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -15,7 +18,7 @@ export class Leave {
   public userdetail: any;
   public leaveData: any = {};
 
-  constructor(private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController, public menu: MenuController) {
+  constructor(private datePicker: DatePicker, private app: App, public modal: ModalController, public navCtrl: NavController, public navParams: NavParams, public stmp: StampService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController, public menu: MenuController) {
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
@@ -40,38 +43,61 @@ export class Leave {
     this.navCtrl.pop();
   }
 
-  setStartDate($event) {
-    this.localStartDate = $event;
-    this.leaveData.leaveStartDateTime = $event;
-    if (this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime) {
-      this.checkDate(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
-    }
+  getDateFrom() {
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+    }).then(
+      date => {
+        // this.localStartDate = date;
+        this.localStartDate = date;
+        // let txtDate = new Date(date);
+        // this.localStartDate = txtDate.getDate();
+        if (this.localStartDate && this.localEndDate) {
+          this.checkDate(this.localStartDate, this.localEndDate);
+        }
+      },
+      err => {}
+      );
+  }
+  getDateTo() {
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+    }).then(
+      date => {
+        // this.localStartDate = date;
+        // let txtDate = new Date(date);
+        this.localEndDate = date;
+        // this.localEndDate = txtDate.getDate();
+        if (this.localStartDate && this.localEndDate) {
+          this.checkDate(this.localStartDate, this.localEndDate);
+        }
+      },
+      err => {}
+      );
   }
 
-  setEndDate($event) {
-    this.localEndDate = $event;
-    this.leaveData.leaveEndDateTime = $event;
-    if (this.leaveData.leaveStartDateTime && this.leaveData.leaveEndDateTime) {
-      this.checkDate(this.leaveData.leaveStartDateTime, this.leaveData.leaveEndDateTime);
-    }
-  }
   checkDate(date1, date2) {
-    var Date1 = Date.parse(date1);
-    var Date2 = Date.parse(date2);
-    if (Date1 > Date2) {
+    //  var Date1 = date1;
+    // var Date2 = date2;
+    // var Date1 = Date.parse(date1);
+    // var Date2 = Date.parse(date2);
+    // if (Date1 > Date2) {
+    if (date1 > date2) {
       alert("From date must be less than To date");
       this.localStartDate = '';
       this.localEndDate = '';
       this.leaveData.leaveStartDateTime = '';
       this.leaveData.leaveEndDateTime = '';
+    } else {
+      this.leaveData.leaveStartDateTime = this.localStartDate;
+      this.leaveData.leaveEndDateTime = this.localEndDate;
     }
   }
-  // presentLoading() {
-  //   let loader = this.loadingCtrl.create({
-  //     content: "กรุณารอสักครู่..."
-  //   });
-  //   loader.present();
-  // }
+
   sendLeave(intype) {
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
@@ -97,14 +123,17 @@ export class Leave {
         this.leaveData.leaveStatus = intype;
         this.stmp.createLeave(this.leaveData).then((resp) => {
           if (intype == 'Draft') {
+            alert("Save draft complete.");
             loader.dismiss();
             this.app.getRootNav().push(Leavelist);
           } else if (intype == 'Request') {
+            alert("Send leave complete.");
             loader.dismiss();
             this.menu.close();
             this.navCtrl.pop();
           }
         }).catch((err) => {
+          loader.dismiss();
           let testErr = JSON.parse(err._body);
           alert("Error on Create Leave service : " + testErr.message);
         })
@@ -113,12 +142,16 @@ export class Leave {
         this.leaveData.approveStatus = "Waiting";
         this.stmp.editLeave(this.leaveData).then((resp) => {
           if (intype == 'Draft') {
+            alert("Save draft complete.");
             loader.dismiss();
             this.app.getRootNav().push(Leavelist);
           } else if (intype == 'Request') {
+            alert("Send leave complete.");
             loader.dismiss();
             this.menu.close();
-            this.navCtrl.pop();
+            setTimeout(() => {
+              this.app.getRootNav().push(TabsPage);
+            }, 100);
           }
         }).catch((err) => {
           loader.dismiss();

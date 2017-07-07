@@ -27,6 +27,8 @@ import { HTTP } from '@ionic-native/http';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Network } from '@ionic-native/network';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+import { DatePicker } from '@ionic-native/date-picker';
 
 import { AuthenService } from '../service/AuthenService';
 import { StampService } from '../service/StampService';
@@ -83,7 +85,9 @@ const cloudSettings: CloudSettings = {
     StampService,
     NativeStorage,
     Geolocation,
-    Network, 
+    UniqueDeviceID,
+    Network,
+    DatePicker,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

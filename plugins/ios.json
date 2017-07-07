@@ -40,6 +40,12 @@
         "cordova-plugin-geolocation": {
             "GEOLOCATION_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.cyber.timeAttendance"
+        },
+        "cordova-plugin-uniquedeviceid": {
+            "PACKAGE_NAME": "com.cyber.timeAttendance"
+        },
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "com.cyber.timeAttendance"
         }
     },
     "dependent_plugins": {

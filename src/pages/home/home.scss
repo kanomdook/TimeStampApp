@@ -30,4 +30,21 @@
         [toastTextCenter] {
             text-align: center;
         }
+        [TitleCenter] {
+            text-align: center;
+        }
+        [titleNew] {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
     }

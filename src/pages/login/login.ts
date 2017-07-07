@@ -5,6 +5,7 @@ import { Device } from '@ionic-native/device';
 import { Register } from '../register/register';
 import { AuthenService } from '../../service/AuthenService';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,18 @@ import { NativeStorage } from '@ionic-native/native-storage';
   templateUrl: 'login.html',
 })
 export class Login {
-  private did: any;
+  // private did: any;
   public inemail: any;
-
-  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, private device: Device, public auth: AuthenService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
-    this.did = this.device.uuid;
+  private deviceUUID: any;
+  constructor(private uniqueDeviceID: UniqueDeviceID, public app: App, public navCtrl: NavController, public navParams: NavParams, private device: Device, public auth: AuthenService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
+    if (this.device.platform == " iOS") {
+      this.uniqueDeviceID.get()
+        .then((uuid: any) => this.deviceUUID = uuid)
+        .catch((error: any) => alert("Error getting device information on iOS!\nPlease contact support team."));
+    } else if (this.device.platform == "Android") {
+      this.deviceUUID = this.device.uuid;
+    }
+    // this.did = this.device.uuid;
     // this.did = '7ef823544ff64e4';
   }
 
@@ -31,7 +39,7 @@ export class Login {
     if (inemail) {
       let signin = {
         username: inemail.split('@')[0],
-        password: this.device.uuid.substr(0, 10) + '#Pass'
+        password: this.deviceUUID.substr(0, 10) + '#Pass'
         // password: '7ef823544f#Pass'
       };
 
@@ -39,12 +47,12 @@ export class Login {
         this.nativeStorage.setItem('TimeStampUser', data).then(
           (data) => { },
           error => alert("Cannot storing User data"));
-          loader.dismiss();
+        loader.dismiss();
         this.navCtrl.setRoot(TabsPage);
       }, (err) => {
         loader.dismiss();
         let testErr = JSON.parse(err._body);
-        alert(testErr.message);
+        alert('Sign in error!.\n' + testErr.message);
       })
     }
   }

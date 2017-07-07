@@ -22,7 +22,10 @@ export class HomePage {
   @ViewChild(Content) content: Content;
   rootPage: any;
   userdetail: any = {};
-  dataToday: any = {};
+  dataToday: any = {
+    'dateTimeIn': null,
+    'dateTimeOut': null,
+  };
   devic: string = this.device.platform;
   public getlocation: any = {};
   public dateTimeNow = Date();
@@ -54,45 +57,103 @@ export class HomePage {
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
+        // alert(JSON.stringify(this.userdetail));
         this.stampdata.email = this.userdetail.employeeprofile.email;
+        this.callCheckTimeAtt();
+        // this.stmp.chkstamp(this.userdetail._id).then((res) => {
+        //   // alert(JSON.stringify(res));
+        //   if (res.status == "Not checkin") {
+        //     { }
+        //   } else if (res.status == "checkin only") {
+        //     this.dataToday.dateTimeIn = res.data.dateTimeIn;
+        //     // this.dataToday.dateTimeOut = res.data.dateTimeOut;
+        //     // let dd = new Date(res.data.dateTimeIn);
+        //     // let dateLastStamp = dd.getDate();
+        //     // let dd2 = new Date(this.dateTimeNow);
+        //     // let Today = dd2.getDate();
+        //     // if (dateLastStamp != Today) {
+        //     //   this.dataToday.dateTimeIn = null;
+        //     //   this.dataToday.dateTimeOut = null;
+        //     //   // this.loader.dismiss();
+        //     // }
+        //   } else if (res.status == "checkined today") {
+        //     this.dataToday.dateTimeIn = res.data.dateTimeIn;
+        //     this.dataToday.dateTimeOut = res.data.dateTimeOut;
+        //     // let dd = new Date(res.data.dateTimeIn);
+        //     // let dateLastStamp = dd.getDate();
+        //     // let dd2 = new Date(this.dateTimeNow);
+        //     // let Today = dd2.getDate();
+        //     // if (dateLastStamp != Today) {
+        //     //   this.dataToday.dateTimeIn = null;
+        //     //   this.dataToday.dateTimeOut = null;
+        //     // }
+        //   }
+        //   // this.loader.present();
+
+        //   // alert('date from stmp : ' + dateLastStamp + ', DateToday : ' + Today);
+        //   // alert(JSON.stringify(res.data.dateTimeIn) + " : " + JSON.stringify(res.data.dateTimeOut));
+        //   // alert(JSON.stringify(this.dataToday.dateTimeIn) + " : " + JSON.stringify(this.dataToday.dateTimeOut));
+        //   // this.loader.dismiss();
+        // }).catch((err) => {
+        //   this.dataToday.dateTimeIn = null;
+        //   this.dataToday.dateTimeOut = null;
+        //   // this.loader.dismiss();
+        // });
         //Mick Add test
       },
       error => this.rootPage = Register
     );
 
   }
-
+  callCheckTimeAtt() {
+    this.stmp.chkstamp(this.userdetail._id).then((res) => {
+      if (res.status == "Not checkin") {
+        { }
+      } else if (res.status == "checkin only") {
+        this.dataToday.dateTimeIn = res.data.dateTimeIn;
+      } else if (res.status == "checkined today") {
+        this.dataToday.dateTimeIn = res.data.dateTimeIn;
+        this.dataToday.dateTimeOut = res.data.dateTimeOut;
+      }
+    }).catch((err) => {
+      this.dataToday.dateTimeIn = null;
+      this.dataToday.dateTimeOut = null;
+    });
+  }
   ionViewDidEnter() {
-    this.nativeStorage.getItem('StampToday').then(
-      data => this.dataToday = data,
-      error => { }
-    );
+    // this.nativeStorage.getItem('StampToday').then(
+    //   data => this.dataToday = data,
+    //   error => { }
+    // );
     setInterval(() => {
       this.dateTimeNow = Date();
     }, 1000);
+    this.callCheckTimeAtt();
     // this.nativeStorage.getItem('TimeStampUser').then(
     //   data => this.userdetail = data,
     //   error => this.rootPage = TabsPage
     // );
-    this.stmp.chkstamp(this.userdetail._id).then((res) => {
-      this.loader.present();
-      let dd = new Date(res.data.dateTimeIn);
-      let dateLastStamp = dd.getDate();
-      let dd2 = new Date(this.dateTimeNow);
-      let Today = dd2.getDate();
-      if (dateLastStamp != Today) {
-        this.dataToday.dateTimeIn = null;
-        this.dataToday.dateTimeOut = null;
-      }
-      // alert('date from stmp : ' + dateLastStamp + ', DateToday : ' + Today);
-      // alert(JSON.stringify(res.data.dateTimeIn) + " : " + JSON.stringify(res.data.dateTimeOut));
-      // alert(JSON.stringify(this.dataToday.dateTimeIn) + " : " + JSON.stringify(this.dataToday.dateTimeOut));
-      this.loader.dismiss();
-    }).catch((err) => {
-      this.dataToday.dateTimeIn = null;
-      this.dataToday.dateTimeOut = null;
-      this.loader.dismiss();
-    });
+    // this.stmp.chkstamp(this.userdetail._id).then((res) => {
+    //   this.dataToday.dateTimeIn = res.data.dateTimeIn;
+    //   this.dataToday.dateTimeOut = res.data.dateTimeOut;
+    //   // this.loader.present();
+    //   // let dd = new Date(res.data.dateTimeIn);
+    //   // let dateLastStamp = dd.getDate();
+    //   // let dd2 = new Date(this.dateTimeNow);
+    //   // let Today = dd2.getDate();
+    //   // if (dateLastStamp != Today) {
+    //   //   this.dataToday.dateTimeIn = null;
+    //   //   this.dataToday.dateTimeOut = null;
+    //   // }
+    //   // alert('date from stmp : ' + dateLastStamp + ', DateToday : ' + Today);
+    //   // alert(JSON.stringify(res.data.dateTimeIn) + " : " + JSON.stringify(res.data.dateTimeOut));
+    //   // alert(JSON.stringify(this.dataToday.dateTimeIn) + " : " + JSON.stringify(this.dataToday.dateTimeOut));
+    //   // this.loader.dismiss();
+    // }).catch((err) => {
+    //   this.dataToday.dateTimeIn = null;
+    //   this.dataToday.dateTimeOut = null;
+    //   // this.loader.dismiss();
+    // });
 
   };
 

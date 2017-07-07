@@ -121,4 +121,11 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+    <feature name="UniqueDeviceID">
+        <param name="ios-package" value="CDVUniqueDeviceID" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="DatePicker">
+        <param name="ios-package" value="DatePicker" />
+    </feature>
 </widget>

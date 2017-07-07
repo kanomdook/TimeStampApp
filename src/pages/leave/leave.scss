@@ -74,7 +74,7 @@ page-leave {
         color: red;
     }
     [gridA]{
-        padding-top: 30%;
-        position: fixed;
+        margin-top: 30%;
+        position: fixed !important;
     }
 }

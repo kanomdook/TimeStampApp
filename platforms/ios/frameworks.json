@@ -1,6 +1,6 @@
 {
     "CoreLocation.framework": 1,
-    "Security.framework": 2,
+    "Security.framework": 3,
     "SystemConfiguration.framework": 2,
     "CoreTelephony.framework": 2,
     "AudioToolbox.framework": 2,
@@ -11,5 +11,6 @@
     "AddressBook.framework": 1,
     "EventKit.framework": 1,
     "Contacts.framework": 1,
-    "UserNotifications.framework": 1
+    "UserNotifications.framework": 1,
+    "EventKitUI.framework": 1
 }

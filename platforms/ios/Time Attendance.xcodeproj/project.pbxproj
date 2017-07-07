@@ -47,6 +47,11 @@
 		73F3111709A04CF69C455DF3 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442AE2CD67C44A9E80237808 /* Contacts.framework */; };
 		12D7896B4E6C47A298148212 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C5BD656BE148E1838F12C3 /* UserNotifications.framework */; };
 		01B39BAD91FF4D1E911E18D1 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B831DA0FB44EFA25A8C01 /* CDVLocation.m */; };
+		31AF73EC2A8148CEB05C179B /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = DE82E6573C4C4606B1C5673A /* UICKeyChainStore.m */; };
+		79C987BDE6F048A1B8DFA393 /* CDVUniqueDeviceID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1199F7F9AF7140209A4AF9BF /* CDVUniqueDeviceID.m */; };
+		DA208D0B1269435C8C29C4EF /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F582DA142A460787B9AFEC /* EventKitUI.framework */; };
+		443E74824EE14AAA91CEF7A2 /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EC4A2A011B4AB6BBBFCAAE /* DatePicker.m */; };
+		47144D9DB2434FFA91B23B5F /* DatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF99FB95081E468BBAE43C33 /* DatePicker.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +149,14 @@
 		B5C5BD656BE148E1838F12C3 /* UserNotifications.framework */ = {isa = PBXFileReference; name = "UserNotifications.framework"; path = "System/Library/Frameworks/UserNotifications.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		F07B831DA0FB44EFA25A8C01 /* CDVLocation.m */ = {isa = PBXFileReference; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		ED495566B22B4E84B6D2D13C /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		DE82E6573C4C4606B1C5673A /* UICKeyChainStore.m */ = {isa = PBXFileReference; name = "UICKeyChainStore.m"; path = "cordova-plugin-uniquedeviceid/UICKeyChainStore.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1199F7F9AF7140209A4AF9BF /* CDVUniqueDeviceID.m */ = {isa = PBXFileReference; name = "CDVUniqueDeviceID.m"; path = "cordova-plugin-uniquedeviceid/CDVUniqueDeviceID.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		81BE564D4A65465C88CAE5BA /* UICKeyChainStore.h */ = {isa = PBXFileReference; name = "UICKeyChainStore.h"; path = "cordova-plugin-uniquedeviceid/UICKeyChainStore.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		5BF19BF13EEE49D3965CF4EC /* CDVUniqueDeviceID.h */ = {isa = PBXFileReference; name = "CDVUniqueDeviceID.h"; path = "cordova-plugin-uniquedeviceid/CDVUniqueDeviceID.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		44F582DA142A460787B9AFEC /* EventKitUI.framework */ = {isa = PBXFileReference; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		47EC4A2A011B4AB6BBBFCAAE /* DatePicker.m */ = {isa = PBXFileReference; name = "DatePicker.m"; path = "cordova-plugin-datepicker/DatePicker.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		F3CA6451220347E99DC1689F /* DatePicker.h */ = {isa = PBXFileReference; name = "DatePicker.h"; path = "cordova-plugin-datepicker/DatePicker.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		BF99FB95081E468BBAE43C33 /* DatePicker.xib */ = {isa = PBXFileReference; name = "DatePicker.xib"; path = "DatePicker.xib"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = file.xib; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +178,7 @@
 				B5F617160142423F967B1240 /* EventKit.framework in Frameworks */,
 				73F3111709A04CF69C455DF3 /* Contacts.framework in Frameworks */,
 				12D7896B4E6C47A298148212 /* UserNotifications.framework in Frameworks */,
+				DA208D0B1269435C8C29C4EF /* EventKitUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +240,7 @@
 				0207DA571B56EA530066E2B4 /* Images.xcassets */,
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* Time Attendance-Info.plist */,
+				BF99FB95081E468BBAE43C33 /* DatePicker.xib */,
 			);
 			name = Resources;
 			path = Time Attendance/Resources;
@@ -247,6 +262,7 @@
 				734D88074CC24130ABD5C795 /* EventKit.framework */,
 				442AE2CD67C44A9E80237808 /* Contacts.framework */,
 				B5C5BD656BE148E1838F12C3 /* UserNotifications.framework */,
+				44F582DA142A460787B9AFEC /* EventKitUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -317,6 +333,12 @@
 				D55D7619D20B4550A8D8F1B4 /* CDVAssetLibraryFilesystem.h */,
 				F07B831DA0FB44EFA25A8C01 /* CDVLocation.m */,
 				ED495566B22B4E84B6D2D13C /* CDVLocation.h */,
+				DE82E6573C4C4606B1C5673A /* UICKeyChainStore.m */,
+				1199F7F9AF7140209A4AF9BF /* CDVUniqueDeviceID.m */,
+				81BE564D4A65465C88CAE5BA /* UICKeyChainStore.h */,
+				5BF19BF13EEE49D3965CF4EC /* CDVUniqueDeviceID.h */,
+				47EC4A2A011B4AB6BBBFCAAE /* DatePicker.m */,
+				F3CA6451220347E99DC1689F /* DatePicker.h */,
 			);
 			name = Plugins;
 			path = Time Attendance/Plugins;
@@ -405,6 +427,7 @@
 			files = (
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
+				47144D9DB2434FFA91B23B5F /* DatePicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +481,9 @@
 				6C2FB6867B0E40A181263E87 /* CDVLocalFilesystem.m in Sources */,
 				862E1EC4DFB446D0896B5879 /* CDVAssetLibraryFilesystem.m in Sources */,
 				01B39BAD91FF4D1E911E18D1 /* CDVLocation.m in Sources */,
+				31AF73EC2A8148CEB05C179B /* UICKeyChainStore.m in Sources */,
+				79C987BDE6F048A1B8DFA393 /* CDVUniqueDeviceID.m in Sources */,
+				443E74824EE14AAA91CEF7A2 /* DatePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
