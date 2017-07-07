@@ -17,7 +17,7 @@ export class Login {
   public inemail: any;
   private deviceUUID: any;
   constructor(private uniqueDeviceID: UniqueDeviceID, public app: App, public navCtrl: NavController, public navParams: NavParams, private device: Device, public auth: AuthenService, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
-    if (this.device.platform == " iOS") {
+    if (this.device.platform == "iOS") {
       this.uniqueDeviceID.get()
         .then((uuid: any) => this.deviceUUID = uuid)
         .catch((error: any) => alert("Error getting device information on iOS!\nPlease contact support team."));

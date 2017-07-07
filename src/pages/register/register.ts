@@ -21,7 +21,7 @@ export class Register {
     content: "Please wait..."
   });
   constructor(private uniqueDeviceID: UniqueDeviceID, public http: Http, public app: App, public navCtrl: NavController, public navParams: NavParams, public athService: AuthenService, private device: Device, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
-    if (this.device.platform == " iOS") {
+    if (this.device.platform == "iOS") {
       this.uniqueDeviceID.get()
         .then((uuid: any) => this.deviceUUID = uuid)
         .catch((error: any) => alert("Error getting device information on iOS!\nPlease contact support team."));
