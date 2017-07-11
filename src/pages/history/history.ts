@@ -94,7 +94,7 @@ export class History {
   }
 
   showChart() {
-    setTimeout(function () {
+    setTimeout(() =>  {
       this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
         type: 'doughnut',
         data: {
