@@ -94,30 +94,32 @@ export class History {
   }
 
   showChart() {
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+    setTimeout(function () {
+      this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+        type: 'doughnut',
+        data: {
+          labels: ["Working days", "Leave days"],
+          //  labels: ["จำนวนวันทำงานทั้งหมด", "จำนวนวันที่ทำงาน", "จำนวนวันที่ลา"],
+          datasets: [{
+            label: '# of Votes',
+            data: [JSON.stringify(this.workDays), JSON.stringify(this.leaveDays)],
+            // data: [25, this.workDays, this.leaveDays],
+            backgroundColor: [
+              // 'rgba(173, 173, 173, 1)',
+              'rgba(57, 237, 2, 1)',
+              'rgba(255, 195, 30, 1)'
+            ],
+            hoverBackgroundColor: [
+              // 'rgba(173, 173, 173, 0.5)',
+              'rgba(57, 237, 2, 0.5)',
+              'rgba(255, 195, 30,0.5)'
+            ]
+          }]
+        }
 
-      type: 'doughnut',
-      data: {
-        labels: ["Working days", "Leave days"],
-        //  labels: ["จำนวนวันทำงานทั้งหมด", "จำนวนวันที่ทำงาน", "จำนวนวันที่ลา"],
-        datasets: [{
-          label: '# of Votes',
-          data: [JSON.stringify(this.workDays), JSON.stringify(this.leaveDays)],
-          // data: [25, this.workDays, this.leaveDays],
-          backgroundColor: [
-            // 'rgba(173, 173, 173, 1)',
-            'rgba(57, 237, 2, 1)',
-            'rgba(255, 195, 30, 1)'
-          ],
-          hoverBackgroundColor: [
-            // 'rgba(173, 173, 173, 0.5)',
-            'rgba(57, 237, 2, 0.5)',
-            'rgba(255, 195, 30,0.5)'
-          ]
-        }]
-      }
+      });
+    },200);
 
-    });
   }
 
   openLeaveDetailPage(item) {

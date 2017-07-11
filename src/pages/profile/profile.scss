@@ -8,7 +8,10 @@
     }
 
     page-profile {
-        .item-md ion-avatar ion-img,
+        .item-ios ion-avatar img {
+            width: 80px;
+            height: 80px;
+        }
         .item-md ion-avatar img {
             height: 80px;
             width: 80px;

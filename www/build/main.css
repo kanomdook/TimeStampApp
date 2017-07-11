@@ -27338,7 +27338,11 @@ page-login [buttonSize] {
   font-family: 'MyFont' !important;
 }
 
-page-profile .item-md ion-avatar ion-img,
+page-profile .item-ios ion-avatar img {
+  width: 80px;
+  height: 80px;
+}
+
 page-profile .item-md ion-avatar img {
   height: 80px;
   width: 80px;

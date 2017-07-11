@@ -27,6 +27,7 @@ export class Profile {
   //   }
   // };
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage, public athService: AuthenService, private loadingCtrl: LoadingController) {
+    // this.getEmployeeData('nutprapobsun.mick@gmail.com');
     this.nativeStorage.getItem('TimeStampUser').then(
       data => this.getEmployeeData(data.email),
       error => alert(error)

@@ -23,6 +23,7 @@ export class Login {
         .catch((error: any) => alert("Error getting device information on iOS!\nPlease contact support team."));
     } else if (this.device.platform == "Android") {
       this.deviceUUID = this.device.uuid;
+      // alert(this.device.uuid);
     }
     // this.did = this.device.uuid;
     // this.did = '7ef823544ff64e4';
@@ -43,9 +44,9 @@ export class Login {
         // password: '7ef823544f#Pass'
       };
 
-      this.auth.signIn(signin).then((data) => {
+      this.auth.signIn(signin).then((dataresp) => {
 
-        this.nativeStorage.setItem('TimeStampUser', data).then(
+        this.nativeStorage.setItem('TimeStampUser', dataresp).then(
           (data) => { },
           error => alert("Cannot storing User data"));
 
@@ -54,7 +55,7 @@ export class Login {
       }).catch((err) => {
         loader.dismiss();
         let testErr = JSON.parse(err._body);
-        alert('Sign in error!.\n' + testErr.message);
+        alert('Sign in error!\n' + testErr.message);
       });
     }
   }
