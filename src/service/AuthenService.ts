@@ -4,8 +4,8 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthenService {
-  // apiUrl: string = 'https://time-attendance.herokuapp.com/';
-  apiUrl: string = 'https://time-attendance-test.herokuapp.com/';
+  apiUrl: string = 'https://time-attendance.herokuapp.com/';
+  // apiUrl: string = 'https://time-attendance-test.herokuapp.com/';
   headers = new Headers({
     'Content-Type': 'application/json'
   });
