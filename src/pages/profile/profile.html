@@ -1,0 +1,58 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Profile</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+        <!--<ion-icon name="md-share"></ion-icon>-->
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12 text-center>
+                <ion-list>
+                    <ion-item>
+                        <ion-avatar item-left>
+                            <img src="{{empDetail.image}}">
+                        </ion-avatar>
+                        <h2 thaifont Headerfont text-wrap text-center>{{empDetail.firstname}} {{empDetail.lastname}}</h2>
+                        <p thaifont text-center>{{empDetail.jobTitle}}</p>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col width-100 text-wrap>
+                <p thaifont>{{comp.name}}</p>
+                <p thaifont>{{compAddress.address}} {{compAddress.district}} {{compAddress.subdistrict}} {{compAddress.province}} {{compAddress.postcode}}
+                    <!--<p thaifont>{{empDetail.company.name}}</p>-->
+                    <!--<p thaifont>{{empDetail.company.address.address}} {{empDetail.company.address.district}} {{empDetail.company.address.subdistrict}} {{empDetail.company.address.province}} {{empDetail.company.address.country.th}} {{empDetail.company.address.postcode}}</p>-->
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row padding-left padding-bottom contentRow>
+            <img src="img/call.png" iconset>
+            <p contentIcon thaifont>{{empDetail.mobile}}</p>
+        </ion-row>
+        <ion-row padding-left padding-bottom contentRow>
+            <img src="img/facebook.png" iconset>
+            <p contentIcon thaifont>{{empDetail.facebook}}</p>
+        </ion-row>
+        <ion-row padding-left padding-bottom contentRow>
+            <img src="img/line.png" iconset>
+            <p contentIcon thaifont>{{empDetail.line}}</p>
+        </ion-row>
+        <ion-row padding-left padding-bottom contentRow>
+            <img src="img/email.png" iconset>
+            <p contentIcon thaifont>{{empDetail.email}}</p>
+        </ion-row>
+    </ion-grid>
+</ion-content>

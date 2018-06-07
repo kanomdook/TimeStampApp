@@ -1,0 +1,37 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Leave Detail</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">Leave Type : </ion-label>
+            <ion-input type="text" value="{{leaveDetail.leaveType}}" text-right margin-right disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">Leave Detail : </ion-label>
+            <ion-input type="text" value="{{leaveDetail.leaveDetail}}" text-right margin-right disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">From :</ion-label>
+            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveStartDateTime | date: 'dd MMM yyyy'}}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="fontbold" style="color:black;">To :</ion-label>
+            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveEndDateTime | date: 'dd MMM yyyy'}}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item [hidden]="!leaveDetail.leaveHalf">
+            <ion-label class="fontbold" style="color:black;">Leave half-day :</ion-label>
+            <ion-input type="text" text-right value="{{leaveDetail.leaveTime}} {{hr}}" margin-right disabled="true"></ion-input>
+        </ion-item>
+        <ion-item [hidden]="leaveDetail.leaveHalf">
+            <ion-label class="fontbold" style="color:black;">Total leave : </ion-label>
+            <ion-input type="text" text-right value="{{leaveDetail.leaveDay}} Days" margin-right disabled="true"></ion-input>
+        </ion-item>
+    </ion-list>
+</ion-content>

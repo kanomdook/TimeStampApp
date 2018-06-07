@@ -1,0 +1,37 @@
+<ion-content padding>
+    <ion-grid>
+
+        <ion-row>
+            <ion-col text-center>
+                <img src="img/regpic.png" width="60%">
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col ion-text >
+                <ion-icon name="md-person-add" iconSize></ion-icon>
+                <span style="font-size:25px" colorSet>Register</span>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-list style="margin-top: 10px">
+                    <ion-item>
+                        <ion-label> <ion-icon name="mail" emailIcon></ion-icon></ion-label>
+                        <ion-input type="email" placeholder="E-mail" item-center [(ngModel)]="email"></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <button ion-button color="danger" (click)="register(email)" buttonSize>Submit</button>
+            </ion-col>
+            <ion-col text-center>
+                <button ion-button color="danger" (click)="gotoLogin()" buttonSize>Back to Login</button>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>

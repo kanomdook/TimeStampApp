@@ -1,0 +1,37 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Stamp Detail</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+    <ion-grid class="mt-img">
+        <ion-row>
+            <ion-col text-center>
+                <img src="{{userdetail.image}}" (click)="openPageProfile()" width="164px" height="164px">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <span class="fl">{{userdetail.firstname}} {{userdetail.lastname}}</span>
+            </ion-col>
+        </ion-row>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-icon name="md-arrow-dropright-circle" iconinList1 item-left></ion-icon>
+                <h2>{{dataToday.dateTimeIn | date: "shortTime"}}</h2>
+                <p>{{dataToday.dateTimeIn | date: "dd MMM yyyy"}}</p>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="md-arrow-dropleft-circle" iconinList2 item-left></ion-icon>
+                <h2 ng-if="dataToday.dateTimeOut">{{dataToday.dateTimeOut | date: "shortTime"}}</h2>
+                <p ng-if="dataToday.dateTimeOut">{{dataToday.dateTimeOut | date: "dd MMM yyyy"}}</p>
+            </ion-item>
+        </ion-list>
+
+    </ion-grid>
+</ion-content>
