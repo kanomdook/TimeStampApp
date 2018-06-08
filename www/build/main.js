@@ -1,17 +1,17 @@
 webpackJsonp([9],{
 
-/***/ 123:
+/***/ 122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return History; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(408);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__leave_detail_leave_detail__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__leave_detail_leave_detail__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -142,7 +142,7 @@ var History = /** @class */ (function () {
     ], History.prototype, "doughnutCanvas", void 0);
     History = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-history',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/history/history.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>History</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <div class="chart-container" maintainAspectRatio="true">\n        <canvas #doughnutCanvas></canvas>\n        <!--<canvas #doughnutCanvas width="50%" height="50%" text-center></canvas>-->\n    </div>\n    <ion-item-divider color="light"></ion-item-divider>\n    <div>\n        <ion-segment [(ngModel)]="Work">\n            <ion-segment-button value="Worked">\n                Worked\n            </ion-segment-button>\n            <ion-segment-button value="Leaved">\n                Leaved\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n\n    <div [ngSwitch]="Work">\n        <ion-list *ngSwitchCase="\'Worked\'">\n            <ion-item *ngFor="let worklis of workList">\n                <ion-row rowHeight>\n                    <ion-col col-2>\n                        <ion-icon name="calendar" iconCalendar></ion-icon>\n                    </ion-col>\n                    <ion-col>\n                        <ion-row rowHeightspace>\n                            <h2 headList>{{worklis.dateTimeIn | date: "dd MMM yyyy"}}</h2>\n                        </ion-row>\n                        <ion-row rowHeightspace>\n                            <ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{worklis.dateTimeIn | date: "shortTime"}}\n                            <ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{worklis.dateTimeOut | date: "shortTime"}}\n                        </ion-row>\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-list>\n\n        <ion-list *ngSwitchCase="\'Leaved\'">\n            <ion-item *ngFor="let leaveLis of leaveList" (click)="openLeaveDetailPage(leaveLis)">\n                <ion-row rowHeight>\n                    <ion-col col-2>\n                        <ion-icon name="calendar" iconCalendar></ion-icon>\n                    </ion-col>\n                    <ion-col>\n                        <ion-row rowHeightspace>\n                            <h2 headList>{{leaveLis.leaveType}} : {{leaveLis.leaveStartDateTime | date: "dd MMM yyyy"}}</h2>\n                        </ion-row>\n                        <ion-row rowHeightspace>\n                            <ion-col col-10 text-left>\n                                <p class="thaifont">{{leaveLis.leaveDetail}}</p>\n                            </ion-col>\n                            <ion-col col-2 text-right>\n                                <ion-icon name="md-checkmark-circle" [hidden]="leaveLis.approveStatus != \'Approve\'" iconApprove></ion-icon>\n                                <ion-icon name="md-time" [hidden]="leaveLis.approveStatus != \'Waitting\'" iconWait></ion-icon>\n                                <ion-icon name="md-close-circle" [hidden]="leaveLis.approveStatus != \'Reject\'" iconReject></ion-icon>\n                            </ion-col>\n                        </ion-row>\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-list>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/history/history.html"*/,
+            selector: 'page-history',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/history/history.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>History</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <div class="chart-container" maintainAspectRatio="true">\n        <canvas #doughnutCanvas></canvas>\n        <!--<canvas #doughnutCanvas width="50%" height="50%" text-center></canvas>-->\n    </div>\n    <ion-item-divider color="light"></ion-item-divider>\n    <div>\n        <ion-segment [(ngModel)]="Work">\n            <ion-segment-button value="Worked">\n                Worked\n            </ion-segment-button>\n            <ion-segment-button value="Leaved">\n                Leaved\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n\n    <div [ngSwitch]="Work">\n        <ion-list *ngSwitchCase="\'Worked\'">\n            <ion-item *ngFor="let worklis of workList">\n                <ion-row rowHeight>\n                    <ion-col col-2>\n                        <ion-icon name="calendar" iconCalendar></ion-icon>\n                    </ion-col>\n                    <ion-col>\n                        <ion-row rowHeightspace>\n                            <h2 headList>{{worklis.dateTimeIn | date: "dd MMM yyyy"}}</h2>\n                        </ion-row>\n                        <ion-row rowHeightspace>\n                            <ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{worklis.dateTimeIn | date: "shortTime"}}\n                            <ion-icon name="md-arrow-dropleft-circle" iconinList2></ion-icon>{{worklis.dateTimeOut | date: "shortTime"}}\n                        </ion-row>\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-list>\n\n        <ion-list *ngSwitchCase="\'Leaved\'">\n            <ion-item *ngFor="let leaveLis of leaveList" (click)="openLeaveDetailPage(leaveLis)">\n                <ion-row rowHeight>\n                    <ion-col col-2>\n                        <ion-icon name="calendar" iconCalendar></ion-icon>\n                    </ion-col>\n                    <ion-col>\n                        <ion-row rowHeightspace>\n                            <h2 headList>{{leaveLis.leaveType}} : {{leaveLis.leaveStartDateTime | date: "dd MMM yyyy"}}</h2>\n                        </ion-row>\n                        <ion-row rowHeightspace>\n                            <ion-col col-10 text-left>\n                                <p class="thaifont">{{leaveLis.leaveDetail}}</p>\n                            </ion-col>\n                            <ion-col col-2 text-right>\n                                <ion-icon name="md-checkmark-circle" [hidden]="leaveLis.approveStatus != \'Approve\'" iconApprove></ion-icon>\n                                <ion-icon name="md-time" [hidden]="leaveLis.approveStatus != \'Waitting\'" iconWait></ion-icon>\n                                <ion-icon name="md-close-circle" [hidden]="leaveLis.approveStatus != \'Reject\'" iconReject></ion-icon>\n                            </ion-col>\n                        </ion-row>\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-list>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/history/history.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
     ], History);
@@ -153,16 +153,16 @@ var History = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 124:
+/***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Leavelist; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_StampService__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_StampService__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__leave_leave__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__leave_leave__ = __webpack_require__(67);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -232,7 +232,7 @@ var Leavelist = /** @class */ (function () {
     };
     Leavelist = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-leavelist',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/leavelist/leavelist.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Leave List</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let leave of leavelist" (click)="editLeave(leave)">\n            <ion-icon name="calendar" item-left iconN></ion-icon>\n            <b class="thaifont">{{ leave.leaveType }}</b>\n            <ion-note>\n                <p class="thaifont">{{ leave.leaveStartDateTime | date: "dd MMM yyyy"}} - {{ leave.leaveEndDateTime | date: "dd MMM yyyy"}}</p>\n            </ion-note>\n            <p class="thaifont">{{ leave.remark }}</p>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/leavelist/leavelist.html"*/
+            selector: 'page-leavelist',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leavelist/leavelist.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Leave List</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let leave of leavelist" (click)="editLeave(leave)">\n            <ion-icon name="calendar" item-left iconN></ion-icon>\n            <b class="thaifont">{{ leave.leaveType }}</b>\n            <ion-note>\n                <p class="thaifont">{{ leave.leaveStartDateTime | date: "dd MMM yyyy"}} - {{ leave.leaveEndDateTime | date: "dd MMM yyyy"}}</p>\n            </ion-note>\n            <p class="thaifont">{{ leave.remark }}</p>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leavelist/leavelist.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_2__service_StampService__["a" /* StampService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
     ], Leavelist);
@@ -243,15 +243,15 @@ var Leavelist = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 125:
+/***/ 124:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Request; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__leave_detail_leave_detail__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__leave_detail_leave_detail__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__ = __webpack_require__(17);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -328,7 +328,7 @@ var Request = /** @class */ (function () {
     };
     Request = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-request',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/request/request.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Request</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <!--<div>\n        <ion-segment [(ngModel)]="Req">\n            <ion-segment-button value="Leave">\n                Leave\n            </ion-segment-button>\n            <ion-segment-button value="Adjust">\n                Adjust\n            </ion-segment-button>\n        </ion-segment>\n    </div>-->\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <ion-list>\n        <ion-item *ngFor="let leaveLis of leaveList">\n            <ion-row rowHeight (click)="viewLeaveDetail(leaveLis)">\n                <ion-col col-2>\n                    <ion-icon name="calendar" iconCalendar></ion-icon>\n                </ion-col>\n                <ion-col>\n                    <ion-row rowHeightspace>\n                        <h2 headList>{{leaveLis.leaveType}} : {{leaveLis.leaveStartDateTime | date: "dd MMM yyyy"}}</h2>\n                    </ion-row>\n                    <ion-row rowHeightspace>\n                        <ion-col col-10 text-left>\n                            <p class="thaifont">{{leaveLis.leaveDetail}}</p>\n                        </ion-col>\n                        <ion-col col-2 text-right>\n                            <ion-icon name="md-checkmark-circle" [hidden]="leaveLis.approveStatus != \'Approve\'" iconApprove></ion-icon>\n                            <ion-icon name="md-time" [hidden]="leaveLis.approveStatus != \'Waiting\'" iconWait></ion-icon>\n                            <ion-icon name="md-close-circle" [hidden]="leaveLis.approveStatus != \'Reject\'" iconReject></ion-icon>\n                        </ion-col>\n                    </ion-row>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/request/request.html"*/,
+            selector: 'page-request',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/request/request.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Request</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <!--<div>\n        <ion-segment [(ngModel)]="Req">\n            <ion-segment-button value="Leave">\n                Leave\n            </ion-segment-button>\n            <ion-segment-button value="Adjust">\n                Adjust\n            </ion-segment-button>\n        </ion-segment>\n    </div>-->\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <ion-list>\n        <ion-item *ngFor="let leaveLis of leaveList">\n            <ion-row rowHeight (click)="viewLeaveDetail(leaveLis)">\n                <ion-col col-2>\n                    <ion-icon name="calendar" iconCalendar></ion-icon>\n                </ion-col>\n                <ion-col>\n                    <ion-row rowHeightspace>\n                        <h2 headList>{{leaveLis.leaveType}} : {{leaveLis.leaveStartDateTime | date: "dd MMM yyyy"}}</h2>\n                    </ion-row>\n                    <ion-row rowHeightspace>\n                        <ion-col col-10 text-left>\n                            <p class="thaifont">{{leaveLis.leaveDetail}}</p>\n                        </ion-col>\n                        <ion-col col-2 text-right>\n                            <ion-icon name="md-checkmark-circle" [hidden]="leaveLis.approveStatus != \'Approve\'" iconApprove></ion-icon>\n                            <ion-icon name="md-time" [hidden]="leaveLis.approveStatus != \'Waiting\'" iconWait></ion-icon>\n                            <ion-icon name="md-close-circle" [hidden]="leaveLis.approveStatus != \'Reject\'" iconReject></ion-icon>\n                        </ion-col>\n                    </ion-row>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/request/request.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
     ], Request);
@@ -339,14 +339,14 @@ var Request = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 126:
+/***/ 125:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StampDetail; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_profile__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_profile__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(17);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -383,7 +383,7 @@ var StampDetail = /** @class */ (function () {
     };
     StampDetail = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-stamp-detail',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/stamp-detail/stamp-detail.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Stamp Detail</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding>\n\n    <ion-grid class="mt-img">\n        <ion-row>\n            <ion-col text-center>\n                <img src="{{userdetail.image}}" (click)="openPageProfile()" width="164px" height="164px">\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <span class="fl">{{userdetail.firstname}} {{userdetail.lastname}}</span>\n            </ion-col>\n        </ion-row>\n        <ion-list no-lines>\n            <ion-item>\n                <ion-icon name="md-arrow-dropright-circle" iconinList1 item-left></ion-icon>\n                <h2>{{dataToday.dateTimeIn | date: "shortTime"}}</h2>\n                <p>{{dataToday.dateTimeIn | date: "dd MMM yyyy"}}</p>\n            </ion-item>\n            <ion-item>\n                <ion-icon name="md-arrow-dropleft-circle" iconinList2 item-left></ion-icon>\n                <h2 ng-if="dataToday.dateTimeOut">{{dataToday.dateTimeOut | date: "shortTime"}}</h2>\n                <p ng-if="dataToday.dateTimeOut">{{dataToday.dateTimeOut | date: "dd MMM yyyy"}}</p>\n            </ion-item>\n        </ion-list>\n\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/stamp-detail/stamp-detail.html"*/,
+            selector: 'page-stamp-detail',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/stamp-detail/stamp-detail.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Stamp Detail</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding>\n\n    <ion-grid class="mt-img">\n        <ion-row>\n            <ion-col text-center>\n                <img src="{{userdetail.image}}" (click)="openPageProfile()" width="164px" height="164px">\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <span class="fl">{{userdetail.firstname}} {{userdetail.lastname}}</span>\n            </ion-col>\n        </ion-row>\n        <ion-list no-lines>\n            <ion-item>\n                <ion-icon name="md-arrow-dropright-circle" iconinList1 item-left></ion-icon>\n                <h2>{{dataToday.dateTimeIn | date: "shortTime"}}</h2>\n                <p>{{dataToday.dateTimeIn | date: "dd MMM yyyy"}}</p>\n            </ion-item>\n            <ion-item>\n                <ion-icon name="md-arrow-dropleft-circle" iconinList2 item-left></ion-icon>\n                <h2 ng-if="dataToday.dateTimeOut">{{dataToday.dateTimeOut | date: "shortTime"}}</h2>\n                <p ng-if="dataToday.dateTimeOut">{{dataToday.dateTimeOut | date: "dd MMM yyyy"}}</p>\n            </ion-item>\n        </ion-list>\n\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/stamp-detail/stamp-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */]])
     ], StampDetail);
@@ -394,7 +394,7 @@ var StampDetail = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 137:
+/***/ 138:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -407,48 +407,48 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 137;
+webpackEmptyAsyncContext.id = 138;
 
 /***/ }),
 
-/***/ 179:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/history/history.module": [
-		487,
+		490,
 		8
 	],
 	"../pages/leave-detail/leave-detail.module": [
-		489,
+		491,
 		7
 	],
 	"../pages/leave/leave.module": [
-		488,
+		492,
 		6
 	],
 	"../pages/leavelist/leavelist.module": [
-		490,
+		493,
 		5
 	],
 	"../pages/login/login.module": [
-		491,
+		494,
 		4
 	],
 	"../pages/profile/profile.module": [
-		492,
+		495,
 		3
 	],
 	"../pages/register/register.module": [
-		493,
+		496,
 		2
 	],
 	"../pages/request/request.module": [
-		494,
+		497,
 		1
 	],
 	"../pages/stamp-detail/stamp-detail.module": [
-		495,
+		498,
 		0
 	]
 };
@@ -463,7 +463,7 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 179;
+webpackAsyncContext.id = 180;
 module.exports = webpackAsyncContext;
 
 /***/ }),
@@ -475,16 +475,14 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stamp_detail_stamp_detail__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stamp_detail_stamp_detail__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__leave_leave__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_profile__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_vibration__ = __webpack_require__(313);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_geolocation__ = __webpack_require__(314);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_device__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__service_StampService__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__leave_leave__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_profile__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_native_storage__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_device__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__service_StampService__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -504,16 +502,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 var HomePage = /** @class */ (function () {
-    function HomePage(app, menu, navCtrl, vibration, geolocation, nativeStorage, stmp, loadingCtrl, device) {
+    function HomePage(app, menu, navCtrl, nativeStorage, stmp, loadingCtrl, device) {
         var _this = this;
         this.app = app;
         this.menu = menu;
         this.navCtrl = navCtrl;
-        this.vibration = vibration;
-        this.geolocation = geolocation;
         this.nativeStorage = nativeStorage;
         this.stmp = stmp;
         this.loadingCtrl = loadingCtrl;
@@ -546,55 +540,21 @@ var HomePage = /** @class */ (function () {
         menu.enable(true);
         this.nativeStorage.getItem('TimeStampUser').then(function (data) {
             _this.userdetail = data;
-            // alert(JSON.stringify(this.userdetail));
             _this.stampdata.email = _this.userdetail.employeeprofile.email;
             _this.callCheckTimeAtt();
-            // this.stmp.chkstamp(this.userdetail._id).then((res) => {
-            //   // alert(JSON.stringify(res));
-            //   if (res.status == "Not checkin") {
-            //     { }
-            //   } else if (res.status == "checkin only") {
-            //     this.dataToday.dateTimeIn = res.data.dateTimeIn;
-            //     // this.dataToday.dateTimeOut = res.data.dateTimeOut;
-            //     // let dd = new Date(res.data.dateTimeIn);
-            //     // let dateLastStamp = dd.getDate();
-            //     // let dd2 = new Date(this.dateTimeNow);
-            //     // let Today = dd2.getDate();
-            //     // if (dateLastStamp != Today) {
-            //     //   this.dataToday.dateTimeIn = null;
-            //     //   this.dataToday.dateTimeOut = null;
-            //     //   // this.loader.dismiss();
-            //     // }
-            //   } else if (res.status == "checkined today") {
-            //     this.dataToday.dateTimeIn = res.data.dateTimeIn;
-            //     this.dataToday.dateTimeOut = res.data.dateTimeOut;
-            //     // let dd = new Date(res.data.dateTimeIn);
-            //     // let dateLastStamp = dd.getDate();
-            //     // let dd2 = new Date(this.dateTimeNow);
-            //     // let Today = dd2.getDate();
-            //     // if (dateLastStamp != Today) {
-            //     //   this.dataToday.dateTimeIn = null;
-            //     //   this.dataToday.dateTimeOut = null;
-            //     // }
-            //   }
-            //   // this.loader.present();
-            //   // alert('date from stmp : ' + dateLastStamp + ', DateToday : ' + Today);
-            //   // alert(JSON.stringify(res.data.dateTimeIn) + " : " + JSON.stringify(res.data.dateTimeOut));
-            //   // alert(JSON.stringify(this.dataToday.dateTimeIn) + " : " + JSON.stringify(this.dataToday.dateTimeOut));
-            //   // this.loader.dismiss();
-            // }).catch((err) => {
-            //   this.dataToday.dateTimeIn = null;
-            //   this.dataToday.dateTimeOut = null;
-            //   // this.loader.dismiss();
-            // });
-            //Mick Add test
         }, function (error) { return _this.rootPage = __WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* Register */]; });
+        //for chrome//
+        // this.userdetail = {
+        //   _id: '5b18e324fc455f2e00887b71'
+        // };
+        // this.stampdata.email = 'popveera@hotmail.com';
+        // this.callCheckTimeAtt();
+        //
     }
     HomePage.prototype.callCheckTimeAtt = function () {
         var _this = this;
         this.stmp.chkstamp(this.userdetail._id).then(function (res) {
             if (res.status == "Not checkin") {
-                { }
             }
             else if (res.status == "checkin only") {
                 _this.dataToday.dateTimeIn = res.data.dateTimeIn;
@@ -610,39 +570,10 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.ionViewDidEnter = function () {
         var _this = this;
-        // this.nativeStorage.getItem('StampToday').then(
-        //   data => this.dataToday = data,
-        //   error => { }
-        // );
         setInterval(function () {
             _this.dateTimeNow = Date();
         }, 1000);
         this.callCheckTimeAtt();
-        // this.nativeStorage.getItem('TimeStampUser').then(
-        //   data => this.userdetail = data,
-        //   error => this.rootPage = TabsPage
-        // );
-        // this.stmp.chkstamp(this.userdetail._id).then((res) => {
-        //   this.dataToday.dateTimeIn = res.data.dateTimeIn;
-        //   this.dataToday.dateTimeOut = res.data.dateTimeOut;
-        //   // this.loader.present();
-        //   // let dd = new Date(res.data.dateTimeIn);
-        //   // let dateLastStamp = dd.getDate();
-        //   // let dd2 = new Date(this.dateTimeNow);
-        //   // let Today = dd2.getDate();
-        //   // if (dateLastStamp != Today) {
-        //   //   this.dataToday.dateTimeIn = null;
-        //   //   this.dataToday.dateTimeOut = null;
-        //   // }
-        //   // alert('date from stmp : ' + dateLastStamp + ', DateToday : ' + Today);
-        //   // alert(JSON.stringify(res.data.dateTimeIn) + " : " + JSON.stringify(res.data.dateTimeOut));
-        //   // alert(JSON.stringify(this.dataToday.dateTimeIn) + " : " + JSON.stringify(this.dataToday.dateTimeOut));
-        //   // this.loader.dismiss();
-        // }).catch((err) => {
-        //   this.dataToday.dateTimeIn = null;
-        //   this.dataToday.dateTimeOut = null;
-        //   // this.loader.dismiss();
-        // });
     };
     ;
     HomePage.prototype.showMenu = function () {
@@ -651,20 +582,20 @@ var HomePage = /** @class */ (function () {
     ;
     HomePage.prototype.stampFn = function () {
         var _this = this;
+        this.loader.present();
         this.stmp.chkstamp(this.userdetail._id).then(function (res) {
             if (res.status === '' || res.status === 'Not checkin') {
+                _this.stampdata.user = _this.userdetail._id;
                 _this.stampdata.dateTimeIn = new Date();
                 _this.stampdata.locationIn.lat = _this.getlocation.lat;
                 _this.stampdata.locationIn.lng = _this.getlocation.lng;
                 _this.stmp.stampIn(_this.stampdata).then(function (data) {
                     _this.loader.dismiss();
-                    _this.nativeStorage.setItem('StampToday', data).then(function () { return _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__stamp_detail_stamp_detail__["a" /* StampDetail */]); }, 
-                    // alert('Stamptoday Data : ' + JSON.stringify(data)); 
-                    function (error) { return alert('Error cannot setitem stamptoday! : ' + JSON.stringify(error)); });
+                    _this.nativeStorage.setItem('StampToday', data);
+                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__stamp_detail_stamp_detail__["a" /* StampDetail */]);
                 }).catch(function (err) {
                     _this.loader.dismiss();
-                    var testErr = JSON.parse(err._body);
-                    alert('Check in error! : ' + testErr.message);
+                    alert(JSON.stringify(err));
                 });
             }
             else if (res.status === 'checkin only') {
@@ -693,41 +624,22 @@ var HomePage = /** @class */ (function () {
     };
     ;
     HomePage.prototype.openPage_stampDetail = function () {
-        var _this = this;
-        this.loader.present();
-        this.vibration.vibrate(200);
-        var GeolocationOptions = { timeout: 5000 };
-        this.geolocation.getCurrentPosition(GeolocationOptions).then(function (resp) {
-            _this.getlocation.lat = resp.coords.latitude;
-            _this.getlocation.lng = resp.coords.longitude;
-            // alert('LC : ' + JSON.stringify(resp.coords.latitude) + " : " + JSON.stringify(resp.coords.longitude));
-            if (resp.coords.latitude && resp.coords.longitude) {
-                _this.stampFn();
-            }
-        }).catch(function (error) {
-            _this.loader.dismiss();
-            alert("Cannot stamp!! \nPlease turn on GPS or Location service");
-            // let testErr = JSON.parse(error._body);
-            // alert('Error getting location : ' + testErr.message);
-        });
+        this.getlocation.lat = '13.9337425';
+        this.getlocation.lng = '100.7142658';
+        this.stampFn();
     };
-    ;
     HomePage.prototype.openPage_login = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__login_login__["a" /* Login */]);
     };
-    ;
     HomePage.prototype.openPage_regis = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* Register */]);
     };
-    ;
     HomePage.prototype.openPage_leave = function () {
         this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_5__leave_leave__["a" /* Leave */]);
     };
-    ;
     HomePage.prototype.openPage_profile = function () {
         this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_6__profile_profile__["a" /* Profile */]);
     };
-    ;
     HomePage.prototype.logout = function () {
         var _this = this;
         this.nativeStorage.clear();
@@ -736,23 +648,21 @@ var HomePage = /** @class */ (function () {
             _this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_2__login_login__["a" /* Login */]);
         }, 100);
     };
-    ;
     HomePage.prototype.doClick = function () {
         this.menu.open();
     };
-    ;
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */])
     ], HomePage.prototype, "content", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <!--<ion-toolbar>-->\n        <ion-title titleNew>Time Attendance</ion-title>\n        <ion-buttons start>\n            <button ion-button icon-only color="royal" menuToggle><ion-icon name="menu"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-buttons end>\n            <button ion-button clear style="width:44px;" no-padding>\n            </button>\n        </ion-buttons>\n        <!--</ion-toolbar>-->\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid>\n        <ion-row text-center>\n            <ion-col ion-text color="danger" tsize>\n                {{dateTimeNow | date: "shortTime"}}\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <ion-note>{{dateTimeNow | date: "dd MMM yyyy"}}</ion-note>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <img (press)="openPage_stampDetail()" src="img/fingerprint.png" fgprintImg>\n            </ion-col>\n        </ion-row>\n        <ion-row padding-top>\n            <ion-col col-12 text-center [hidden]="!dataToday.dateTimeIn">\n                <span ng-if="dataToday.dateTimeIn"><ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}</span>\n                <span ng-if="dataToday.dateTimeOut"><ion-icon name="md-arrow-dropleft-circle" iconinList2 ng-if="dataToday.dateTimeOut"></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<ion-menu [content]="content">\n    <ion-header>\n        <ion-toolbar>\n            <ion-title>Menu</ion-title>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-list>\n            <button ion-item (click)="openPage_leave()">\n                <ion-icon name="ios-alarm" padding-right menuIcon></ion-icon>\n          Leave\n        </button>\n\n            <button ion-item (click)="openPage_profile()">\n                <ion-icon name="md-person" padding-right menuIcon></ion-icon>\n          Profile\n        </button>\n            <button ion-item (click)="logout()">\n                <ion-icon name="md-log-out" padding-right menuIcon></ion-icon>\n          Log Out\n        </button>\n        </ion-list>\n    </ion-content>\n</ion-menu>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <!--<ion-toolbar>-->\n        <ion-title titleNew>Time Attendance</ion-title>\n        <ion-buttons start>\n            <button ion-button icon-only color="royal" menuToggle><ion-icon name="menu"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-buttons end>\n            <button ion-button clear style="width:44px;" no-padding>\n            </button>\n        </ion-buttons>\n        <!--</ion-toolbar>-->\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid>\n        <ion-row text-center>\n            <ion-col ion-text color="danger" tsize>\n                {{dateTimeNow | date: "shortTime"}}\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <ion-note>{{dateTimeNow | date: "dd MMM yyyy"}}</ion-note>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <img (press)="openPage_stampDetail()" src="img/fingerprint.png" fgprintImg>\n            </ion-col>\n        </ion-row>\n        <ion-row padding-top>\n            <ion-col col-12 text-center [hidden]="!dataToday.dateTimeIn">\n                <span ng-if="dataToday.dateTimeIn"><ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}</span>\n                <span ng-if="dataToday.dateTimeOut"><ion-icon name="md-arrow-dropleft-circle" iconinList2 ng-if="dataToday.dateTimeOut"></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<ion-menu [content]="content">\n    <ion-header>\n        <ion-toolbar>\n            <ion-title>Menu</ion-title>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-list>\n            <button ion-item (click)="openPage_leave()">\n                <ion-icon name="ios-alarm" padding-right menuIcon></ion-icon>\n          Leave\n        </button>\n\n            <button ion-item (click)="openPage_profile()">\n                <ion-icon name="md-person" padding-right menuIcon></ion-icon>\n          Profile\n        </button>\n            <button ion-item (click)="logout()">\n                <ion-icon name="md-log-out" padding-right menuIcon></ion-icon>\n          Log Out\n        </button>\n        </ion-list>\n    </ion-content>\n</ion-menu>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_vibration__["a" /* Vibration */],
-            __WEBPACK_IMPORTED_MODULE_8__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_9__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_11__service_StampService__["a" /* StampService */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_9__service_StampService__["a" /* StampService */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_10__ionic_native_device__["a" /* Device */]])
+            __WEBPACK_IMPORTED_MODULE_8__ionic_native_device__["a" /* Device */]])
     ], HomePage);
     return HomePage;
 }());
@@ -761,14 +671,14 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 361:
+/***/ 359:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_module__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_module__ = __webpack_require__(379);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* enableProdMode */])();
@@ -778,17 +688,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 37:
+/***/ 36:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StampService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(309);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(96);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -800,156 +706,103 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
 var StampService = /** @class */ (function () {
+    // apiUrl: string = 'https://time-attendance-test.herokuapp.com/';
     function StampService(http) {
         this.http = http;
         this.apiUrl = 'https://time-attendance.herokuapp.com/';
-        // apiUrl: string = 'https://time-attendance-test.herokuapp.com/';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
-            'Content-Type': 'application/json'
-        });
-        this.optionsURL = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
-            headers: this.headers
-        });
     }
+    StampService.prototype.errHandler = function (err) {
+        return Promise.reject(err.message || err);
+    };
     StampService.prototype.stampIn = function (stampdata) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post(_this.apiUrl + 'api/checkins', stampdata, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.post(this.apiUrl + 'api/checkins', stampdata)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     StampService.prototype.stampOut = function (stampdata) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.put(_this.apiUrl + 'api/checkins/' + stampdata._id, stampdata, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.put(this.apiUrl + 'api/checkins/' + stampdata._id, stampdata)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     StampService.prototype.chkstamp = function (userid) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.get(_this.apiUrl + 'api/checkins/userid/' + userid).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.get(this.apiUrl + 'api/checkins/userid/' + userid)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     StampService.prototype.createLeave = function (stampdata) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post(_this.apiUrl + 'api/leaves', stampdata, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.post(this.apiUrl + 'api/leaves', stampdata)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     StampService.prototype.editLeave = function (leaveEditData) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.put(_this.apiUrl + 'api/leaves/' + leaveEditData._id, leaveEditData, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.put(this.apiUrl + 'api/leaves/' + leaveEditData._id, leaveEditData)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     StampService.prototype.getLeaveList = function (user) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.get(_this.apiUrl + 'api/leaves/userid/' + user._id, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.get(this.apiUrl + 'api/leaves/userid/' + user._id)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     StampService.prototype.getworkStampList = function (yearmth, user) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.get(_this.apiUrl + 'api/checkins/yearmonth&userid/' + yearmth + '/' + user._id, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.get(this.apiUrl + 'api/checkins/yearmonth&userid/' + yearmth + '/' + user._id)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     StampService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], StampService);
     return StampService;
+    var _a;
 }());
 
 //# sourceMappingURL=StampService.js.map
 
 /***/ }),
 
-/***/ 383:
+/***/ 379:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(480);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_datepicker_ionic2__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_datepicker_ionic2__ = __webpack_require__(482);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_tabs_tabs__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_stamp_detail_stamp_detail__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_stamp_detail_stamp_detail__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_register_register__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_leave_leave__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_leavelist_leavelist__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_profile_profile__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_history_history__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_request_request__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_leave_detail_leave_detail__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_status_bar__ = __webpack_require__(356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_splash_screen__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_http__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_vibration__ = __webpack_require__(313);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_device__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_http__ = __webpack_require__(486);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_leave_leave__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_leavelist_leavelist__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_profile_profile__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_history_history__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_request_request__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_leave_detail_leave_detail__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_status_bar__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_splash_screen__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_common_http__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_vibration__ = __webpack_require__(487);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_device__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_http__ = __webpack_require__(488);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_geolocation__ = __webpack_require__(314);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_network__ = __webpack_require__(315);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_unique_device_id__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_geolocation__ = __webpack_require__(489);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_network__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_unique_device_id__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_date_picker__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__service_AuthenService__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__service_StampService__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__service_StampService__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1006,12 +859,12 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_http__["c" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/history/history.module#HistoryModule', name: 'History', segment: 'history', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/leave/leave.module#LeaveModule', name: 'Leave', segment: 'leave', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/leave-detail/leave-detail.module#LeaveDetailPageModule', name: 'LeaveDetailPage', segment: 'leave-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/leave/leave.module#LeaveModule', name: 'Leave', segment: 'leave', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/leavelist/leavelist.module#LeavelistModule', name: 'Leavelist', segment: 'leavelist', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginModule', name: 'Login', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfileModule', name: 'Profile', segment: 'profile', priority: 'low', defaultHistory: [] },
@@ -1061,256 +914,256 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 436:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 186,
-	"./af.js": 186,
-	"./ar": 187,
-	"./ar-dz": 188,
-	"./ar-dz.js": 188,
-	"./ar-kw": 189,
-	"./ar-kw.js": 189,
-	"./ar-ly": 190,
-	"./ar-ly.js": 190,
-	"./ar-ma": 191,
-	"./ar-ma.js": 191,
-	"./ar-sa": 192,
-	"./ar-sa.js": 192,
-	"./ar-tn": 193,
-	"./ar-tn.js": 193,
-	"./ar.js": 187,
-	"./az": 194,
-	"./az.js": 194,
-	"./be": 195,
-	"./be.js": 195,
-	"./bg": 196,
-	"./bg.js": 196,
-	"./bm": 197,
-	"./bm.js": 197,
-	"./bn": 198,
-	"./bn.js": 198,
-	"./bo": 199,
-	"./bo.js": 199,
-	"./br": 200,
-	"./br.js": 200,
-	"./bs": 201,
-	"./bs.js": 201,
-	"./ca": 202,
-	"./ca.js": 202,
-	"./cs": 203,
-	"./cs.js": 203,
-	"./cv": 204,
-	"./cv.js": 204,
-	"./cy": 205,
-	"./cy.js": 205,
-	"./da": 206,
-	"./da.js": 206,
-	"./de": 207,
-	"./de-at": 208,
-	"./de-at.js": 208,
-	"./de-ch": 209,
-	"./de-ch.js": 209,
-	"./de.js": 207,
-	"./dv": 210,
-	"./dv.js": 210,
-	"./el": 211,
-	"./el.js": 211,
-	"./en-au": 212,
-	"./en-au.js": 212,
-	"./en-ca": 213,
-	"./en-ca.js": 213,
-	"./en-gb": 214,
-	"./en-gb.js": 214,
-	"./en-ie": 215,
-	"./en-ie.js": 215,
-	"./en-il": 216,
-	"./en-il.js": 216,
-	"./en-nz": 217,
-	"./en-nz.js": 217,
-	"./eo": 218,
-	"./eo.js": 218,
-	"./es": 219,
-	"./es-do": 220,
-	"./es-do.js": 220,
-	"./es-us": 221,
-	"./es-us.js": 221,
-	"./es.js": 219,
-	"./et": 222,
-	"./et.js": 222,
-	"./eu": 223,
-	"./eu.js": 223,
-	"./fa": 224,
-	"./fa.js": 224,
-	"./fi": 225,
-	"./fi.js": 225,
-	"./fo": 226,
-	"./fo.js": 226,
-	"./fr": 227,
-	"./fr-ca": 228,
-	"./fr-ca.js": 228,
-	"./fr-ch": 229,
-	"./fr-ch.js": 229,
-	"./fr.js": 227,
-	"./fy": 230,
-	"./fy.js": 230,
-	"./gd": 231,
-	"./gd.js": 231,
-	"./gl": 232,
-	"./gl.js": 232,
-	"./gom-latn": 233,
-	"./gom-latn.js": 233,
-	"./gu": 234,
-	"./gu.js": 234,
-	"./he": 235,
-	"./he.js": 235,
-	"./hi": 236,
-	"./hi.js": 236,
-	"./hr": 237,
-	"./hr.js": 237,
-	"./hu": 238,
-	"./hu.js": 238,
-	"./hy-am": 239,
-	"./hy-am.js": 239,
-	"./id": 240,
-	"./id.js": 240,
-	"./is": 241,
-	"./is.js": 241,
-	"./it": 242,
-	"./it.js": 242,
-	"./ja": 243,
-	"./ja.js": 243,
-	"./jv": 244,
-	"./jv.js": 244,
-	"./ka": 245,
-	"./ka.js": 245,
-	"./kk": 246,
-	"./kk.js": 246,
-	"./km": 247,
-	"./km.js": 247,
-	"./kn": 248,
-	"./kn.js": 248,
-	"./ko": 249,
-	"./ko.js": 249,
-	"./ky": 250,
-	"./ky.js": 250,
-	"./lb": 251,
-	"./lb.js": 251,
-	"./lo": 252,
-	"./lo.js": 252,
-	"./lt": 253,
-	"./lt.js": 253,
-	"./lv": 254,
-	"./lv.js": 254,
-	"./me": 255,
-	"./me.js": 255,
-	"./mi": 256,
-	"./mi.js": 256,
-	"./mk": 257,
-	"./mk.js": 257,
-	"./ml": 258,
-	"./ml.js": 258,
-	"./mn": 259,
-	"./mn.js": 259,
-	"./mr": 260,
-	"./mr.js": 260,
-	"./ms": 261,
-	"./ms-my": 262,
-	"./ms-my.js": 262,
-	"./ms.js": 261,
-	"./mt": 263,
-	"./mt.js": 263,
-	"./my": 264,
-	"./my.js": 264,
-	"./nb": 265,
-	"./nb.js": 265,
-	"./ne": 266,
-	"./ne.js": 266,
-	"./nl": 267,
-	"./nl-be": 268,
-	"./nl-be.js": 268,
-	"./nl.js": 267,
-	"./nn": 269,
-	"./nn.js": 269,
-	"./pa-in": 270,
-	"./pa-in.js": 270,
-	"./pl": 271,
-	"./pl.js": 271,
-	"./pt": 272,
-	"./pt-br": 273,
-	"./pt-br.js": 273,
-	"./pt.js": 272,
-	"./ro": 274,
-	"./ro.js": 274,
-	"./ru": 275,
-	"./ru.js": 275,
-	"./sd": 276,
-	"./sd.js": 276,
-	"./se": 277,
-	"./se.js": 277,
-	"./si": 278,
-	"./si.js": 278,
-	"./sk": 279,
-	"./sk.js": 279,
-	"./sl": 280,
-	"./sl.js": 280,
-	"./sq": 281,
-	"./sq.js": 281,
-	"./sr": 282,
-	"./sr-cyrl": 283,
-	"./sr-cyrl.js": 283,
-	"./sr.js": 282,
-	"./ss": 284,
-	"./ss.js": 284,
-	"./sv": 285,
-	"./sv.js": 285,
-	"./sw": 286,
-	"./sw.js": 286,
-	"./ta": 287,
-	"./ta.js": 287,
-	"./te": 288,
-	"./te.js": 288,
-	"./tet": 289,
-	"./tet.js": 289,
-	"./tg": 290,
-	"./tg.js": 290,
-	"./th": 291,
-	"./th.js": 291,
-	"./tl-ph": 292,
-	"./tl-ph.js": 292,
-	"./tlh": 293,
-	"./tlh.js": 293,
-	"./tr": 294,
-	"./tr.js": 294,
-	"./tzl": 295,
-	"./tzl.js": 295,
-	"./tzm": 296,
-	"./tzm-latn": 297,
-	"./tzm-latn.js": 297,
-	"./tzm.js": 296,
-	"./ug-cn": 298,
-	"./ug-cn.js": 298,
-	"./uk": 299,
-	"./uk.js": 299,
-	"./ur": 300,
-	"./ur.js": 300,
-	"./uz": 301,
-	"./uz-latn": 302,
-	"./uz-latn.js": 302,
-	"./uz.js": 301,
-	"./vi": 303,
-	"./vi.js": 303,
-	"./x-pseudo": 304,
-	"./x-pseudo.js": 304,
-	"./yo": 305,
-	"./yo.js": 305,
-	"./zh-cn": 306,
-	"./zh-cn.js": 306,
-	"./zh-hk": 307,
-	"./zh-hk.js": 307,
-	"./zh-tw": 308,
-	"./zh-tw.js": 308
+	"./af": 187,
+	"./af.js": 187,
+	"./ar": 188,
+	"./ar-dz": 189,
+	"./ar-dz.js": 189,
+	"./ar-kw": 190,
+	"./ar-kw.js": 190,
+	"./ar-ly": 191,
+	"./ar-ly.js": 191,
+	"./ar-ma": 192,
+	"./ar-ma.js": 192,
+	"./ar-sa": 193,
+	"./ar-sa.js": 193,
+	"./ar-tn": 194,
+	"./ar-tn.js": 194,
+	"./ar.js": 188,
+	"./az": 195,
+	"./az.js": 195,
+	"./be": 196,
+	"./be.js": 196,
+	"./bg": 197,
+	"./bg.js": 197,
+	"./bm": 198,
+	"./bm.js": 198,
+	"./bn": 199,
+	"./bn.js": 199,
+	"./bo": 200,
+	"./bo.js": 200,
+	"./br": 201,
+	"./br.js": 201,
+	"./bs": 202,
+	"./bs.js": 202,
+	"./ca": 203,
+	"./ca.js": 203,
+	"./cs": 204,
+	"./cs.js": 204,
+	"./cv": 205,
+	"./cv.js": 205,
+	"./cy": 206,
+	"./cy.js": 206,
+	"./da": 207,
+	"./da.js": 207,
+	"./de": 208,
+	"./de-at": 209,
+	"./de-at.js": 209,
+	"./de-ch": 210,
+	"./de-ch.js": 210,
+	"./de.js": 208,
+	"./dv": 211,
+	"./dv.js": 211,
+	"./el": 212,
+	"./el.js": 212,
+	"./en-au": 213,
+	"./en-au.js": 213,
+	"./en-ca": 214,
+	"./en-ca.js": 214,
+	"./en-gb": 215,
+	"./en-gb.js": 215,
+	"./en-ie": 216,
+	"./en-ie.js": 216,
+	"./en-il": 217,
+	"./en-il.js": 217,
+	"./en-nz": 218,
+	"./en-nz.js": 218,
+	"./eo": 219,
+	"./eo.js": 219,
+	"./es": 220,
+	"./es-do": 221,
+	"./es-do.js": 221,
+	"./es-us": 222,
+	"./es-us.js": 222,
+	"./es.js": 220,
+	"./et": 223,
+	"./et.js": 223,
+	"./eu": 224,
+	"./eu.js": 224,
+	"./fa": 225,
+	"./fa.js": 225,
+	"./fi": 226,
+	"./fi.js": 226,
+	"./fo": 227,
+	"./fo.js": 227,
+	"./fr": 228,
+	"./fr-ca": 229,
+	"./fr-ca.js": 229,
+	"./fr-ch": 230,
+	"./fr-ch.js": 230,
+	"./fr.js": 228,
+	"./fy": 231,
+	"./fy.js": 231,
+	"./gd": 232,
+	"./gd.js": 232,
+	"./gl": 233,
+	"./gl.js": 233,
+	"./gom-latn": 234,
+	"./gom-latn.js": 234,
+	"./gu": 235,
+	"./gu.js": 235,
+	"./he": 236,
+	"./he.js": 236,
+	"./hi": 237,
+	"./hi.js": 237,
+	"./hr": 238,
+	"./hr.js": 238,
+	"./hu": 239,
+	"./hu.js": 239,
+	"./hy-am": 240,
+	"./hy-am.js": 240,
+	"./id": 241,
+	"./id.js": 241,
+	"./is": 242,
+	"./is.js": 242,
+	"./it": 243,
+	"./it.js": 243,
+	"./ja": 244,
+	"./ja.js": 244,
+	"./jv": 245,
+	"./jv.js": 245,
+	"./ka": 246,
+	"./ka.js": 246,
+	"./kk": 247,
+	"./kk.js": 247,
+	"./km": 248,
+	"./km.js": 248,
+	"./kn": 249,
+	"./kn.js": 249,
+	"./ko": 250,
+	"./ko.js": 250,
+	"./ky": 251,
+	"./ky.js": 251,
+	"./lb": 252,
+	"./lb.js": 252,
+	"./lo": 253,
+	"./lo.js": 253,
+	"./lt": 254,
+	"./lt.js": 254,
+	"./lv": 255,
+	"./lv.js": 255,
+	"./me": 256,
+	"./me.js": 256,
+	"./mi": 257,
+	"./mi.js": 257,
+	"./mk": 258,
+	"./mk.js": 258,
+	"./ml": 259,
+	"./ml.js": 259,
+	"./mn": 260,
+	"./mn.js": 260,
+	"./mr": 261,
+	"./mr.js": 261,
+	"./ms": 262,
+	"./ms-my": 263,
+	"./ms-my.js": 263,
+	"./ms.js": 262,
+	"./mt": 264,
+	"./mt.js": 264,
+	"./my": 265,
+	"./my.js": 265,
+	"./nb": 266,
+	"./nb.js": 266,
+	"./ne": 267,
+	"./ne.js": 267,
+	"./nl": 268,
+	"./nl-be": 269,
+	"./nl-be.js": 269,
+	"./nl.js": 268,
+	"./nn": 270,
+	"./nn.js": 270,
+	"./pa-in": 271,
+	"./pa-in.js": 271,
+	"./pl": 272,
+	"./pl.js": 272,
+	"./pt": 273,
+	"./pt-br": 274,
+	"./pt-br.js": 274,
+	"./pt.js": 273,
+	"./ro": 275,
+	"./ro.js": 275,
+	"./ru": 276,
+	"./ru.js": 276,
+	"./sd": 277,
+	"./sd.js": 277,
+	"./se": 278,
+	"./se.js": 278,
+	"./si": 279,
+	"./si.js": 279,
+	"./sk": 280,
+	"./sk.js": 280,
+	"./sl": 281,
+	"./sl.js": 281,
+	"./sq": 282,
+	"./sq.js": 282,
+	"./sr": 283,
+	"./sr-cyrl": 284,
+	"./sr-cyrl.js": 284,
+	"./sr.js": 283,
+	"./ss": 285,
+	"./ss.js": 285,
+	"./sv": 286,
+	"./sv.js": 286,
+	"./sw": 287,
+	"./sw.js": 287,
+	"./ta": 288,
+	"./ta.js": 288,
+	"./te": 289,
+	"./te.js": 289,
+	"./tet": 290,
+	"./tet.js": 290,
+	"./tg": 291,
+	"./tg.js": 291,
+	"./th": 292,
+	"./th.js": 292,
+	"./tl-ph": 293,
+	"./tl-ph.js": 293,
+	"./tlh": 294,
+	"./tlh.js": 294,
+	"./tr": 295,
+	"./tr.js": 295,
+	"./tzl": 296,
+	"./tzl.js": 296,
+	"./tzm": 297,
+	"./tzm-latn": 298,
+	"./tzm-latn.js": 298,
+	"./tzm.js": 297,
+	"./ug-cn": 299,
+	"./ug-cn.js": 299,
+	"./uk": 300,
+	"./uk.js": 300,
+	"./ur": 301,
+	"./ur.js": 301,
+	"./uz": 302,
+	"./uz-latn": 303,
+	"./uz-latn.js": 303,
+	"./uz.js": 302,
+	"./vi": 304,
+	"./vi.js": 304,
+	"./x-pseudo": 305,
+	"./x-pseudo.js": 305,
+	"./yo": 306,
+	"./yo.js": 306,
+	"./zh-cn": 307,
+	"./zh-cn.js": 307,
+	"./zh-hk": 308,
+	"./zh-hk.js": 308,
+	"./zh-tw": 309,
+	"./zh-tw.js": 309
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -1326,19 +1179,19 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 436;
+webpackContext.id = 432;
 
 /***/ }),
 
-/***/ 480:
+/***/ 481:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_register_register__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_storage__ = __webpack_require__(17);
@@ -1357,7 +1210,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import { LeaveDetailPage } from '../pages/leave-detail/leave-detail';
 
 var MyApp = /** @class */ (function () {
     function MyApp(app, platform, statusBar, splashScreen, nativeStorage) {
@@ -1371,14 +1223,11 @@ var MyApp = /** @class */ (function () {
             }, 100);
             _this.nativeStorage.getItem('TimeStampUser').then(function (res) { return _this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */]; }, function (error) {
                 return _this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_register_register__["a" /* Register */];
-            }
-            //  this.rootPage = TabsPage
-            // this.rootPage = LeaveDetailPage;
-            );
+            });
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_storage__["a" /* NativeStorage */]])
     ], MyApp);
@@ -1395,11 +1244,7 @@ var MyApp = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthenService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(309);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(96);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1411,74 +1256,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
 var AuthenService = /** @class */ (function () {
+    // apiUrl: string = 'https://time-attendance-test.herokuapp.com/';
     function AuthenService(http) {
         this.http = http;
         this.apiUrl = 'https://time-attendance.herokuapp.com/';
-        // apiUrl: string = 'https://time-attendance-test.herokuapp.com/';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
-            'Content-Type': 'application/json'
-        });
-        this.optionsURL = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
-            headers: this.headers
-        });
     }
+    AuthenService.prototype.errHandler = function (err) {
+        return Promise.reject(err.message || err);
+    };
     AuthenService.prototype.getEmpDataApi = function (email) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.get(_this.apiUrl + 'api/Employeeprofile/email/' + email).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.get(this.apiUrl + 'api/Employeeprofile/email/' + email)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
     AuthenService.prototype.signUp = function (register) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post(_this.apiUrl + 'api/auth/signup', register, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.post(this.apiUrl + 'api/auth/signup', register)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     AuthenService.prototype.updateProfile = function (profile) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.put(_this.apiUrl + 'api/employeeprofiles/' + profile._id, profile, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.put(this.apiUrl + 'api/employeeprofiles/' + profile._id, profile)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     AuthenService.prototype.signIn = function (signin) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post(_this.apiUrl + 'api/auth/signin', signin, _this.optionsURL).map(function (res) {
-                return res.json();
-            }).subscribe(function (data) {
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
-        });
+        return this.http.post(this.apiUrl + 'api/auth/signin', signin)
+            .toPromise()
+            .then(function (res) { return res; })
+            .catch(this.errHandler);
     };
-    ;
     AuthenService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], AuthenService);
     return AuthenService;
 }());
@@ -1493,11 +1306,11 @@ var AuthenService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__history_history__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__request_request__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__history_history__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__request_request__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__ = __webpack_require__(315);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__ = __webpack_require__(313);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1535,7 +1348,7 @@ var TabsPage = /** @class */ (function () {
         });
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/tabs/tabs.html"*/'<ion-tabs>\n    <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="md-swap"></ion-tab>\n    <ion-tab [root]="tab2Root" tabTitle="History" tabIcon="paper"></ion-tab>\n    <ion-tab [root]="tab3Root" tabTitle="Request" tabIcon="list-box"></ion-tab>\n    <!--<ion-tab [root]="tab3Root" tabTitle="Request" tabIcon="list-box"></ion-tab>-->\n</ion-tabs>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/tabs/tabs.html"*/'<ion-tabs>\n    <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="md-swap"></ion-tab>\n    <ion-tab [root]="tab2Root" tabTitle="History" tabIcon="paper"></ion-tab>\n    <ion-tab [root]="tab3Root" tabTitle="Request" tabIcon="list-box"></ion-tab>\n    <!--<ion-tab [root]="tab3Root" tabTitle="Request" tabIcon="list-box"></ion-tab>-->\n</ion-tabs>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/tabs/tabs.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* ToastController */]])
     ], TabsPage);
@@ -1554,14 +1367,11 @@ var TabsPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_device__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__login_login__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__service_AuthenService__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_unique_device_id__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_device__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_AuthenService__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_storage__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_unique_device_id__ = __webpack_require__(98);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1574,18 +1384,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
- //Headers
-
 
 
 
 
 
 var Register = /** @class */ (function () {
-    function Register(uniqueDeviceID, http, app, navCtrl, navParams, athService, device, nativeStorage, loadingCtrl) {
+    function Register(uniqueDeviceID, app, navCtrl, navParams, athService, device, nativeStorage, loadingCtrl) {
         var _this = this;
         this.uniqueDeviceID = uniqueDeviceID;
-        this.http = http;
         this.app = app;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -1606,7 +1413,7 @@ var Register = /** @class */ (function () {
         }
     }
     Register.prototype.gotoLogin = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_6__login_login__["a" /* Login */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_4__login_login__["a" /* Login */]);
     };
     Register.prototype.register = function (email) {
         var _this = this;
@@ -1619,7 +1426,7 @@ var Register = /** @class */ (function () {
                         lastName: '@' + email.split('@')[1],
                         email: email,
                         username: email.split('@')[0],
-                        password: _this.deviceUUID.substr(0, 10) + '#Pass',
+                        password: _this.deviceUUID ? _this.deviceUUID.substr(0, 10) + '#Pass' : '',
                         deviceID: _this.deviceUUID,
                         employeeprofile: data.employees[0]
                     };
@@ -1628,9 +1435,8 @@ var Register = /** @class */ (function () {
                         _this.loader.dismiss();
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
                     }, function (err) {
-                        var testErr = JSON.parse(err._body);
                         _this.loader.dismiss();
-                        alert(testErr.message);
+                        alert(JSON.stringify(err));
                     });
                 }
                 else {
@@ -1638,9 +1444,8 @@ var Register = /** @class */ (function () {
                     alert("This Email is not Employee!!");
                 }
             }, function (err) {
-                var testErr = JSON.parse(err._body);
                 _this.loader.dismiss();
-                alert(testErr.message);
+                alert(JSON.stringify(err));
             });
         }
         else {
@@ -1650,9 +1455,9 @@ var Register = /** @class */ (function () {
     };
     Register = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-register',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/register/register.html"*/'<ion-content padding>\n    <ion-grid>\n\n        <ion-row>\n            <ion-col text-center>\n                <img src="img/regpic.png" width="60%">\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col ion-text >\n                <ion-icon name="md-person-add" iconSize></ion-icon>\n                <span style="font-size:25px" colorSet>Register</span>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col>\n                <ion-list style="margin-top: 10px">\n                    <ion-item>\n                        <ion-label> <ion-icon name="mail" emailIcon></ion-icon></ion-label>\n                        <ion-input type="email" placeholder="E-mail" item-center [(ngModel)]="email"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="register(email)" buttonSize>Submit</button>\n            </ion-col>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="gotoLogin()" buttonSize>Back to Login</button>\n            </ion-col>\n        </ion-row>\n\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/register/register.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/register/register.html"*/'<ion-content padding>\n    <ion-grid>\n\n        <ion-row>\n            <ion-col text-center>\n                <img src="img/regpic.png" width="60%">\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col ion-text >\n                <ion-icon name="md-person-add" iconSize></ion-icon>\n                <span style="font-size:25px" colorSet>Register</span>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col>\n                <ion-list style="margin-top: 10px">\n                    <ion-item>\n                        <ion-label> <ion-icon name="mail" emailIcon></ion-icon></ion-label>\n                        <ion-input type="email" placeholder="E-mail" item-center [(ngModel)]="email"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="register(email)" buttonSize>Submit</button>\n            </ion-col>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="gotoLogin()" buttonSize>Back to Login</button>\n            </ion-col>\n        </ion-row>\n\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/register/register.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__ionic_native_unique_device_id__["a" /* UniqueDeviceID */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_7__service_AuthenService__["a" /* AuthenService */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_device__["a" /* Device */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__ionic_native_unique_device_id__["a" /* UniqueDeviceID */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__service_AuthenService__["a" /* AuthenService */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_device__["a" /* Device */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
     ], Register);
     return Register;
 }());
@@ -1661,7 +1466,7 @@ var Register = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 67:
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1669,7 +1474,7 @@ var Register = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_AuthenService__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1740,7 +1545,7 @@ var LeaveDetailPage = /** @class */ (function () {
     };
     LeaveDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-leave-detail',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/leave-detail/leave-detail.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Leave Detail</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-list>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">Leave Type : </ion-label>\n            <ion-input type="text" value="{{leaveDetail.leaveType}}" text-right margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">Leave Detail : </ion-label>\n            <ion-input type="text" value="{{leaveDetail.leaveDetail}}" text-right margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">From :</ion-label>\n            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveStartDateTime | date: \'dd MMM yyyy\'}}" disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">To :</ion-label>\n            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveEndDateTime | date: \'dd MMM yyyy\'}}" disabled="true"></ion-input>\n        </ion-item>\n        <ion-item [hidden]="!leaveDetail.leaveHalf">\n            <ion-label class="fontbold" style="color:black;">Leave half-day :</ion-label>\n            <ion-input type="text" text-right value="{{leaveDetail.leaveTime}} {{hr}}" margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item [hidden]="leaveDetail.leaveHalf">\n            <ion-label class="fontbold" style="color:black;">Total leave : </ion-label>\n            <ion-input type="text" text-right value="{{leaveDetail.leaveDay}} Days" margin-right disabled="true"></ion-input>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/leave-detail/leave-detail.html"*/,
+            selector: 'page-leave-detail',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave-detail/leave-detail.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Leave Detail</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-list>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">Leave Type : </ion-label>\n            <ion-input type="text" value="{{leaveDetail.leaveType}}" text-right margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">Leave Detail : </ion-label>\n            <ion-input type="text" value="{{leaveDetail.leaveDetail}}" text-right margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">From :</ion-label>\n            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveStartDateTime | date: \'dd MMM yyyy\'}}" disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">To :</ion-label>\n            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveEndDateTime | date: \'dd MMM yyyy\'}}" disabled="true"></ion-input>\n        </ion-item>\n        <ion-item [hidden]="!leaveDetail.leaveHalf">\n            <ion-label class="fontbold" style="color:black;">Leave half-day :</ion-label>\n            <ion-input type="text" text-right value="{{leaveDetail.leaveTime}} {{hr}}" margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item [hidden]="leaveDetail.leaveHalf">\n            <ion-label class="fontbold" style="color:black;">Total leave : </ion-label>\n            <ion-input type="text" text-right value="{{leaveDetail.leaveDay}} Days" margin-right disabled="true"></ion-input>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave-detail/leave-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */], __WEBPACK_IMPORTED_MODULE_4__service_AuthenService__["a" /* AuthenService */]])
     ], LeaveDetailPage);
@@ -1751,15 +1556,15 @@ var LeaveDetailPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 68:
+/***/ 67:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Leave; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__leavelist_leavelist__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__leavelist_leavelist__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_date_picker__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tabs_tabs__ = __webpack_require__(52);
@@ -1950,7 +1755,7 @@ var Leave = /** @class */ (function () {
     };
     Leave = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-leave',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/leave/leave.html"*/'<!--\n\n  Generated template for the Leave page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n    <ion-toolbar>\n\n        <ion-buttons start>\n\n            <button ion-button icon-only color="royal" (click)="openHomepage()">\n\n        <ion-icon name="home"></ion-icon>\n\n      </button>\n\n        </ion-buttons>\n\n        <ion-title>Leave</ion-title>\n\n        <ion-buttons end>\n\n            <button ion-button icon-only color="royal" (click)="openModalpage()">\n\n        <ion-icon name="ios-list"></ion-icon>\n\n      </button>\n\n        </ion-buttons>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content leaveContent>\n\n    <ion-list>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Leave Type<span dokchan>*</span> :</ion-label>\n\n            <ion-select [(ngModel)]="leaveData.leaveType" interface="popover">\n\n                <ion-option value="Sick Leave">Sick Leave</ion-option>\n\n                <ion-option value="Personal Leave">Personal Leave</ion-option>\n\n                <ion-option value="Vacation">Vacation</ion-option>\n\n                <ion-option value="Militiary Service Leave">Militiary Service Leave</ion-option>\n\n                <ion-option value="Maternity Leave">Maternity Leave</ion-option>\n\n                <ion-option value="Ordination Leave">Ordination Leave</ion-option>\n\n            </ion-select>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Leave Detail<span dokchan>*</span> :</ion-label>\n\n            <ion-input #myInput id="Remark" type="text" placeholder="Fill your leave cause..." [(ngModel)]="leaveData.leaveDetail"></ion-input>\n\n            <!--<p class="fontbold">Leave Detail<span dokchan>*</span> :</p>-->\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">From<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" type="text" value="{{localStartDate | date}}" readonly="true" text-right padding-right (click)="getDateFrom()"></ion-input>\n\n            <button ion-button clear color="dark" type="button" item-right btnCalendar>\n\n        <span><ion-icon name="calendar" iconCalender (click)="getDateFrom()"></ion-icon></span></button>\n\n\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" type="text" value="{{localEndDate | date}}" readonly="true" text-right padding-right (click)="getDateTo()"></ion-input>\n\n            <button ion-button clear color="dark" type="button" item-right btnCalendar>\n\n        <span><ion-icon name="calendar" iconCalender (click)="getDateTo()"></ion-icon></span></button>\n\n        </ion-item>\n\n        <!--<ion-item>\n\n           \n\n            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" [(ngModel)]="localStartDate" (click)="getDateFrom()"></ion-input>\n\n\n\n        </ion-item>-->\n\n\n\n\n\n\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Half-Day</ion-label>\n\n            <ion-toggle enable checked="false" color="dog" [(ngModel)]="leaveData.leaveHalf" (ionChange)="logEvent()"></ion-toggle>\n\n        </ion-item>\n\n        <ion-item [hidden]="!leaveData.leaveHalf">\n\n            <ion-label class="fontbold" style="color:black;">Leave time : </ion-label>\n\n            <ion-input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"\n\n                type="number" maxlength="2" text-center [(ngModel)]="leaveData.leaveTime"></ion-input>\n\n        </ion-item>\n\n        <ion-grid gridA>\n\n            <ion-row>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button saveBtnColor (click)="sendLeave(\'Draft\')">Draft</button>\n\n                </ion-col>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button color="royal" (click)="sendLeave(\'Request\')">Send</button>\n\n                </ion-col>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button cancelBtnColor (click)="openHomepage()">Cancel</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-grid>\n\n    </ion-list>\n\n\n\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/leave/leave.html"*/,
+            selector: 'page-leave',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave/leave.html"*/'<!--\n\n  Generated template for the Leave page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n    <ion-toolbar>\n\n        <ion-buttons start>\n\n            <button ion-button icon-only color="royal" (click)="openHomepage()">\n\n        <ion-icon name="home"></ion-icon>\n\n      </button>\n\n        </ion-buttons>\n\n        <ion-title>Leave</ion-title>\n\n        <ion-buttons end>\n\n            <button ion-button icon-only color="royal" (click)="openModalpage()">\n\n        <ion-icon name="ios-list"></ion-icon>\n\n      </button>\n\n        </ion-buttons>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content leaveContent>\n\n    <ion-list>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Leave Type<span dokchan>*</span> :</ion-label>\n\n            <ion-select [(ngModel)]="leaveData.leaveType" interface="popover">\n\n                <ion-option value="Sick Leave">Sick Leave</ion-option>\n\n                <ion-option value="Personal Leave">Personal Leave</ion-option>\n\n                <ion-option value="Vacation">Vacation</ion-option>\n\n                <ion-option value="Militiary Service Leave">Militiary Service Leave</ion-option>\n\n                <ion-option value="Maternity Leave">Maternity Leave</ion-option>\n\n                <ion-option value="Ordination Leave">Ordination Leave</ion-option>\n\n            </ion-select>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Leave Detail<span dokchan>*</span> :</ion-label>\n\n            <ion-input #myInput id="Remark" type="text" placeholder="Fill your leave cause..." [(ngModel)]="leaveData.leaveDetail"></ion-input>\n\n            <!--<p class="fontbold">Leave Detail<span dokchan>*</span> :</p>-->\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">From<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" type="text" value="{{localStartDate | date}}" readonly="true" text-right padding-right (click)="getDateFrom()"></ion-input>\n\n            <button ion-button clear color="dark" type="button" item-right btnCalendar>\n\n        <span><ion-icon name="calendar" iconCalender (click)="getDateFrom()"></ion-icon></span></button>\n\n\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" type="text" value="{{localEndDate | date}}" readonly="true" text-right padding-right (click)="getDateTo()"></ion-input>\n\n            <button ion-button clear color="dark" type="button" item-right btnCalendar>\n\n        <span><ion-icon name="calendar" iconCalender (click)="getDateTo()"></ion-icon></span></button>\n\n        </ion-item>\n\n        <!--<ion-item>\n\n           \n\n            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" [(ngModel)]="localStartDate" (click)="getDateFrom()"></ion-input>\n\n\n\n        </ion-item>-->\n\n\n\n\n\n\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Half-Day</ion-label>\n\n            <ion-toggle enable checked="false" color="dog" [(ngModel)]="leaveData.leaveHalf" (ionChange)="logEvent()"></ion-toggle>\n\n        </ion-item>\n\n        <ion-item [hidden]="!leaveData.leaveHalf">\n\n            <ion-label class="fontbold" style="color:black;">Leave time : </ion-label>\n\n            <ion-input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"\n\n                type="number" maxlength="2" text-center [(ngModel)]="leaveData.leaveTime"></ion-input>\n\n        </ion-item>\n\n        <ion-grid gridA>\n\n            <ion-row>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button saveBtnColor (click)="sendLeave(\'Draft\')">Draft</button>\n\n                </ion-col>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button color="royal" (click)="sendLeave(\'Request\')">Send</button>\n\n                </ion-col>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button cancelBtnColor (click)="openHomepage()">Cancel</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-grid>\n\n    </ion-list>\n\n\n\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave/leave.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__ionic_native_date_picker__["a" /* DatePicker */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */]])
     ], Leave);
@@ -1961,7 +1766,7 @@ var Leave = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 69:
+/***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1969,11 +1774,11 @@ var Leave = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_device__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_device__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_AuthenService__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_unique_device_id__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_unique_device_id__ = __webpack_require__(98);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2045,7 +1850,7 @@ var Login = /** @class */ (function () {
     };
     Login = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/login/login.html"*/'<!--\n  Generated template for the Login page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-content padding>\n    <ion-grid>\n\n        <ion-row>\n            <ion-col text-center>\n                <img src="img/regpic.png" width="60%">\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col ion-text style="font-size:25px">\n                 <ion-icon name="md-key" iconSize></ion-icon>\n                <span style="font-size:25px" colorSet>Login</span>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col>\n                <ion-list style="margin-top: 10px">\n                    <ion-item>\n                        <ion-label> <ion-icon name="mail" emailIcon></ion-icon></ion-label>\n                        <ion-input type="email" placeholder="E-mail" item-center [(ngModel)]="inemail"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="Login(inemail)" buttonSize>Submit</button>\n            </ion-col>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="GotoReg()" buttonSize>Register</button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/login/login.html"*/'<!--\n  Generated template for the Login page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-content padding>\n    <ion-grid>\n\n        <ion-row>\n            <ion-col text-center>\n                <img src="img/regpic.png" width="60%">\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col ion-text style="font-size:25px">\n                 <ion-icon name="md-key" iconSize></ion-icon>\n                <span style="font-size:25px" colorSet>Login</span>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col>\n                <ion-list style="margin-top: 10px">\n                    <ion-item>\n                        <ion-label> <ion-icon name="mail" emailIcon></ion-icon></ion-label>\n                        <ion-input type="email" placeholder="E-mail" item-center [(ngModel)]="inemail"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="Login(inemail)" buttonSize>Submit</button>\n            </ion-col>\n            <ion-col text-center>\n                <button ion-button color="danger" (click)="GotoReg()" buttonSize>Register</button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__ionic_native_unique_device_id__["a" /* UniqueDeviceID */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_device__["a" /* Device */], __WEBPACK_IMPORTED_MODULE_5__service_AuthenService__["a" /* AuthenService */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
     ], Login);
@@ -2056,7 +1861,7 @@ var Login = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 70:
+/***/ 69:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2127,7 +1932,7 @@ var Profile = /** @class */ (function () {
     };
     Profile = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/profile/profile.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Profile</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only>\n        <!--<ion-icon name="md-share"></ion-icon>-->\n      </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-grid>\n        <ion-row>\n            <ion-col col-12 text-center>\n                <ion-list>\n                    <ion-item>\n                        <ion-avatar item-left>\n                            <img src="{{empDetail.image}}">\n                        </ion-avatar>\n                        <h2 thaifont Headerfont text-wrap text-center>{{empDetail.firstname}} {{empDetail.lastname}}</h2>\n                        <p thaifont text-center>{{empDetail.jobTitle}}</p>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col width-100 text-wrap>\n                <p thaifont>{{comp.name}}</p>\n                <p thaifont>{{compAddress.address}} {{compAddress.district}} {{compAddress.subdistrict}} {{compAddress.province}} {{compAddress.postcode}}\n                    <!--<p thaifont>{{empDetail.company.name}}</p>-->\n                    <!--<p thaifont>{{empDetail.company.address.address}} {{empDetail.company.address.district}} {{empDetail.company.address.subdistrict}} {{empDetail.company.address.province}} {{empDetail.company.address.country.th}} {{empDetail.company.address.postcode}}</p>-->\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n    <ion-grid>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/call.png" iconset>\n            <p contentIcon thaifont>{{empDetail.mobile}}</p>\n        </ion-row>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/facebook.png" iconset>\n            <p contentIcon thaifont>{{empDetail.facebook}}</p>\n        </ion-row>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/line.png" iconset>\n            <p contentIcon thaifont>{{empDetail.line}}</p>\n        </ion-row>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/email.png" iconset>\n            <p contentIcon thaifont>{{empDetail.email}}</p>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/timeattendant/src/pages/profile/profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/profile/profile.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Profile</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only>\n        <!--<ion-icon name="md-share"></ion-icon>-->\n      </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-grid>\n        <ion-row>\n            <ion-col col-12 text-center>\n                <ion-list>\n                    <ion-item>\n                        <ion-avatar item-left>\n                            <img src="{{empDetail.image}}">\n                        </ion-avatar>\n                        <h2 thaifont Headerfont text-wrap text-center>{{empDetail.firstname}} {{empDetail.lastname}}</h2>\n                        <p thaifont text-center>{{empDetail.jobTitle}}</p>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col width-100 text-wrap>\n                <p thaifont>{{comp.name}}</p>\n                <p thaifont>{{compAddress.address}} {{compAddress.district}} {{compAddress.subdistrict}} {{compAddress.province}} {{compAddress.postcode}}\n                    <!--<p thaifont>{{empDetail.company.name}}</p>-->\n                    <!--<p thaifont>{{empDetail.company.address.address}} {{empDetail.company.address.district}} {{empDetail.company.address.subdistrict}} {{empDetail.company.address.province}} {{empDetail.company.address.country.th}} {{empDetail.company.address.postcode}}</p>-->\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n    <ion-grid>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/call.png" iconset>\n            <p contentIcon thaifont>{{empDetail.mobile}}</p>\n        </ion-row>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/facebook.png" iconset>\n            <p contentIcon thaifont>{{empDetail.facebook}}</p>\n        </ion-row>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/line.png" iconset>\n            <p contentIcon thaifont>{{empDetail.line}}</p>\n        </ion-row>\n        <ion-row padding-left padding-bottom contentRow>\n            <img src="img/email.png" iconset>\n            <p contentIcon thaifont>{{empDetail.email}}</p>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/profile/profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_3__service_AuthenService__["a" /* AuthenService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
     ], Profile);
@@ -2138,5 +1943,5 @@ var Profile = /** @class */ (function () {
 
 /***/ })
 
-},[361]);
+},[359]);
 //# sourceMappingURL=main.js.map
