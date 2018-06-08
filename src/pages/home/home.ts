@@ -5,18 +5,14 @@ import { StampDetail } from '../stamp-detail/stamp-detail';
 import { Register } from '../register/register';
 import { Leave } from '../leave/leave';
 import { Profile } from '../profile/profile';
-
-import { Vibration } from '@ionic-native/vibration';
-import { Geolocation } from '@ionic-native/geolocation';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Device } from '@ionic-native/device';
-
 import { StampService } from '../../service/StampService';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-
 
 export class HomePage {
   @ViewChild(Content) content: Content;
@@ -28,11 +24,11 @@ export class HomePage {
   };
   devic: string = this.device.platform;
   public getlocation: any = {};
-  public dateTimeNow = Date();
-  public loader = this.loadingCtrl.create({
+  public dateTimeNow: any = Date();
+  public loader: any = this.loadingCtrl.create({
     content: "Please wait..."
   });
-  public stampdata = {
+  public stampdata: any = {
     'locationIn':
     {
       'lat': '',
@@ -49,66 +45,34 @@ export class HomePage {
     'type': this.devic
   };
 
-  constructor(public app: App, public menu: MenuController, public navCtrl: NavController, private vibration: Vibration,
-    private geolocation: Geolocation, private nativeStorage: NativeStorage, public stmp: StampService,
+  constructor(public app: App, public menu: MenuController, public navCtrl: NavController,
+    private nativeStorage: NativeStorage, public stmp: StampService,
     private loadingCtrl: LoadingController,
     private device: Device) {
     menu.enable(true);
     this.nativeStorage.getItem('TimeStampUser').then(
       data => {
         this.userdetail = data;
-        // alert(JSON.stringify(this.userdetail));
         this.stampdata.email = this.userdetail.employeeprofile.email;
         this.callCheckTimeAtt();
-        // this.stmp.chkstamp(this.userdetail._id).then((res) => {
-        //   // alert(JSON.stringify(res));
-        //   if (res.status == "Not checkin") {
-        //     { }
-        //   } else if (res.status == "checkin only") {
-        //     this.dataToday.dateTimeIn = res.data.dateTimeIn;
-        //     // this.dataToday.dateTimeOut = res.data.dateTimeOut;
-        //     // let dd = new Date(res.data.dateTimeIn);
-        //     // let dateLastStamp = dd.getDate();
-        //     // let dd2 = new Date(this.dateTimeNow);
-        //     // let Today = dd2.getDate();
-        //     // if (dateLastStamp != Today) {
-        //     //   this.dataToday.dateTimeIn = null;
-        //     //   this.dataToday.dateTimeOut = null;
-        //     //   // this.loader.dismiss();
-        //     // }
-        //   } else if (res.status == "checkined today") {
-        //     this.dataToday.dateTimeIn = res.data.dateTimeIn;
-        //     this.dataToday.dateTimeOut = res.data.dateTimeOut;
-        //     // let dd = new Date(res.data.dateTimeIn);
-        //     // let dateLastStamp = dd.getDate();
-        //     // let dd2 = new Date(this.dateTimeNow);
-        //     // let Today = dd2.getDate();
-        //     // if (dateLastStamp != Today) {
-        //     //   this.dataToday.dateTimeIn = null;
-        //     //   this.dataToday.dateTimeOut = null;
-        //     // }
-        //   }
-        //   // this.loader.present();
-
-        //   // alert('date from stmp : ' + dateLastStamp + ', DateToday : ' + Today);
-        //   // alert(JSON.stringify(res.data.dateTimeIn) + " : " + JSON.stringify(res.data.dateTimeOut));
-        //   // alert(JSON.stringify(this.dataToday.dateTimeIn) + " : " + JSON.stringify(this.dataToday.dateTimeOut));
-        //   // this.loader.dismiss();
-        // }).catch((err) => {
-        //   this.dataToday.dateTimeIn = null;
-        //   this.dataToday.dateTimeOut = null;
-        //   // this.loader.dismiss();
-        // });
-        //Mick Add test
       },
       error => this.rootPage = Register
     );
+
+    //for chrome//
+    // this.userdetail = {
+    //   _id: '5b18e324fc455f2e00887b71'
+    // };
+    // this.stampdata.email = 'popveera@hotmail.com';
+    // this.callCheckTimeAtt();
+
+    //
 
   }
   callCheckTimeAtt() {
     this.stmp.chkstamp(this.userdetail._id).then((res) => {
       if (res.status == "Not checkin") {
-        { }
+
       } else if (res.status == "checkin only") {
         this.dataToday.dateTimeIn = res.data.dateTimeIn;
       } else if (res.status == "checkined today") {
@@ -121,40 +85,10 @@ export class HomePage {
     });
   }
   ionViewDidEnter() {
-    // this.nativeStorage.getItem('StampToday').then(
-    //   data => this.dataToday = data,
-    //   error => { }
-    // );
     setInterval(() => {
       this.dateTimeNow = Date();
     }, 1000);
     this.callCheckTimeAtt();
-    // this.nativeStorage.getItem('TimeStampUser').then(
-    //   data => this.userdetail = data,
-    //   error => this.rootPage = TabsPage
-    // );
-    // this.stmp.chkstamp(this.userdetail._id).then((res) => {
-    //   this.dataToday.dateTimeIn = res.data.dateTimeIn;
-    //   this.dataToday.dateTimeOut = res.data.dateTimeOut;
-    //   // this.loader.present();
-    //   // let dd = new Date(res.data.dateTimeIn);
-    //   // let dateLastStamp = dd.getDate();
-    //   // let dd2 = new Date(this.dateTimeNow);
-    //   // let Today = dd2.getDate();
-    //   // if (dateLastStamp != Today) {
-    //   //   this.dataToday.dateTimeIn = null;
-    //   //   this.dataToday.dateTimeOut = null;
-    //   // }
-    //   // alert('date from stmp : ' + dateLastStamp + ', DateToday : ' + Today);
-    //   // alert(JSON.stringify(res.data.dateTimeIn) + " : " + JSON.stringify(res.data.dateTimeOut));
-    //   // alert(JSON.stringify(this.dataToday.dateTimeIn) + " : " + JSON.stringify(this.dataToday.dateTimeOut));
-    //   // this.loader.dismiss();
-    // }).catch((err) => {
-    //   this.dataToday.dateTimeIn = null;
-    //   this.dataToday.dateTimeOut = null;
-    //   // this.loader.dismiss();
-    // });
-
   };
 
   showMenu() {
@@ -162,24 +96,21 @@ export class HomePage {
   };
 
   stampFn() {
+    this.loader.present();
     this.stmp.chkstamp(this.userdetail._id).then((res) => {
       if (res.status === '' || res.status === 'Not checkin') {
+        this.stampdata.user = this.userdetail._id;
         this.stampdata.dateTimeIn = new Date();
         this.stampdata.locationIn.lat = this.getlocation.lat;
         this.stampdata.locationIn.lng = this.getlocation.lng;
-
-        this.stmp.stampIn(this.stampdata).then((data) => {
+        this.stmp.stampIn(this.stampdata).then(data => {
           this.loader.dismiss();
-          this.nativeStorage.setItem('StampToday', data).then(
-            () => this.navCtrl.push(StampDetail),
-            // alert('Stamptoday Data : ' + JSON.stringify(data)); 
-            error => alert('Error cannot setitem stamptoday! : ' + JSON.stringify(error)));
-        }).catch((err) => {
+          this.nativeStorage.setItem('StampToday', data);
+          this.navCtrl.push(StampDetail);
+        }).catch(err => {
           this.loader.dismiss();
-          let testErr = JSON.parse(err._body);
-          alert('Check in error! : ' + testErr.message);
+          alert(JSON.stringify(err));
         });
-
       } else if (res.status === 'checkin only') {
         this.stampdata = res.data;
         this.stampdata.dateTimeOut = new Date();
@@ -209,46 +140,37 @@ export class HomePage {
   };
 
   openPage_stampDetail() {
-    this.loader.present();
-    this.vibration.vibrate(200);
-    let GeolocationOptions = { timeout: 5000 };
-    this.geolocation.getCurrentPosition(GeolocationOptions).then((resp) => {
-      this.getlocation.lat = resp.coords.latitude;
-      this.getlocation.lng = resp.coords.longitude;
-      // alert('LC : ' + JSON.stringify(resp.coords.latitude) + " : " + JSON.stringify(resp.coords.longitude));
-      if (resp.coords.latitude && resp.coords.longitude) {
-        this.stampFn();
-      }
-    }).catch((error) => {
-      this.loader.dismiss();
-      alert("Cannot stamp!! \nPlease turn on GPS or Location service");
-      // let testErr = JSON.parse(error._body);
-      // alert('Error getting location : ' + testErr.message);
-    });
-  };
+    this.getlocation.lat = '13.9337425';
+    this.getlocation.lng = '100.7142658';
+    this.stampFn();
+  }
 
 
   openPage_login() {
     this.navCtrl.push(Login);
-  };
+  }
+
   openPage_regis() {
     this.navCtrl.push(Register);
-  };
+  }
+
   openPage_leave() {
     this.app.getRootNav().push(Leave);
-  };
+  }
+
   openPage_profile() {
     this.app.getRootNav().push(Profile);
-  };
+  }
+
   logout() {
     this.nativeStorage.clear();
     this.app.getRootNav().popToRoot();
     setTimeout(() => {
       this.app.getRootNav().push(Login);
     }, 100);
-  };
+  }
 
   doClick() {
     this.menu.open();
-  };
+  }
 }

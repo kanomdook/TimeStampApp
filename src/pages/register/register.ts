@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { App, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import { Http } from '@angular/http'; //Headers
-import 'rxjs/add/operator/toPromise';
 import { Device } from '@ionic-native/device';
 import { Login } from '../login/login';
 
@@ -20,7 +18,7 @@ export class Register {
   public loader = this.loadingCtrl.create({
     content: "Please wait..."
   });
-  constructor(private uniqueDeviceID: UniqueDeviceID, public http: Http, public app: App, public navCtrl: NavController, public navParams: NavParams, public athService: AuthenService, private device: Device, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
+  constructor(private uniqueDeviceID: UniqueDeviceID, public app: App, public navCtrl: NavController, public navParams: NavParams, public athService: AuthenService, private device: Device, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController) {
     if (this.device.platform == "iOS") {
       this.uniqueDeviceID.get()
         .then((uuid: any) => this.deviceUUID = uuid)
@@ -43,7 +41,7 @@ export class Register {
             lastName: '@' + email.split('@')[1],
             email: email,
             username: email.split('@')[0],
-            password: this.deviceUUID.substr(0, 10) + '#Pass',
+            password: this.deviceUUID ? this.deviceUUID.substr(0, 10) + '#Pass' : '',
             deviceID: this.deviceUUID,
             employeeprofile: data.employees[0]
           }
@@ -54,18 +52,17 @@ export class Register {
             this.loader.dismiss();
             this.navCtrl.setRoot(TabsPage);
           }, (err) => {
-            let testErr = JSON.parse(err._body);
             this.loader.dismiss();
-            alert(testErr.message);
+            alert(JSON.stringify(err));
           });
         } else {
           this.loader.dismiss();
           alert("This Email is not Employee!!");
         }
       }, (err) => {
-        let testErr = JSON.parse(err._body);
         this.loader.dismiss();
-        alert(testErr.message);
+        alert(JSON.stringify(err));
+
       });
     } else {
       this.loader.dismiss();
