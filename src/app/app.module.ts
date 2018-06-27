@@ -19,7 +19,7 @@ import { LeaveDetailPage } from '../pages/leave-detail/leave-detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Vibration } from '@ionic-native/vibration';
 import { Device } from '@ionic-native/device';
 import { HTTP } from '@ionic-native/http';

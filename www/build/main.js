@@ -1478,8 +1478,7 @@ var Register = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_StampService__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_AuthenService__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_AuthenService__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1493,47 +1492,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var LeaveDetailPage = /** @class */ (function () {
-    function LeaveDetailPage(nativeStorage, navCtrl, navParams, stampService, athService) {
+    function LeaveDetailPage(nativeStorage, navCtrl, navParams, athService) {
         var _this = this;
         this.nativeStorage = nativeStorage;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.stampService = stampService;
         this.athService = athService;
         this.leaveDetail = this.navParams.get('leaveDetail');
         this.nativeStorage.getItem('TimeStampUser').then(function (data) { return _this.getEmployeeData(data.email); }, function (error) { return alert(error); });
         this.ionViewDidLoad();
-        // this.nativeStorage.getItem('TimeStampUser').then(
-        //   data => {
-        //     this.userDetail = data;
-        //   },
-        //   error => { alert(error); }
-        // );
-        // this.leaveDetail.leaveStartDateTime = this.stampService.convertDateTimeThaiFormat(this.leaveDetail.leaveStartDateTime);
-        // this.leaveDetail.leaveEndDateTime = this.stampService.convertDateTimeThaiFormat(this.leaveDetail.leaveEndDateTime);
-        // alert("LEAVEDETAIL : " + JSON.stringify(this.leaveDetail));
     }
     LeaveDetailPage.prototype.ionViewDidLoad = function () {
-        // if (this.leaveDetail.leaveType == "Personal Leave") {
-        //   this.leaveDetail.leaveType = "ลากิจ";
-        // } else if (this.leaveDetail.leaveType == "Sick Leave") {
-        //   this.leaveDetail.leaveType = "ลาป่วย";
-        // } else if (this.leaveDetail.leaveType == "Vacation") {
-        //   this.leaveDetail.leaveType = "ลาพักร้อน";
-        // } else if (this.leaveDetail.leaveType == "Militiary Service Leave") {
-        //   this.leaveDetail.leaveType = "ลาเกณฑ์ทหาร";
-        // } else if (this.leaveDetail.leaveType == "Maternity Leave") {
-        //   this.leaveDetail.leaveType = "ลาคลอดบุตร";
-        // } else if (this.leaveDetail.leaveType == "Ordination Leave") {
-        //   this.leaveDetail.leaveType = "ลาบวช";
-        // }
     };
     LeaveDetailPage.prototype.getEmployeeData = function (email) {
         var _this = this;
         this.athService.getEmpDataApi(email).then(function (emp) {
-            // alert(JSON.stringify(emp.employees[0]));
             _this.userDetail = emp.employees[0];
             if (_this.leaveDetail.leaveTime < 2) {
                 _this.hr = "Hour";
@@ -1541,7 +1515,6 @@ var LeaveDetailPage = /** @class */ (function () {
             else {
                 _this.hr = "Hours";
             }
-            // alert("USERDETAIL : " +JSON.stringify(this.userDetail));
         }, function (err) {
             var testErr = JSON.parse(err._body);
             alert(testErr.message);
@@ -1551,9 +1524,10 @@ var LeaveDetailPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-leave-detail',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave-detail/leave-detail.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>Leave Detail</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-list>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">Leave Type : </ion-label>\n            <ion-input type="text" value="{{leaveDetail.leaveType}}" text-right margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">Leave Detail : </ion-label>\n            <ion-input type="text" value="{{leaveDetail.leaveDetail}}" text-right margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">From :</ion-label>\n            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveStartDateTime | date: \'dd MMM yyyy\'}}" disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label class="fontbold" style="color:black;">To :</ion-label>\n            <ion-input type="text" text-right margin-right value="{{leaveDetail.leaveEndDateTime | date: \'dd MMM yyyy\'}}" disabled="true"></ion-input>\n        </ion-item>\n        <ion-item [hidden]="!leaveDetail.leaveHalf">\n            <ion-label class="fontbold" style="color:black;">Leave half-day :</ion-label>\n            <ion-input type="text" text-right value="{{leaveDetail.leaveTime}} {{hr}}" margin-right disabled="true"></ion-input>\n        </ion-item>\n        <ion-item [hidden]="leaveDetail.leaveHalf">\n            <ion-label class="fontbold" style="color:black;">Total leave : </ion-label>\n            <ion-input type="text" text-right value="{{leaveDetail.leaveDay}} Days" margin-right disabled="true"></ion-input>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave-detail/leave-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */], __WEBPACK_IMPORTED_MODULE_4__service_AuthenService__["a" /* AuthenService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__service_AuthenService__["a" /* AuthenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_AuthenService__["a" /* AuthenService */]) === "function" && _d || Object])
     ], LeaveDetailPage);
     return LeaveDetailPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=leave-detail.js.map
