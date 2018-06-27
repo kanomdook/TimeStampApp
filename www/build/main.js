@@ -1557,7 +1557,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import { HomePage } from '../home/home';
 
 
 
@@ -1600,10 +1599,7 @@ var Leave = /** @class */ (function () {
             mode: 'date',
             androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
         }).then(function (date) {
-            // this.localStartDate = date;
             _this.localStartDate = date;
-            // let txtDate = new Date(date);
-            // this.localStartDate = txtDate.getDate();
             if (_this.localStartDate && _this.localEndDate) {
                 _this.checkDate(_this.localStartDate, _this.localEndDate);
             }
@@ -1616,21 +1612,13 @@ var Leave = /** @class */ (function () {
             mode: 'date',
             androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
         }).then(function (date) {
-            // this.localStartDate = date;
-            // let txtDate = new Date(date);
             _this.localEndDate = date;
-            // this.localEndDate = txtDate.getDate();
             if (_this.localStartDate && _this.localEndDate) {
                 _this.checkDate(_this.localStartDate, _this.localEndDate);
             }
         }, function (err) { });
     };
     Leave.prototype.checkDate = function (date1, date2) {
-        //  var Date1 = date1;
-        // var Date2 = date2;
-        // var Date1 = Date.parse(date1);
-        // var Date2 = Date.parse(date2);
-        // if (Date1 > Date2) {
         if (date1 > date2) {
             alert("From date must be less than To date");
             this.localStartDate = '';
@@ -1735,9 +1723,10 @@ var Leave = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-leave',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave/leave.html"*/'<!--\n\n  Generated template for the Leave page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n    <ion-toolbar>\n\n        <ion-buttons start>\n\n            <button ion-button icon-only color="royal" (click)="openHomepage()">\n\n        <ion-icon name="home"></ion-icon>\n\n      </button>\n\n        </ion-buttons>\n\n        <ion-title>Leave</ion-title>\n\n        <ion-buttons end>\n\n            <button ion-button icon-only color="royal" (click)="openModalpage()">\n\n        <ion-icon name="ios-list"></ion-icon>\n\n      </button>\n\n        </ion-buttons>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content leaveContent>\n\n    <ion-list>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Leave Type<span dokchan>*</span> :</ion-label>\n\n            <ion-select [(ngModel)]="leaveData.leaveType" interface="popover">\n\n                <ion-option value="Sick Leave">Sick Leave</ion-option>\n\n                <ion-option value="Personal Leave">Personal Leave</ion-option>\n\n                <ion-option value="Vacation">Vacation</ion-option>\n\n                <ion-option value="Militiary Service Leave">Militiary Service Leave</ion-option>\n\n                <ion-option value="Maternity Leave">Maternity Leave</ion-option>\n\n                <ion-option value="Ordination Leave">Ordination Leave</ion-option>\n\n            </ion-select>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Leave Detail<span dokchan>*</span> :</ion-label>\n\n            <ion-input #myInput id="Remark" type="text" placeholder="Fill your leave cause..." [(ngModel)]="leaveData.leaveDetail"></ion-input>\n\n            <!--<p class="fontbold">Leave Detail<span dokchan>*</span> :</p>-->\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">From<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" type="text" value="{{localStartDate | date}}" readonly="true" text-right padding-right (click)="getDateFrom()"></ion-input>\n\n            <button ion-button clear color="dark" type="button" item-right btnCalendar>\n\n        <span><ion-icon name="calendar" iconCalender (click)="getDateFrom()"></ion-icon></span></button>\n\n\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" type="text" value="{{localEndDate | date}}" readonly="true" text-right padding-right (click)="getDateTo()"></ion-input>\n\n            <button ion-button clear color="dark" type="button" item-right btnCalendar>\n\n        <span><ion-icon name="calendar" iconCalender (click)="getDateTo()"></ion-icon></span></button>\n\n        </ion-item>\n\n        <!--<ion-item>\n\n           \n\n            <ion-label class="fontbold" style="color:black;">To<span dokchan>*</span> :</ion-label>\n\n            <ion-input style="color:black;" [(ngModel)]="localStartDate" (click)="getDateFrom()"></ion-input>\n\n\n\n        </ion-item>-->\n\n\n\n\n\n\n\n        <ion-item>\n\n            <ion-label class="fontbold" style="color:black;">Half-Day</ion-label>\n\n            <ion-toggle enable checked="false" color="dog" [(ngModel)]="leaveData.leaveHalf" (ionChange)="logEvent()"></ion-toggle>\n\n        </ion-item>\n\n        <ion-item [hidden]="!leaveData.leaveHalf">\n\n            <ion-label class="fontbold" style="color:black;">Leave time : </ion-label>\n\n            <ion-input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"\n\n                type="number" maxlength="2" text-center [(ngModel)]="leaveData.leaveTime"></ion-input>\n\n        </ion-item>\n\n        <ion-grid gridA>\n\n            <ion-row>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button saveBtnColor (click)="sendLeave(\'Draft\')">Draft</button>\n\n                </ion-col>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button color="royal" (click)="sendLeave(\'Request\')">Send</button>\n\n                </ion-col>\n\n                <ion-col col-4 text-center>\n\n                    <button ion-button cancelBtnColor (click)="openHomepage()">Cancel</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-grid>\n\n    </ion-list>\n\n\n\n</ion-content>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/leave/leave.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__ionic_native_date_picker__["a" /* DatePicker */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_date_picker__["a" /* DatePicker */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_date_picker__["a" /* DatePicker */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_StampService__["a" /* StampService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */]) === "function" && _j || Object])
     ], Leave);
     return Leave;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=leave.js.map

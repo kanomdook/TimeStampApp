@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { App, ModalController, IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
-// import { HomePage } from '../home/home';
 import { Leavelist } from '../leavelist/leavelist';
 import { StampService } from '../../service/StampService';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -50,10 +49,7 @@ export class Leave {
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(
       date => {
-        // this.localStartDate = date;
         this.localStartDate = date;
-        // let txtDate = new Date(date);
-        // this.localStartDate = txtDate.getDate();
         if (this.localStartDate && this.localEndDate) {
           this.checkDate(this.localStartDate, this.localEndDate);
         }
@@ -68,10 +64,7 @@ export class Leave {
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(
       date => {
-        // this.localStartDate = date;
-        // let txtDate = new Date(date);
         this.localEndDate = date;
-        // this.localEndDate = txtDate.getDate();
         if (this.localStartDate && this.localEndDate) {
           this.checkDate(this.localStartDate, this.localEndDate);
         }
@@ -81,11 +74,6 @@ export class Leave {
   }
 
   checkDate(date1, date2) {
-    //  var Date1 = date1;
-    // var Date2 = date2;
-    // var Date1 = Date.parse(date1);
-    // var Date2 = Date.parse(date2);
-    // if (Date1 > Date2) {
     if (date1 > date2) {
       alert("From date must be less than To date");
       this.localStartDate = '';
