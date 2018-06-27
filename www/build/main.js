@@ -483,6 +483,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_native_storage__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_device__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__service_StampService__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_geolocation__ = __webpack_require__(489);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -502,8 +503,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = /** @class */ (function () {
-    function HomePage(app, menu, navCtrl, nativeStorage, stmp, loadingCtrl, device) {
+    function HomePage(app, menu, navCtrl, nativeStorage, stmp, loadingCtrl, geolocation, device) {
         var _this = this;
         this.app = app;
         this.menu = menu;
@@ -511,6 +513,7 @@ var HomePage = /** @class */ (function () {
         this.nativeStorage = nativeStorage;
         this.stmp = stmp;
         this.loadingCtrl = loadingCtrl;
+        this.geolocation = geolocation;
         this.device = device;
         this.userdetail = {};
         this.dataToday = {
@@ -518,7 +521,6 @@ var HomePage = /** @class */ (function () {
             'dateTimeOut': null,
         };
         this.devic = this.device.platform;
-        this.getlocation = {};
         this.dateTimeNow = Date();
         this.loader = this.loadingCtrl.create({
             content: "Please wait..."
@@ -543,7 +545,7 @@ var HomePage = /** @class */ (function () {
             _this.stampdata.email = _this.userdetail.employeeprofile.email;
             _this.callCheckTimeAtt();
         }, function (error) { return _this.rootPage = __WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* Register */]; });
-        //for chrome//
+        //for chrome test//
         // this.userdetail = {
         //   _id: '5b18e324fc455f2e00887b71'
         // };
@@ -580,15 +582,15 @@ var HomePage = /** @class */ (function () {
         this.menu.open();
     };
     ;
-    HomePage.prototype.stampFn = function () {
+    HomePage.prototype.stampFn = function (lat, lng) {
         var _this = this;
         this.loader.present();
         this.stmp.chkstamp(this.userdetail._id).then(function (res) {
             if (res.status === '' || res.status === 'Not checkin') {
                 _this.stampdata.user = _this.userdetail._id;
                 _this.stampdata.dateTimeIn = new Date();
-                _this.stampdata.locationIn.lat = _this.getlocation.lat;
-                _this.stampdata.locationIn.lng = _this.getlocation.lng;
+                _this.stampdata.locationIn.lat = lat;
+                _this.stampdata.locationIn.lng = lng;
                 _this.stmp.stampIn(_this.stampdata).then(function (data) {
                     _this.loader.dismiss();
                     _this.nativeStorage.setItem('StampToday', data);
@@ -601,8 +603,8 @@ var HomePage = /** @class */ (function () {
             else if (res.status === 'checkin only') {
                 _this.stampdata = res.data;
                 _this.stampdata.dateTimeOut = new Date();
-                _this.stampdata.locationOut.lat = _this.getlocation.lat;
-                _this.stampdata.locationOut.lng = _this.getlocation.lng;
+                _this.stampdata.locationOut.lat = lat;
+                _this.stampdata.locationOut.lng = lng;
                 _this.stmp.stampOut(_this.stampdata).then(function (data) {
                     _this.loader.dismiss();
                     _this.nativeStorage.setItem('StampToday', data).then(function () { return _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__stamp_detail_stamp_detail__["a" /* StampDetail */]); }, function (error) { return alert('Error! SetItem when stampOut'); });
@@ -624,9 +626,14 @@ var HomePage = /** @class */ (function () {
     };
     ;
     HomePage.prototype.openPage_stampDetail = function () {
-        this.getlocation.lat = '13.9337425';
-        this.getlocation.lng = '100.7142658';
-        this.stampFn();
+        var _this = this;
+        this.geolocation.getCurrentPosition().then(function (resp) {
+            var lat = resp.coords.latitude;
+            var lng = resp.coords.longitude;
+            _this.stampFn(lat, lng);
+        }).catch(function (error) {
+            alert(error);
+        });
     };
     HomePage.prototype.openPage_login = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__login_login__["a" /* Login */]);
@@ -653,18 +660,16 @@ var HomePage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]) === "function" && _a || Object)
     ], HomePage.prototype, "content", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <!--<ion-toolbar>-->\n        <ion-title titleNew>Time Attendance</ion-title>\n        <ion-buttons start>\n            <button ion-button icon-only color="royal" menuToggle><ion-icon name="menu"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-buttons end>\n            <button ion-button clear style="width:44px;" no-padding>\n            </button>\n        </ion-buttons>\n        <!--</ion-toolbar>-->\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid>\n        <ion-row text-center>\n            <ion-col ion-text color="danger" tsize>\n                {{dateTimeNow | date: "shortTime"}}\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <ion-note>{{dateTimeNow | date: "dd MMM yyyy"}}</ion-note>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col text-center>\n                <img (press)="openPage_stampDetail()" src="img/fingerprint.png" fgprintImg>\n            </ion-col>\n        </ion-row>\n        <ion-row padding-top>\n            <ion-col col-12 text-center [hidden]="!dataToday.dateTimeIn">\n                <span ng-if="dataToday.dateTimeIn"><ion-icon name="md-arrow-dropright-circle" iconinList1></ion-icon>{{dataToday.dateTimeIn | date: "shortTime"}}</span>\n                <span ng-if="dataToday.dateTimeOut"><ion-icon name="md-arrow-dropleft-circle" iconinList2 ng-if="dataToday.dateTimeOut"></ion-icon>{{dataToday.dateTimeOut | date: "shortTime"}}</span>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<ion-menu [content]="content">\n    <ion-header>\n        <ion-toolbar>\n            <ion-title>Menu</ion-title>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-list>\n            <button ion-item (click)="openPage_leave()">\n                <ion-icon name="ios-alarm" padding-right menuIcon></ion-icon>\n          Leave\n        </button>\n\n            <button ion-item (click)="openPage_profile()">\n                <ion-icon name="md-person" padding-right menuIcon></ion-icon>\n          Profile\n        </button>\n            <button ion-item (click)="logout()">\n                <ion-icon name="md-log-out" padding-right menuIcon></ion-icon>\n          Log Out\n        </button>\n        </ion-list>\n    </ion-content>\n</ion-menu>'/*ion-inline-end:"/Users/cybermacpro15/Desktop/TimeAttendant/TimeStampApp/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_7__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_9__service_StampService__["a" /* StampService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_8__ionic_native_device__["a" /* Device */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_native_storage__["a" /* NativeStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_native_storage__["a" /* NativeStorage */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_9__service_StampService__["a" /* StampService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__service_StampService__["a" /* StampService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_10__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_device__["a" /* Device */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_device__["a" /* Device */]) === "function" && _j || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -759,10 +764,9 @@ var StampService = /** @class */ (function () {
     };
     StampService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], StampService);
     return StampService;
-    var _a;
 }());
 
 //# sourceMappingURL=StampService.js.map

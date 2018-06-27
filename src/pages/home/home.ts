@@ -8,6 +8,7 @@ import { Profile } from '../profile/profile';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Device } from '@ionic-native/device';
 import { StampService } from '../../service/StampService';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'page-home',
@@ -23,7 +24,6 @@ export class HomePage {
     'dateTimeOut': null,
   };
   devic: string = this.device.platform;
-  public getlocation: any = {};
   public dateTimeNow: any = Date();
   public loader: any = this.loadingCtrl.create({
     content: "Please wait..."
@@ -47,7 +47,7 @@ export class HomePage {
 
   constructor(public app: App, public menu: MenuController, public navCtrl: NavController,
     private nativeStorage: NativeStorage, public stmp: StampService,
-    private loadingCtrl: LoadingController,
+    private loadingCtrl: LoadingController, private geolocation: Geolocation,
     private device: Device) {
     menu.enable(true);
     this.nativeStorage.getItem('TimeStampUser').then(
@@ -59,7 +59,7 @@ export class HomePage {
       error => this.rootPage = Register
     );
 
-    //for chrome//
+    //for chrome test//
     // this.userdetail = {
     //   _id: '5b18e324fc455f2e00887b71'
     // };
@@ -95,14 +95,14 @@ export class HomePage {
     this.menu.open();
   };
 
-  stampFn() {
+  stampFn(lat, lng) {
     this.loader.present();
     this.stmp.chkstamp(this.userdetail._id).then((res) => {
       if (res.status === '' || res.status === 'Not checkin') {
         this.stampdata.user = this.userdetail._id;
         this.stampdata.dateTimeIn = new Date();
-        this.stampdata.locationIn.lat = this.getlocation.lat;
-        this.stampdata.locationIn.lng = this.getlocation.lng;
+        this.stampdata.locationIn.lat = lat;
+        this.stampdata.locationIn.lng = lng;
         this.stmp.stampIn(this.stampdata).then(data => {
           this.loader.dismiss();
           this.nativeStorage.setItem('StampToday', data);
@@ -114,8 +114,8 @@ export class HomePage {
       } else if (res.status === 'checkin only') {
         this.stampdata = res.data;
         this.stampdata.dateTimeOut = new Date();
-        this.stampdata.locationOut.lat = this.getlocation.lat;
-        this.stampdata.locationOut.lng = this.getlocation.lng;
+        this.stampdata.locationOut.lat = lat;
+        this.stampdata.locationOut.lng = lng;
         this.stmp.stampOut(this.stampdata).then((data) => {
           this.loader.dismiss();
           this.nativeStorage.setItem('StampToday', data).then(
@@ -140,9 +140,13 @@ export class HomePage {
   };
 
   openPage_stampDetail() {
-    this.getlocation.lat = '13.9337425';
-    this.getlocation.lng = '100.7142658';
-    this.stampFn();
+    this.geolocation.getCurrentPosition().then((resp) => {
+      let lat = resp.coords.latitude;
+      let lng = resp.coords.longitude;
+      this.stampFn(lat, lng);
+    }).catch((error) => {
+      alert(error);
+    });
   }
 
 
