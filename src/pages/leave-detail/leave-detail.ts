@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { NativeStorage } from "@ionic-native/native-storage";
-import { StampService } from '../../service/StampService';
 import { AuthenService } from '../../service/AuthenService';
 
 @IonicPage()
