@@ -40,6 +40,7 @@ export class HomePage {
       'lng': ''
     },
     'email': '',
+    'user': '',
     'dateTimeIn': null,
     'dateTimeOut': null,
     'type': this.devic
@@ -140,13 +141,15 @@ export class HomePage {
   };
 
   openPage_stampDetail() {
-    this.geolocation.getCurrentPosition().then((resp) => {
-      let lat = resp.coords.latitude;
-      let lng = resp.coords.longitude;
-      this.stampFn(lat, lng);
-    }).catch((error) => {
-      alert(error);
-    });
+    alert('stamp!');
+    this.stampFn('13.9005307', '100.6385391');
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   let lat = resp.coords.latitude;
+    //   let lng = resp.coords.longitude;
+    //   this.stampFn(lat, lng);
+    // }).catch((error) => {
+    //   alert(error);
+    // });
   }
 
 
