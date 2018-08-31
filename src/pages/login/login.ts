@@ -40,7 +40,7 @@ export class Login {
     if (inemail) {
       let signin = {
         username: inemail.split('@')[0],
-        password: this.deviceUUID.substr(0, 10) + '#Pass'
+        password: this.deviceUUID ? this.deviceUUID.substr(0, 10) + '#Pass' : ''
         // password: '7ef823544f#Pass'
       };
 
@@ -54,8 +54,7 @@ export class Login {
         this.navCtrl.setRoot(TabsPage);
       }).catch((err) => {
         loader.dismiss();
-        let testErr = JSON.parse(err._body);
-        alert('Sign in error!\n' + testErr.message);
+        alert('Sign in error!\n' + JSON.stringify(err));
       });
     }
   }

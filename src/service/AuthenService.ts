@@ -1,42 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthenService {
   apiUrl: string = 'https://time-attendance.herokuapp.com/';
   // apiUrl: string = 'https://time-attendance-test.herokuapp.com/';
-
+  headers: any = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
   constructor(public http: HttpClient) {
 
   }
 
   private errHandler(err: any): Promise<any> {
-    return Promise.reject(err.message || err);
+    return Promise.reject(err.message);
   }
 
   getEmpDataApi(email): Promise<any> {
-    return this.http.get(this.apiUrl + 'api/Employeeprofile/email/' + email)
+    return this.http.get(this.apiUrl + 'api/Employeeprofile/email/' + email, this.headers)
       .toPromise()
       .then(res => res)
       .catch(this.errHandler);
   }
 
   signUp(register): Promise<any> {
-    return this.http.post(this.apiUrl + 'api/auth/signup', register)
+    return this.http.post(this.apiUrl + 'api/auth/signup', register, this.headers)
       .toPromise()
       .then(res => res)
       .catch(this.errHandler);
   }
 
   updateProfile(profile): Promise<any> {
-    return this.http.put(this.apiUrl + 'api/employeeprofiles/' + profile._id, profile)
+    return this.http.put(this.apiUrl + 'api/employeeprofiles/' + profile._id, profile, this.headers)
       .toPromise()
       .then(res => res)
       .catch(this.errHandler);
   }
 
   signIn(signin): Promise<any> {
-    return this.http.post(this.apiUrl + 'api/auth/signin', signin)
+    return this.http.post(this.apiUrl + 'api/auth/signin', signin, this.headers)
       .toPromise()
       .then(res => res)
       .catch(this.errHandler);

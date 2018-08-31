@@ -36,7 +36,7 @@ export class Register {
     if (email) {
       this.athService.getEmpDataApi(email).then((data) => {
         if (data.employees.length > 0) {
-          let register = {
+          let register: any = {
             firstName: email.split('@')[0],
             lastName: '@' + email.split('@')[1],
             email: email,
@@ -44,7 +44,8 @@ export class Register {
             password: this.deviceUUID ? this.deviceUUID.substr(0, 10) + '#Pass' : '',
             deviceID: this.deviceUUID,
             employeeprofile: data.employees[0]
-          }
+          };
+
           this.athService.signUp(register).then((data) => {
             this.nativeStorage.setItem('TimeStampUser', data).then(
               () => { },
@@ -52,9 +53,9 @@ export class Register {
             this.loader.dismiss();
             this.navCtrl.setRoot(TabsPage);
           }, (err) => {
-            this.loader.dismiss();
             alert(JSON.stringify(err));
           });
+
         } else {
           this.loader.dismiss();
           alert("This Email is not Employee!!");
